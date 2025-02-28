@@ -2,6 +2,14 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2.0.0 - 2025-02-20
+### Added
+- [@jpalis]: **BREAKING**: Added support only for MUI v6.
+- [@jpalis]: Added support for React 19.
+
+### Removed
+- [@jpalis]: **BREAKING**: Removed support for MUI v5.
+
 ## 1.3.0 - 2025-02-05
 ### Added
 - [@pjarolewski]: Added support for Node v22

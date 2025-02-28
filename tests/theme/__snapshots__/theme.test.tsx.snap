@@ -6,38 +6,38 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
     style="height: 400px;"
   >
     <div
-      class="MuiDataGrid-root MuiDataGrid-root--densityStandard MuiDataGrid-root--noToolbar MuiDataGrid-withBorderColor css-vr43xx-MuiDataGrid-root"
-      style="--DataGrid-width: 0px; --DataGrid-hasScrollX: 1; --DataGrid-hasScrollY: 0; --DataGrid-scrollbarSize: 0px; --DataGrid-rowWidth: 150px; --DataGrid-columnsTotalWidth: 150px; --DataGrid-leftPinnedWidth: 0px; --DataGrid-rightPinnedWidth: 0px; --DataGrid-headerHeight: 56px; --DataGrid-headersTotalHeight: 56px; --DataGrid-topContainerHeight: 56px; --DataGrid-bottomContainerHeight: 0px; --height: 52px;"
+      class="MuiDataGrid-root MuiDataGrid-root--densityStandard MuiDataGrid-root--noToolbar MuiDataGrid-withBorderColor css-1drh28j-MuiDataGrid-root"
+      style="--DataGrid-hasScrollX: 1; --DataGrid-hasScrollY: 0; --DataGrid-scrollbarSize: 0px; --DataGrid-rowWidth: 150px; --DataGrid-columnsTotalWidth: 150px; --DataGrid-leftPinnedWidth: 0px; --DataGrid-rightPinnedWidth: 0px; --DataGrid-headerHeight: 56px; --DataGrid-headersTotalHeight: 56px; --DataGrid-topContainerHeight: 56px; --DataGrid-bottomContainerHeight: 0px; --height: 52px;"
     >
       <div
         aria-colcount="1"
         aria-multiselectable="false"
         aria-rowcount="1"
-        class="MuiDataGrid-main css-3eek4p-MuiDataGrid-main"
+        class="MuiDataGrid-main css-uk7t8p-MuiDataGrid-main"
         role="grid"
         tabindex="-1"
       >
         <div
-          class="css-qtdhae"
+          class="css-18l11qw"
           data-id="gridPanelAnchor"
           role="presentation"
         />
         <div
-          class="MuiDataGrid-virtualScroller css-1793420-MuiDataGrid-virtualScroller"
+          class="MuiDataGrid-virtualScroller MuiDataGrid-virtualScroller--hasScrollX css-rktzwf-MuiDataGrid-virtualScroller"
           role="presentation"
           style="overflow-x: hidden;"
         >
           <div
-            class="MuiDataGrid-topContainer MuiDataGrid-container--top css-2sp4oa"
+            class="MuiDataGrid-topContainer MuiDataGrid-container--top css-9dbfce"
             role="presentation"
           >
             <div
-              class="MuiDataGrid-columnHeaders css-1pmk00y-MuiDataGrid-columnHeaders"
+              class="MuiDataGrid-columnHeaders css-1gtv474-MuiDataGrid-columnHeaders"
               role="presentation"
             >
               <div
                 aria-rowindex="1"
-                class="MuiDataGrid-row--borderBottom css-yrdy0g-MuiDataGrid-columnHeaderRow"
+                class="MuiDataGrid-row--borderBottom css-yseucu-MuiDataGrid-columnHeaderRow"
                 role="row"
               >
                 <div
@@ -46,12 +46,11 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                 />
                 <div
                   aria-colindex="1"
-                  aria-label="First name"
                   aria-sort="none"
-                  class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable MuiDataGrid-withBorderColor MuiDataGrid-columnHeader--last"
+                  class="MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable MuiDataGrid-withBorderColor MuiDataGrid-columnHeader--lastUnpinned MuiDataGrid-columnHeader--last"
                   data-field="firstName"
                   role="columnheader"
-                  style="height: 56px; width: 150px; min-width: 150px; max-width: 150px;"
+                  style="height: 56px; width: 150px;"
                   tabindex="0"
                 >
                   <div
@@ -67,8 +66,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                         class="MuiDataGrid-columnHeaderTitleContainerContent"
                       >
                         <div
-                          aria-label=""
-                          class="MuiDataGrid-columnHeaderTitle css-t89xny-MuiDataGrid-columnHeaderTitle"
+                          class="MuiDataGrid-columnHeaderTitle css-1gqmilo-MuiDataGrid-columnHeaderTitle"
                           data-mui-internal-clone-element="true"
                         >
                           First name
@@ -79,7 +77,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                       >
                         <button
                           aria-label="Sortuj"
-                          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1dw0joi-MuiButtonBase-root-MuiIconButton-root"
+                          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1xo2tin-MuiButtonBase-root-MuiIconButton-root"
                           field="firstName"
                           tabindex="-1"
                           title="Sortuj"
@@ -87,7 +85,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                         >
                           <svg
                             aria-hidden="true"
-                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall MuiDataGrid-sortIcon css-1cea49u-MuiSvgIcon-root"
+                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall MuiDataGrid-sortIcon css-cqtnhj-MuiSvgIcon-root"
                             data-testid="ArrowUpwardIcon"
                             focusable="false"
                             viewBox="0 0 24 24"
@@ -96,9 +94,6 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                               d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"
                             />
                           </svg>
-                          <span
-                            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                          />
                         </button>
                       </div>
                     </div>
@@ -109,15 +104,15 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                         aria-expanded="false"
                         aria-haspopup="menu"
                         aria-label="Menu"
-                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-1dw0joi-MuiButtonBase-root-MuiIconButton-root"
+                        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-1xo2tin-MuiButtonBase-root-MuiIconButton-root"
                         data-mui-internal-clone-element="true"
-                        id=":r4:"
+                        id=":r6:"
                         tabindex="-1"
                         type="button"
                       >
                         <svg
                           aria-hidden="true"
-                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall css-1cea49u-MuiSvgIcon-root"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-zysrwz-MuiSvgIcon-root"
                           data-testid="TripleDotsVerticalIcon"
                           focusable="false"
                           viewBox="0 0 24 24"
@@ -126,25 +121,25 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                             d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
                           />
                         </svg>
-                        <span
-                          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                        />
                       </button>
                     </div>
                   </div>
                   <div
                     class="MuiDataGrid-columnSeparator MuiDataGrid-columnSeparator--resizable MuiDataGrid-columnSeparator--sideRight"
-                    style="min-height: 56px; opacity: 1;"
+                    style="min-height: 56px;"
                   >
                     <svg
                       aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-1rrw7xm-MuiSvgIcon-root"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-i0l78e-MuiSvgIcon-root"
                       data-testid="SeparatorIcon"
                       focusable="false"
                       viewBox="0 0 24 24"
                     >
-                      <path
-                        d="M11 19V5h2v14z"
+                      <rect
+                        height="24"
+                        rx="0.5"
+                        width="1"
+                        x="11.5"
                       />
                     </svg>
                   </div>
@@ -164,67 +159,66 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
             class="MuiDataGrid-overlayWrapper css-74bi4q-MuiDataGrid-overlayWrapper"
           >
             <div
-              class="MuiDataGrid-overlayWrapperInner css-1akuw9y-MuiDataGrid-overlayWrapperInner"
-              style="height: -56px; width: 0px;"
+              class="MuiDataGrid-overlayWrapperInner css-1mbsuzk-MuiDataGrid-overlayWrapperInner"
+              style="height: var(--DataGrid-overlayHeight, calc(var(--height) * 2)); width: 0px;"
             >
               <div
-                class="MuiDataGrid-overlay css-1w53k9d-MuiDataGrid-overlay"
+                class="MuiDataGrid-overlay css-ok32b7-MuiDataGrid-overlay"
               >
                 Brak danych
               </div>
             </div>
           </div>
           <div
-            class="MuiDataGrid-virtualScrollerContent css-1kwdphh-MuiDataGrid-virtualScrollerContent"
+            class="MuiDataGrid-virtualScrollerContent css-qghlpz-MuiDataGrid-virtualScrollerContent"
             role="presentation"
-            style="width: auto; height: 0px;"
+            style="width: auto; flex-basis: var(--DataGrid-overlayHeight, calc(var(--height) * 2)); flex-shrink: 0;"
           >
             <div
-              class="MuiDataGrid-virtualScrollerRenderZone css-s1v7zr-MuiDataGrid-virtualScrollerRenderZone"
+              class="MuiDataGrid-virtualScrollerRenderZone css-11dqcl8-MuiDataGrid-virtualScrollerRenderZone"
               role="rowgroup"
               style="transform: translate3d(0, 0px, 0);"
             />
           </div>
           <div
-            class="MuiDataGrid-bottomContainer MuiDataGrid-container--bottom css-14egwce"
+            class="MuiDataGrid-bottomContainer MuiDataGrid-container--bottom css-kkb6k7"
             role="presentation"
           />
         </div>
         <div
           aria-hidden="true"
-          class="MuiDataGrid-scrollbar MuiDataGrid-scrollbar--horizontal css-1rtad1"
+          class="MuiDataGrid-scrollbar MuiDataGrid-scrollbar--horizontal css-16z8vpz"
           tabindex="-1"
         >
           <div
-            class="MuiDataGrid-scrollbarContent css-1baulvz"
+            class="MuiDataGrid-scrollbarContent"
           />
         </div>
       </div>
     </div>
     <div
-      class="MuiTablePagination-root css-19eh4pg-MuiTablePagination-root"
+      class="MuiTablePagination-root css-56r83d-MuiTablePagination-root"
     >
       <div
-        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular MuiTablePagination-toolbar css-mho382-MuiToolbar-root-MuiTablePagination-toolbar"
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular MuiTablePagination-toolbar css-9d55fv-MuiToolbar-root-MuiTablePagination-toolbar"
       >
         <div
-          class="MuiTablePagination-spacer css-1psng7p-MuiTablePagination-spacer"
+          class="MuiTablePagination-spacer css-1wtxofq-MuiTablePagination-spacer"
         />
         <p
-          class="MuiTablePagination-selectLabel css-vg9wej-MuiTablePagination-selectLabel"
+          class="MuiTablePagination-selectLabel css-dvvxif-MuiTablePagination-selectLabel"
           id=":r1:"
         >
           每页行数:
         </p>
         <div
-          class="MuiInputBase-root MuiInputBase-colorPrimary MuiTablePagination-input css-1ned3pt-MuiInputBase-root-MuiTablePagination-select"
+          class="MuiInputBase-root MuiInputBase-colorPrimary MuiTablePagination-select MuiSelect-root MuiTablePagination-input css-1lg68gv-MuiInputBase-root-MuiTablePagination-select"
         >
           <div
-            aria-controls=":r2:"
             aria-expanded="false"
             aria-haspopup="listbox"
             aria-labelledby=":r1: :r0:"
-            class="MuiSelect-select MuiTablePagination-select MuiSelect-standard MuiInputBase-input css-d5l9zj-MuiSelect-select-MuiInputBase-input"
+            class="MuiSelect-select MuiTablePagination-select MuiSelect-standard MuiInputBase-input css-1vn847j-MuiSelect-select-MuiInputBase-input"
             id=":r0:"
             role="combobox"
             tabindex="0"
@@ -234,13 +228,13 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
           <input
             aria-hidden="true"
             aria-invalid="false"
-            class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+            class="MuiSelect-nativeInput css-j0riat-MuiSelect-nativeInput"
             tabindex="-1"
             value="10"
           />
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiTablePagination-selectIcon MuiSelect-iconStandard css-19deldj-MuiSvgIcon-root-MuiSelect-icon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiTablePagination-selectIcon MuiSelect-iconStandard css-10y3004-MuiSvgIcon-root-MuiSelect-icon"
             data-testid="ArrowDropDownIcon"
             focusable="false"
             viewBox="0 0 24 24"
@@ -251,7 +245,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
           </svg>
         </div>
         <p
-          class="MuiTablePagination-displayedRows css-qbny2j-MuiTablePagination-displayedRows"
+          class="MuiTablePagination-displayedRows css-1nxeppm-MuiTablePagination-displayedRows"
         >
           第 11 条到第 20 条，共 2000 条
         </p>
@@ -260,14 +254,14 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
         >
           <button
             aria-label="上一页"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-9q913r-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-17c696l-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             title="上一页"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1rrw7xm-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i0l78e-MuiSvgIcon-root"
               data-testid="KeyboardArrowLeftIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -276,20 +270,17 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                 d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"
               />
             </svg>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
           </button>
           <button
             aria-label="下一页"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-9q913r-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-17c696l-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             title="下一页"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1rrw7xm-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i0l78e-MuiSvgIcon-root"
               data-testid="KeyboardArrowRightIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -298,9 +289,6 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                 d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"
               />
             </svg>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
           </button>
         </div>
       </div>

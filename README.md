@@ -8,6 +8,14 @@ html {
 }
 ```
 
+## Ring Mui Theme version 2.x.x supports:
+* "@mui/material": "^6.0.0"
+* "@emotion/styled": "^11.0.0",
+* "@mui/x-data-grid": "^7.0.0"
+* "@mui/x-data-grid-pro": "^7.0.0"
+* "@mui/x-date-pickers": "^7.0.0"
+* "@mui/x-date-pickers-pro": "^7.0.0"
+
 ## Ring Mui Theme version 1.x.x supports:
 * "@mui/material": "~5.15.0"
 * "@mui/x-data-grid": "^7.0.0"
