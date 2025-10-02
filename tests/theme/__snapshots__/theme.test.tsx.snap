@@ -6,7 +6,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
     style="height: 400px;"
   >
     <div
-      class="MuiDataGrid-root MuiDataGrid-root--densityStandard MuiDataGrid-root--noToolbar MuiDataGrid-withBorderColor css-1drh28j-MuiDataGrid-root"
+      class="MuiDataGrid-root MuiDataGrid-root--densityStandard MuiDataGrid-root--noToolbar MuiDataGrid-withBorderColor css-8w83er-MuiDataGrid-root"
       style="--DataGrid-hasScrollX: 1; --DataGrid-hasScrollY: 0; --DataGrid-scrollbarSize: 0px; --DataGrid-rowWidth: 150px; --DataGrid-columnsTotalWidth: 150px; --DataGrid-leftPinnedWidth: 0px; --DataGrid-rightPinnedWidth: 0px; --DataGrid-headerHeight: 56px; --DataGrid-headersTotalHeight: 56px; --DataGrid-topContainerHeight: 56px; --DataGrid-bottomContainerHeight: 0px; --height: 52px;"
     >
       <div
@@ -28,7 +28,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
           style="overflow-x: hidden;"
         >
           <div
-            class="MuiDataGrid-topContainer MuiDataGrid-container--top css-9dbfce"
+            class="MuiDataGrid-topContainer MuiDataGrid-container--top css-b1wygl"
             role="presentation"
           >
             <div
@@ -77,7 +77,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                       >
                         <button
                           aria-label="Sortuj"
-                          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1xo2tin-MuiButtonBase-root-MuiIconButton-root"
+                          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-sortButton css-1xo2tin-MuiButtonBase-root-MuiIconButton-root"
                           field="firstName"
                           tabindex="-1"
                           title="Sortuj"
@@ -103,10 +103,10 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                       <button
                         aria-expanded="false"
                         aria-haspopup="menu"
-                        aria-label="Menu"
+                        aria-label="Menu kolumny: First name"
                         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-1xo2tin-MuiButtonBase-root-MuiIconButton-root"
                         data-mui-internal-clone-element="true"
-                        id=":r6:"
+                        id=":r8:"
                         tabindex="-1"
                         type="button"
                       >
@@ -181,13 +181,13 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
             />
           </div>
           <div
-            class="MuiDataGrid-bottomContainer MuiDataGrid-container--bottom css-kkb6k7"
+            class="MuiDataGrid-bottomContainer MuiDataGrid-container--bottom css-gzxaox"
             role="presentation"
           />
         </div>
         <div
           aria-hidden="true"
-          class="MuiDataGrid-scrollbar MuiDataGrid-scrollbar--horizontal css-16z8vpz"
+          class="MuiDataGrid-scrollbar MuiDataGrid-scrollbar--horizontal css-2n9dey"
           tabindex="-1"
         >
           <div
@@ -207,7 +207,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
         />
         <p
           class="MuiTablePagination-selectLabel css-dvvxif-MuiTablePagination-selectLabel"
-          id=":r1:"
+          id=":r3:"
         >
           每页行数:
         </p>
@@ -217,9 +217,9 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
           <div
             aria-expanded="false"
             aria-haspopup="listbox"
-            aria-labelledby=":r1: :r0:"
-            class="MuiSelect-select MuiTablePagination-select MuiSelect-standard MuiInputBase-input css-1vn847j-MuiSelect-select-MuiInputBase-input"
-            id=":r0:"
+            aria-labelledby=":r3: :r2:"
+            class="MuiSelect-select MuiTablePagination-select MuiSelect-standard MuiInputBase-input css-1ohvdus-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input"
+            id=":r2:"
             role="combobox"
             tabindex="0"
           >
@@ -234,7 +234,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
           />
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiTablePagination-selectIcon MuiSelect-iconStandard css-10y3004-MuiSvgIcon-root-MuiSelect-icon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiTablePagination-selectIcon MuiSelect-iconStandard css-13y7b0m-MuiSvgIcon-root-MuiNativeSelect-root-MuiSelect-icon"
             data-testid="ArrowDropDownIcon"
             focusable="false"
             viewBox="0 0 24 24"
@@ -250,7 +250,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
           第 11 条到第 20 条，共 2000 条
         </p>
         <div
-          class="MuiTablePagination-actions"
+          class="MuiTablePaginationActions-root MuiTablePagination-actions css-sjsoon-MuiTablePaginationActions-root"
         >
           <button
             aria-label="上一页"

@@ -23,6 +23,7 @@ describe('getTheme', () => {
         expect(themeObject.locale).toBe('enUS');
         expect(themeObject.palette.mode).toBe('dark');
         expect(themeObject.components).toHaveProperty('MuiDataGrid');
+        expect(themeObject.colors).toBeDefined();
     });
 });
 
