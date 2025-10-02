@@ -23,9 +23,9 @@ export const palette = {
             contrastText: 'rgba(255, 255, 255, 1)'
         },
         secondary: {
-            main: 'rgba(85, 85, 85, 1)',
+            main: 'rgba(123, 123, 123, 1)',
             dark: 'rgba(0, 0, 0, 1)',
-            light: 'rgba(85, 85, 85, 1)',
+            light: 'rgba(123, 123, 123, 1)',
             contrast: 'rgba(255, 255, 255, 1)',
             hover: 'rgba(245, 245, 245, 1)',
             selected: 'rgba(233, 233, 233, 1)',

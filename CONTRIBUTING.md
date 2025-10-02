@@ -8,7 +8,7 @@ Version should follow [Semantic versioning](https://semver.org/) rules.
 
 ## Dependencies
 
-This project supports MUI v5. and following X packages versions:
+This project supports MUI v7. and following X packages versions:
 * "@mui/x-data-grid": "7.14.0"
 * "@mui/x-data-grid-pro": "7.14.0"
 * "@mui/x-date-pickers": "7.14.0"

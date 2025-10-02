@@ -4,7 +4,6 @@ import {
     Theme,
     ThemeProvider,
     createTheme,
-    PaletteColor,
     PaletteOptions
 } from '@mui/material';
 import { palette } from './config/palette';
@@ -12,97 +11,34 @@ import { breakpoints } from './config/breakpoints';
 import { shape } from './config/shape';
 import { typography } from './config/typography';
 import { spacing } from './config/spacing';
+import { colors } from './config/colors';
 import React from 'react';
 import { CommonLanguages } from '../helpers/commonTypes';
 import { plPL as corePL, enUS as coreUS } from '@mui/material/locale';
 
-declare module '@mui/material/styles' {
-    interface Palette {
-        components: PaletteComponents;
-        contrast: PaletteColor;
-        common: CommonColors;
-    }
-
-    interface CommonColors {
-        grey: string;
-    }
-
-    interface PaletteOptions {
-        components: PaletteComponents;
-        common?: Partial<CommonColors>;
-    }
-
-    interface PaletteComponents {
-        datagrid: PaletteComponentDataGrid;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        [key: string]: any;
-    }
-
-    type PaletteComponentDataGrid = {
-        border: string;
-    };
-
-    interface TypographyVariants {
-        label: React.CSSProperties;
-        headline1: React.CSSProperties;
-        headline2: React.CSSProperties;
-        headline3: React.CSSProperties;
-    }
-
-    interface TypographyVariantsOptions {
-        label?: React.CSSProperties;
-        headline1?: React.CSSProperties;
-        headline2?: React.CSSProperties;
-        headline3?: React.CSSProperties;
-    }
-
-    interface Theme {
-        locale?: CommonLanguages;
-    }
-    interface ThemeOptions {
-        locale?: CommonLanguages;
-    }
-}
-
-declare module '@mui/material/Typography' {
-    interface TypographyPropsVariantOverrides {
-        label: true;
-        headline1: true;
-        headline2: true;
-        headline3: true;
-    }
-}
-
-declare module '@mui/material/Paper' {
-    interface PaperPropsVariantOverrides {
-        borderless: true;
-    }
-}
-
-declare module '@mui/material/Button' {
-    interface ButtonPropsColorOverrides {
-        contrast: true;
-    }
-}
-
-declare module '@mui/material/IconButton' {
-    interface IconButtonPropsColorOverrides {
-        contrast: true;
-    }
-}
-
+/**
+ *
+ * @param externalColors Depracated: You shouldn't overwrite the colors. For backward compatibility only, use theme.palette colors instead
+ * @returns
+ */
 export const getTheme = (
     mode: PaletteMode | string,
     language: CommonLanguages = CommonLanguages.enUS,
     externalComponentsTheme = {},
-    externalLocales: object[] = []
+    externalLocales: object[] = [],
+    externalColors: object = {}
 ): Theme => {
-    const coreLocale = (language === CommonLanguages.plPL) ? corePL : coreUS;
+    const coreLocale = language === CommonLanguages.plPL ? corePL : coreUS;
 
-    return createTheme({
+    if (Object.keys(externalColors).length > 0) {
+        console.warn('The "externalColors" parameter is deprecated and should be used only for backward compatibility. Please use theme.palette instead.');
+    }
+
+    return createTheme(
+    {
         locale: language,
         palette: {
-            ...palette[mode as PaletteMode] as PaletteOptions
+            ...(palette[mode as PaletteMode] as PaletteOptions)
         },
         breakpoints: {
             keys: ['xs', 'sm', 'md', 'lg', 'xl'],
@@ -111,6 +47,7 @@ export const getTheme = (
         spacing,
         shape,
         typography,
+        colors: { ...colors, ...externalColors } as typeof colors & Record<string, string>,
         components: {
             ...externalComponentsTheme,
             MuiAutocomplete: {
@@ -131,8 +68,8 @@ export const getTheme = (
                                 borderColor: 'red!important'
                             },
                             '.MuiFormLabel-root': {
-                                '&.Mui-focused, &.MuiInputLabel-shrink': {
-                                    transform: 'translate(0, 1.5px) scale(0.9)'
+                                '&.MuiInputLabel-shrink': {
+                                    transform: 'translate(0, 1.5px) scale(0.9) !important'
                                 }
                             }
                         };
@@ -204,10 +141,10 @@ export const getTheme = (
                 }
             },
             /**
-                 * Set the default variant for all possible components 'standard'.
-                 * Components `MuiInputAdornment` and `MuiInputLabel` are not changed because they break components using variants other than 'standard'
-                 * they inherit the variant from the parent component.
-                 */
+         * Set the default variant for all possible components 'standard'.
+         * Components `MuiInputAdornment` and `MuiInputLabel` are not changed because they break components using variants other than 'standard'
+         * they inherit the variant from the parent component.
+         */
             MuiAlert: {
                 defaultProps: {
                     variant: 'standard'
@@ -216,7 +153,39 @@ export const getTheme = (
             MuiTextField: {
                 defaultProps: {
                     variant: 'standard'
-                }
+                },
+                variants: [
+                    {
+                        props: { variant: 'standard' },
+                        style: {
+                            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+                                transform: 'scale(0.9) translate(0, 1.5px) !important'
+                            }
+                        }
+                    },
+                    {
+                        props: { variant: 'outlined' },
+                        style: {
+                            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+                                transform: 'scale(0.9) translate(17px, -9px) !important'
+                            },
+                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
+                                transform: 'translate(17px, 20px) !important'
+                            }
+                        }
+                    },
+                    {
+                        props: { variant: 'filled' },
+                        style: {
+                            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+                                transform: 'scale(0.9) translate(12px, 5px) !important'
+                            },
+                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
+                                transform: 'translate(12px, 20px) !important'
+                            }
+                        }
+                    }
+                ]
             },
             MuiNativeSelect: {
                 defaultProps: {
@@ -226,9 +195,87 @@ export const getTheme = (
             MuiFormControl: {
                 defaultProps: {
                     variant: 'standard'
-                }
+                },
+                variants: [
+                    {
+                        props: { variant: 'standard' },
+                        style: {
+                            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+                                transform: 'scale(0.9) translate(0, 1.5px) !important'
+                            }
+                        }
+                    },
+                    {
+                        props: { variant: 'outlined' },
+                        style: {
+                            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+                                transform: 'scale(0.9) translate(17px, -9px) !important'
+                            },
+                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
+                                transform: 'translate(17px, 20px) !important'
+                            }
+                        }
+                    },
+                    {
+                        props: { variant: 'filled' },
+                        style: {
+                            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+                                transform: 'scale(0.9) translate(12px, 5px) !important'
+                            },
+                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
+                                transform: 'translate(12px, 20px) !important'
+                            }
+                        }
+                    }
+                ]
             },
             MuiSelect: {
+                defaultProps: {
+                    variant: 'standard'
+                },
+                variants: [
+                    {
+                        props: { variant: 'standard' },
+                        style: {
+                            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+                                transform: 'scale(0.9) translate(0, 1.5px) !important'
+                            }
+                        }
+                    },
+                    {
+                        props: { variant: 'outlined' },
+                        style: {
+                            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+                                transform: 'scale(0.9) translate(17px, -9px) !important'
+                            },
+                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
+                                transform: 'translate(17px, 20px) !important'
+                            }
+                        }
+                    },
+                    {
+                        props: { variant: 'filled' },
+                        style: {
+                            '& .MuiInputLabel-root.MuiInputLabel-shrink': {
+                                transform: 'scale(0.9) translate(12px, 5px) !important'
+                            },
+                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
+                                transform: 'translate(12px, 20px) !important'
+                            }
+                        }
+                    }
+                ]
+            },
+            MuiOutlinedInput: {
+                styleOverrides: {
+                    notchedOutline: {
+                        '& legend': {
+                            fontSize: '0.9em'
+                        }
+                    }
+                }
+            },
+            MuiInputLabel: {
                 defaultProps: {
                     variant: 'standard'
                 }
@@ -248,17 +295,27 @@ export const getTheme = (
             MuiAppBar: {
                 styleOverrides: {
                     colorPrimary: ({ theme }) => {
-                        return ({
+                        return {
                             backgroundColor: theme.palette.background.default
-                        });
+                        };
                     }
+                }
+            },
+            MuiToggleButton: {
+                styleOverrides: {
+                    root: ({ theme }) => ({
+                        width: theme.spacing(6),
+                        height: theme.spacing(6),
+                        borderRadius: theme.shape.borderRadius,
+                        padding: theme.spacing(1.5),
+                        borderRightWidth: '1px'
+                    })
                 }
             }
         }
-
     },
-        coreLocale,
-        ...externalLocales
+    coreLocale,
+    ...externalLocales
     );
 };
 
@@ -270,9 +327,17 @@ interface ThemeConfigProps {
     externalComponentsTheme?: object;
 }
 
-export const ThemeConfig = ({ mode, children, language, externalLocales, externalComponentsTheme }: ThemeConfigProps): React.ReactNode[] | React.ReactNode => {
+export const ThemeConfig = ({
+    mode,
+    children,
+    language,
+    externalLocales,
+    externalComponentsTheme
+}: ThemeConfigProps): React.ReactNode[] | React.ReactNode => {
     return (
-        <ThemeProvider theme={getTheme(mode, language, externalComponentsTheme, externalLocales)}>
+        <ThemeProvider
+            theme={getTheme(mode, language, externalComponentsTheme, externalLocales)}
+        >
             <CssBaseline />
             {children}
         </ThemeProvider>

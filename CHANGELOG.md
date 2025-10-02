@@ -2,6 +2,29 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 3.0.0 - 2025-09-23
+### Added
+- [@psulich]: Added theme module augmentation for ESM.
+
+### Changed
+- [@psulich]: **BREAKING**: Added support only for MUI v7.
+
+## 2.3.1 - 2025-09-18
+### Added
+- [@omaziarz]: Added color extension in them for backward compatibility.
+
+## 2.3.0 - 2025-08-26
+### Added
+- [@pniewiejski]: Added styles for `ToggleButton` component.
+
+## 2.2.0 - 2025-08-18
+### Added
+- [@dhebda]: Added custom colors to theme.
+
+## 2.1.0 - 2025-03-04
+### Added
+- [@omaziarz]: Added shrink styles to label for all components.
+
 ## 2.0.0 - 2025-02-20
 ### Added
 - [@jpalis]: **BREAKING**: Added support only for MUI v6.
@@ -16,7 +39,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## 1.2.0 - 2025-01-17
 ### Added
-- [@jpalis]: Internal changes
+- [@jpalis]: Added github actions set up.
 
 ## 1.1.0 - 2024-01-02
 ### Added

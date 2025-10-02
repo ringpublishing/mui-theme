@@ -1,6 +1,6 @@
 {
   "name": "@ringpublishing/mui-theme",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Ring Mui Theme",
   "license": "LGPL-3.0-or-later",
   "repository": {},
@@ -32,8 +32,8 @@
     "@ringieraxelspringer/tsconfig": "^6.1.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.25",
     "@vitejs/plugin-react": "^4.3.3",
     "jsdom": "^25.0.1",
     "react": "^18.0.0",
@@ -45,7 +45,7 @@
   },
   "peerDependencies": {
     "@emotion/styled": "^11.0.0",
-    "@mui/material": "^6.0.0",
+    "@mui/material": "^7.0.0",
     "@mui/x-data-grid": "^7.0.0",
     "@mui/x-data-grid-pro": "^7.0.0",
     "@mui/x-date-pickers": "^7.0.0",

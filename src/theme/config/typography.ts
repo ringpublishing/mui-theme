@@ -1,12 +1,12 @@
-import { TypographyOptions } from '@mui/material/styles/createTypography';
+import { TypographyVariantsOptions } from '@mui/material/styles';
 
 const HTML_FONT_SIZE = 16;
 const FONT_FAMILY = 'Arial, sans-serif';
 
-type ExtendedTypographyOptions = TypographyOptions
+type ExtendedTypographyVariantsOptions = TypographyVariantsOptions
     & {pxToRem: (size: number) => string;};
 
-export const typography: ExtendedTypographyOptions = {
+export const typography: ExtendedTypographyVariantsOptions = {
     htmlFontSize: HTML_FONT_SIZE,
     fontFamily: FONT_FAMILY,
     button: {
