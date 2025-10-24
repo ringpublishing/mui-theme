@@ -380,3 +380,5 @@ export const colors = {
         900: '#2f060a'
     }
 };
+
+export type Colors = typeof colors;

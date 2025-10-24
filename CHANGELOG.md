@@ -1,6 +1,21 @@
 # CHANGELOG
-
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
+
+## 3.1.1 - 2025-10-17
+### Changed
+- [@mdulawa]: Added `repository` field to package.json.
+
+## 3.1.0 - 2025-10-17
+### Changed
+- [@pniewiejski]: Rename `skeleton` to `dataview` to match component name change.
+
+## 3.0.2 - 2025-10-06
+### Fixed
+- [@psulich]: Fixed `Autocomplete` label position.
+
+## 3.0.1 - 2025-10-02
+### Fixed
+- [@psulich]: Fixed colors typing in theme augmentation.
 
 ## 3.0.0 - 2025-09-23
 ### Added

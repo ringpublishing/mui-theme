@@ -1,73 +1,67 @@
 {
-  "name": "@ringpublishing/mui-theme",
-  "version": "3.0.0",
-  "description": "Ring Mui Theme",
-  "license": "LGPL-3.0-or-later",
-  "repository": {},
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "engines": {
-    "node": "^18||^20||^22"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "watch": "tsc --watch",
-    "build": "tsc",
-    "lint": "npm run lint:js",
-    "lint:js": "eslint --ext .js,.jsx,.ts,.tsx  src/ tests/",
-    "lint:js:fix": "npm run lint:js -- --fix",
-    "prebuild": "rimraf lib",
-    "preprepare": "npm run build ",
-    "prepare": "npm run build -- -p tsconfig.build.json",
-    "test": "vitest --watch=false",
-    "test:updateSnapshots": "vitest --watch=false --update"
-  },
-  "devDependencies": {
-    "@emotion/jest": "^11.11.0",
-    "@emotion/styled": "^11.0.0",
-    "@mui/x-data-grid": "^7.14.0",
-    "@ringieraxelspringer/eslint-config": "^24.1.2",
-    "@ringieraxelspringer/tsconfig": "^6.1.1",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/react": "^16.2.0",
-    "@types/react": "^18.2.25",
-    "@types/react-dom": "^18.2.25",
-    "@vitejs/plugin-react": "^4.3.3",
-    "jsdom": "^25.0.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "rimraf": "^5.0.0",
-    "ts-jest": "^29.0.0",
-    "typescript": "~5.1.0",
-    "vitest": "^2.0.5"
-  },
-  "peerDependencies": {
-    "@emotion/styled": "^11.0.0",
-    "@mui/material": "^7.0.0",
-    "@mui/x-data-grid": "^7.0.0",
-    "@mui/x-data-grid-pro": "^7.0.0",
-    "@mui/x-date-pickers": "^7.0.0",
-    "@mui/x-date-pickers-pro": "^7.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@mui/x-data-grid": {
-      "optional": true
+    "name": "@ringpublishing/mui-theme",
+    "description": "Ring Publishing theme for MUI components",
+    "license": "LGPL-3.0-or-later",
+    "repository": "github:ringpublishing/mui-theme",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "engines": {
+        "node": "^18||^20||^22"
     },
-    "@mui/x-data-grid-pro": {
-      "optional": true
+    "scripts": {
+        "build": "tsc",
+        "lint": "npm run lint:js",
+        "lint:js": "eslint --ext .js,.jsx,.ts,.tsx src/ tests/ vitest.config.ts",
+        "lint:js:fix": "npm run lint:js -- --fix",
+        "prebuild": "rimraf dist",
+        "prepare": "npm run build -- -p tsconfig.build.json",
+        "preprepare": "npm run build",
+        "test": "vitest --watch=false",
+        "test:updateSnapshots": "vitest --watch=false --update",
+        "watch": "tsc --watch"
     },
-    "@mui/x-date-pickers": {
-      "optional": true
+    "devDependencies": {
+        "@emotion/jest": "^11.0.0",
+        "@emotion/styled": "^11.0.0",
+        "@mui/x-data-grid": "^7.0.0",
+        "@ringieraxelspringer/eslint-config": "^24.0.0",
+        "@ringieraxelspringer/tsconfig": "^7.0.0",
+        "@testing-library/dom": "^10.0.0",
+        "@testing-library/react": "^16.0.0",
+        "@types/react": "^18.0.0",
+        "@types/react-dom": "^18.0.0",
+        "@vitejs/plugin-react": "^4.0.0",
+        "jsdom": "^25.0.0",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0",
+        "rimraf": "^5.0.0",
+        "ts-jest": "^29.0.0",
+        "typescript": "~5.1.0",
+        "vitest": "^2.0.0"
     },
-    "@mui/x-date-pickers-pro": {
-      "optional": true
+    "peerDependencies": {
+        "@emotion/styled": "^11.0.0",
+        "@mui/material": "^7.0.0",
+        "@mui/x-data-grid": "^7.0.0",
+        "@mui/x-data-grid-pro": "^7.0.0",
+        "@mui/x-date-pickers": "^7.0.0",
+        "@mui/x-date-pickers-pro": "^7.0.0"
+    },
+    "peerDependenciesMeta": {
+        "@mui/x-data-grid": {
+            "optional": true
+        },
+        "@mui/x-data-grid-pro": {
+            "optional": true
+        },
+        "@mui/x-date-pickers": {
+            "optional": true
+        },
+        "@mui/x-date-pickers-pro": {
+            "optional": true
+        }
+    },
+    "eslintConfig": {
+        "extends": "@ringieraxelspringer/eslint-config"
     }
-  },
-  "eslintConfig": {
-    "extends": [
-      "@ringieraxelspringer/eslint-config"
-    ]
-  }
 }

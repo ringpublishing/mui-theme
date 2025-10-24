@@ -190,7 +190,10 @@ export const palette = {
             datagrid: {
                 border: 'rgba(217, 217, 217, 1)'
             },
-            skeleton: {
+            dataview: {
+                border: 'rgba(217, 217, 217, 1)'
+            },
+            skeleton: { // TODO: Remove in the next minor release
                 border: 'rgba(217, 217, 217, 1)'
             },
             detail: {
@@ -410,7 +413,10 @@ export const palette = {
             datagrid: {
                 border: 'rgba(123, 123, 123, 1)'
             },
-            skeleton: {
+            dataview: {
+                border: 'rgba(123, 123, 123, 1)'
+            },
+            skeleton: { // TODO: Remove in the next minor release
                 border: 'rgba(123, 123, 123, 1)'
             },
             detail: {

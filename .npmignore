@@ -1,3 +1,6 @@
+/.github
 /.idea
 /.vscode
 /tests
+/tsconfig*
+/vitest.config.ts

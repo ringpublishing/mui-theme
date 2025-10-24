@@ -1,11 +1,11 @@
-import { expect, it, describe, vi } from 'vitest';
-import { getTheme, ThemeConfig } from '../../src/theme/theme';
-import { render } from '@testing-library/react';
-import { zhCN } from '@mui/material/locale';
-import { plPL as xDataGridPl } from '@mui/x-data-grid/locales';
-import { DataGrid } from '@mui/x-data-grid';
 import { TablePagination } from '@mui/material';
+import { zhCN } from '@mui/material/locale';
+import { DataGrid } from '@mui/x-data-grid';
+import { plPL as xDataGridPl } from '@mui/x-data-grid/locales';
+import { render } from '@testing-library/react';
 import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
+import { getTheme, ThemeConfig } from '../../src';
 
 describe('getTheme', () => {
     it('Minimum working example should work', () => {

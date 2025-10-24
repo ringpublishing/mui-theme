@@ -3,6 +3,7 @@ export {};
 import type { PaletteColor } from '@mui/material';
 import type React from 'react';
 import type { CommonLanguages } from '../helpers/commonTypes';
+import type { Colors } from './config/colors';
 
 declare module '@mui/material' {
     interface CommonColors {
@@ -31,11 +32,11 @@ declare module '@mui/material' {
     }
     interface Theme {
         locale?: CommonLanguages;
-        colors?: Record<string, string>;
+        colors: Colors;
     }
     interface ThemeOptions {
         locale?: CommonLanguages;
-        colors?: Record<string, string>;
+        colors: Colors;
     }
 }
 
@@ -66,11 +67,11 @@ declare module '@mui/material/styles' {
     }
     interface Theme {
         locale?: CommonLanguages;
-        colors?: Record<string, string>;
+        colors: Colors;
     }
     interface ThemeOptions {
         locale?: CommonLanguages;
-        colors?: Record<string, string>;
+        colors: Colors;
     }
 }
 
@@ -126,11 +127,11 @@ declare module '@mui/material/esm/styles' {
     }
     interface Theme {
         locale?: CommonLanguages;
-        colors?: Record<string, string>;
+        colors: Colors;
     }
     interface ThemeOptions {
         locale?: CommonLanguages;
-        colors?: Record<string, string>;
+        colors: Colors;
     }
 }
 
