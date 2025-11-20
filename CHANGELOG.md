@@ -1,6 +1,18 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 4.0.1 - 2025-11-20
+### Fixed
+- [@psulich]: Fixed MUI X package versions.
+
+## 4.0.0 - 2025-11-18
+### Changed
+- [@psulich]: **BREAKING** Updated MUI X packages to v8.
+
+## 3.1.2 - 2025-11-14
+### Fixed
+- [@rmusial2]: Fixed labels positions.
+
 ## 3.1.1 - 2025-10-17
 ### Changed
 - [@mdulawa]: Added `repository` field to package.json.

@@ -10,14 +10,14 @@ html {
 }
 ```
 
-## Version 3.x.x supports:
+## Version 4.x.x supports:
 
 * "@emotion/styled": "^11.0.0"
 * "@mui/material": "^7.0.0"
-* "@mui/x-data-grid": "^7.0.0"
-* "@mui/x-data-grid-pro": "^7.0.0"
-* "@mui/x-date-pickers": "^7.0.0"
-* "@mui/x-date-pickers-pro": "^7.0.0"
+* "@mui/x-data-grid": "^8.0.0"
+* "@mui/x-data-grid-pro": "^8.0.0"
+* "@mui/x-date-pickers": "^8.0.0"
+* "@mui/x-date-pickers-pro": "^8.0.0"
 
 ## Installation
 

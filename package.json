@@ -23,7 +23,7 @@
     "devDependencies": {
         "@emotion/jest": "^11.0.0",
         "@emotion/styled": "^11.0.0",
-        "@mui/x-data-grid": "^7.0.0",
+        "@mui/x-data-grid": "^8.0.0",
         "@ringieraxelspringer/eslint-config": "^24.0.0",
         "@ringieraxelspringer/tsconfig": "^7.0.0",
         "@testing-library/dom": "^10.0.0",
@@ -42,10 +42,9 @@
     "peerDependencies": {
         "@emotion/styled": "^11.0.0",
         "@mui/material": "^7.0.0",
-        "@mui/x-data-grid": "^7.0.0",
-        "@mui/x-data-grid-pro": "^7.0.0",
-        "@mui/x-date-pickers": "^7.0.0",
-        "@mui/x-date-pickers-pro": "^7.0.0"
+        "@mui/x-data-grid-pro": "^8.0.0",
+        "@mui/x-date-pickers": "^8.0.0",
+        "@mui/x-date-pickers-pro": "^8.0.0"
     },
     "peerDependenciesMeta": {
         "@mui/x-data-grid": {

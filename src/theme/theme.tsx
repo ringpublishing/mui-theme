@@ -163,9 +163,6 @@ export const getTheme = (
                         style: {
                             '& .MuiInputLabel-root.MuiInputLabel-shrink': {
                                 transform: 'scale(0.9) translate(17px, -9px) !important'
-                            },
-                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
-                                transform: 'translate(17px, 20px) !important'
                             }
                         }
                     },
@@ -174,9 +171,6 @@ export const getTheme = (
                         style: {
                             '& .MuiInputLabel-root.MuiInputLabel-shrink': {
                                 transform: 'scale(0.9) translate(12px, 5px) !important'
-                            },
-                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
-                                transform: 'translate(12px, 20px) !important'
                             }
                         }
                     }
@@ -205,9 +199,6 @@ export const getTheme = (
                         style: {
                             '& .MuiInputLabel-root.MuiInputLabel-shrink': {
                                 transform: 'scale(0.9) translate(17px, -9px) !important'
-                            },
-                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
-                                transform: 'translate(17px, 20px) !important'
                             }
                         }
                     },
@@ -216,9 +207,6 @@ export const getTheme = (
                         style: {
                             '& .MuiInputLabel-root.MuiInputLabel-shrink': {
                                 transform: 'scale(0.9) translate(12px, 5px) !important'
-                            },
-                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
-                                transform: 'translate(12px, 20px) !important'
                             }
                         }
                     }
@@ -242,9 +230,6 @@ export const getTheme = (
                         style: {
                             '& .MuiInputLabel-root.MuiInputLabel-shrink': {
                                 transform: 'scale(0.9) translate(17px, -9px) !important'
-                            },
-                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
-                                transform: 'translate(17px, 20px) !important'
                             }
                         }
                     },
@@ -253,9 +238,6 @@ export const getTheme = (
                         style: {
                             '& .MuiInputLabel-root.MuiInputLabel-shrink': {
                                 transform: 'scale(0.9) translate(12px, 5px) !important'
-                            },
-                            '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
-                                transform: 'translate(12px, 20px) !important'
                             }
                         }
                     }
