@@ -50,6 +50,84 @@ export const getTheme = (
         colors: { ...colors, ...externalColors } as typeof colors & Record<string, string>,
         components: {
             ...externalComponentsTheme,
+            MuiCssBaseline: {
+                styleOverrides: (theme) => ({
+                    '.ring-text-editor .tiptap': {
+                        'padding': theme.spacing(2),
+
+                        '& :first-child': {
+                            marginBlockStart: 0
+                        },
+
+                        '& h1': {
+                            fontSize: '3.4rem',
+                            fontWeight: 700,
+                            lineHeight: '42px',
+                            letterSpacing: '-0.5px',
+                            marginBlockStart: theme.spacing(5),
+                            marginBlockEnd: theme.spacing(2)
+                        },
+                        '& h2': {
+                            fontSize: '3.0rem',
+                            fontWeight: 700,
+                            lineHeight: '38px',
+                            letterSpacing: '-0.25px',
+                            marginBlockStart: theme.spacing(5),
+                            marginBlockEnd: theme.spacing(2)
+                        },
+                        '& h3': {
+                            fontSize: '2.6rem',
+                            fontWeight: 700,
+                            lineHeight: '34px',
+                            letterSpacing: 0,
+                            marginBlockStart: theme.spacing(4),
+                            marginBlockEnd: theme.spacing(2)
+                        },
+                        '& h4': {
+                            fontSize: '2.2rem',
+                            fontWeight: 700,
+                            lineHeight: '28px',
+                            letterSpacing: 0,
+                            marginBlockStart: theme.spacing(3),
+                            marginBlockEnd: theme.spacing(2)
+                        },
+                        '& h5': {
+                            fontSize: '2.0rem',
+                            fontWeight: 700,
+                            lineHeight: '28px',
+                            letterSpacing: 0,
+                            marginBlockStart: theme.spacing(2),
+                            marginBlockEnd: theme.spacing(2)
+                        },
+                        '& h6': {
+                            fontSize: '1.8rem',
+                            fontWeight: 700,
+                            lineHeight: '22px',
+                            letterSpacing: 0,
+                            marginBlockStart: theme.spacing(2),
+                            marginBlockEnd: theme.spacing(2)
+                        },
+                        '& > p': {
+                            fontSize: '1.6rem',
+                            lineHeight: '24px',
+                            fontWeight: 400,
+                            letterSpacing: 0,
+                            marginBlockStart: 0,
+                            marginBlockEnd: theme.spacing(2)
+                        },
+                        '& ul, & ol': {
+                            paddingInlineStart: theme.spacing(4)
+                        },
+                        '& li *': {
+                            fontSize: '1.6rem',
+                            lineHeight: '24px',
+                            fontWeight: 400,
+                            letterSpacing: 0,
+                            marginBlock: 0
+                        }
+                    }
+                })
+            },
             MuiAutocomplete: {
                 styleOverrides: {
                     root: ({ ownerState, theme }) => {
@@ -260,6 +338,11 @@ export const getTheme = (
             MuiBadge: {
                 defaultProps: {
                     variant: 'standard'
+                }
+            },
+            MuiChip: {
+                defaultProps: {
+                    size: 'small'
                 }
             },
             MuiSvgIcon: {
