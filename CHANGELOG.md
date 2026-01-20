@@ -1,6 +1,14 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## 4.2.0 - 2026-01-19
+### Changed
+- [@rsarata]: Set default chip size to small.
+
+## 4.1.0 - 2025-12-04
+### Changed
+- [@rsarata]: Changed heading styles for text editor.
+
 ## 4.0.1 - 2025-11-20
 ### Fixed
 - [@psulich]: Fixed MUI X package versions.
