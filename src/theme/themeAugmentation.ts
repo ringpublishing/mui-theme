@@ -33,10 +33,12 @@ declare module '@mui/material' {
     interface Theme {
         locale?: CommonLanguages;
         colors: Colors;
+        typographyMode: 'deprecated-px' | 'rem';
     }
     interface ThemeOptions {
         locale?: CommonLanguages;
         colors: Colors;
+        typographyMode?: 'deprecated-px' | 'rem';
     }
 }
 
@@ -68,10 +70,12 @@ declare module '@mui/material/styles' {
     interface Theme {
         locale?: CommonLanguages;
         colors: Colors;
+        typographyMode: 'deprecated-px' | 'rem';
     }
     interface ThemeOptions {
         locale?: CommonLanguages;
         colors: Colors;
+        typographyMode?: 'deprecated-px' | 'rem';
     }
 }
 
@@ -128,10 +132,12 @@ declare module '@mui/material/esm/styles' {
     interface Theme {
         locale?: CommonLanguages;
         colors: Colors;
+        typographyMode: 'deprecated-px' | 'rem';
     }
     interface ThemeOptions {
         locale?: CommonLanguages;
         colors: Colors;
+        typographyMode?: 'deprecated-px' | 'rem';
     }
 }
 

@@ -1,6 +1,38 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [4.4.1] - 2026-03-25
+
+### Changed
+- [@dhebda]: Updated `MuiAccordionSummary` and `MuiAccordionDetails` to add horizontal padding for `outlined` and `elevation` variants while maintaining compact default padding (zero/vertical-only) for all variants.
+
+## [4.4.0] - 2026-03-19
+
+### Changed
+- [@wniemiec]: Changed default font sizes in typography from `px` to `rem` (1rem = 16px). `html { font-size: 62.5% }` is no longer required. Use `typographyMode="deprecated-px"` for backward compatibility. See [README migration guide](./README.md#typography-units--rem-default-vs-deprecated-px).
+
+### Added
+- [@wniemiec]: Added `typographyMode` prop to `ThemeConfig` and `getTheme`. Use `typographyMode="deprecated-px"` for backward compatibility with projects using `html { font-size: 62.5% }`. Will be removed in the next major version.
+- [@wniemiec]: Added new options-based API for `getTheme(mode, options?)` — replaces positional arguments with a `GetThemeOptions` object. Old positional signature is deprecated and logs a console warning. See [ADR-001](docs/adr/001-getTheme-options-api.md).
+- [@wniemiec]: Added `GetThemeOptions` interface export for consumers using `getTheme` directly.
+- [@wniemiec]: Added `docs/adr/` with Architecture Decision Records.
+
+### Deprecated
+- [@wniemiec]: `getTheme` positional arguments (>2 args) — use `getTheme(mode, { language, themeOverrides, ... })` instead.
+- [@wniemiec]: `basicGrey100` and `basicGrey200` named exports — use `theme.palette.grey` instead.
+
+## [4.3.0] - 2026-03-12
+
+### Added
+- [@dhebda]: Added `themeOverrides` parameter to `getTheme()` and `ThemeConfig` for deep theme customization (palette, typography, spacing, breakpoints, shape, components).
+### Fixed
+- Fixed spacing array corruption caused by incorrect `lodash/merge` on non-object values.
+- Replaced `lodash/merge` with MUI's native `createTheme` deep merge — removed `lodash` runtime dependency.
+- Fixed `getTheme` parameter order: `themeOverrides` is now the last (6th) parameter, preserving backward compatibility for existing callers.
+- Added `@deprecated` JSDoc to `externalComponentsTheme` and `externalColors` in `getTheme`.
+- Fixed `ownerState: any` typing in MuiAutocomplete style override.
+- Added comprehensive test coverage for `themeOverrides` functionality.
+
 ## 4.2.0 - 2026-01-19
 ### Changed
 - [@rsarata]: Set default chip size to small.
