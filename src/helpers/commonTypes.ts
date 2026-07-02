@@ -1,11 +1,11 @@
 export enum CommonLanguages {
     // Pick<SupportedLocales, 'plPL' | 'enUS'>
     /**
-     * en translation
+     * pl translation
      */
     plPL = 'plPL',
     /**
-     * pl translation
+     * en translation
      */
     enUS = 'enUS'
 }

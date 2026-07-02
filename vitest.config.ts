@@ -5,6 +5,7 @@ export default defineConfig({
     plugins: react(),
     test: {
         environment: 'jsdom',
+        setupFiles: ['./tests/setup.ts'],
         server: {
             deps: {
                 inline: ['@mui/x-data-grid']

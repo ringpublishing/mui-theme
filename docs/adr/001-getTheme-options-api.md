@@ -139,11 +139,6 @@ Positional arguments will be removed in the next major version.
 
 `externalComponentsTheme` is spread **before** built-in component overrides, so library defaults win. `themeOverrides.components` uses deep merge via a second `createTheme()` call, so consumer overrides win. This is an intentional improvement — consumers migrating from `externalComponentsTheme` to `themeOverrides.components` gain correct override semantics.
 
-## Affected components
+## Validation
 
-### Modified files
-- `src/theme/theme.tsx` — `GetThemeOptions` interface, function overloads, runtime detection, `@deprecated` on exports
-- `src/theme/index.ts` — `GetThemeOptions` exported via `export *`
-
-### Test coverage
-- `tests/theme/theme.test.tsx` — 31 tests total: 27 using new API, 4 backward compatibility tests (including deprecation warning assertion)
+The migration was validated with unit tests for the object-form API and backward compatibility at decision time. Current coverage lives with the theme test suite.

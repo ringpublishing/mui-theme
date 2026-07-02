@@ -2,50 +2,87 @@
     "name": "@ringpublishing/mui-theme",
     "description": "Ring Publishing theme for MUI components",
     "license": "LGPL-3.0-or-later",
+    "files": ["dist", "LICENSE.md", "README.md", "CHANGELOG.md"],
     "repository": "github:ringpublishing/mui-theme",
     "main": "dist/index.js",
+    "module": "dist/index.mjs",
     "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dist/index.d.mts",
+                "default": "./dist/index.mjs"
+            },
+            "require": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            }
+        },
+        "./mui-x": {
+            "import": {
+                "types": "./dist/theme-mui-x/index.d.mts",
+                "default": "./dist/theme-mui-x/index.mjs"
+            },
+            "require": {
+                "types": "./dist/theme-mui-x/index.d.ts",
+                "default": "./dist/theme-mui-x/index.js"
+            }
+        }
+    },
     "engines": {
-        "node": "^18||^20||^22"
+        "node": "^18||^20||^22||^24"
     },
     "scripts": {
-        "build": "tsc",
+        "build": "tsup",
         "lint": "npm run lint:js",
         "lint:js": "eslint --ext .js,.jsx,.ts,.tsx src/ tests/ vitest.config.ts",
         "lint:js:fix": "npm run lint:js -- --fix",
-        "prebuild": "rimraf dist",
-        "prepare": "npm run build -- -p tsconfig.build.json",
+        "generate:version": "tsx scripts/generate-version.ts",
+        "prebuild": "rimraf dist && npm run generate:version",
         "preprepare": "npm run build",
+        "prepare": "npm run build && husky",
         "test": "vitest --watch=false",
+        "pretest": "npm run generate:version",
         "test:updateSnapshots": "vitest --watch=false --update",
-        "watch": "tsc --watch"
+        "watch": "tsup --watch"
     },
     "devDependencies": {
-        "@emotion/jest": "^11.0.0",
+        "@emotion/jest": "11.14.2",
+        "@emotion/react": "11.14.0",
         "@emotion/styled": "^11.0.0",
         "@mui/x-data-grid": "^8.0.0",
+        "@mui/x-data-grid-pro": "^8.0.0",
+        "@mui/x-date-pickers": "^8.0.0",
+        "@mui/x-date-pickers-pro": "^8.0.0",
         "@ringieraxelspringer/eslint-config": "^24.0.0",
         "@ringieraxelspringer/tsconfig": "^7.0.0",
         "@testing-library/dom": "^10.0.0",
         "@testing-library/react": "^16.0.0",
-
-        "@types/react": "^18.0.0",
-        "@types/react-dom": "^18.0.0",
+        "@types/react": "^19.0.0",
+        "@types/react-dom": "^19.0.0",
         "@vitejs/plugin-react": "^4.0.0",
+        "husky": "^9.0.0",
         "jsdom": "^25.0.0",
-        "react": "^18.0.0",
-        "react-dom": "^18.0.0",
+        "lint-staged": "^16.0.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
         "rimraf": "^5.0.0",
         "ts-jest": "^29.0.0",
+        "tsup": "^8.5.1",
+        "tsx": "^4.22.3",
         "typescript": "~5.1.0",
         "vitest": "^2.0.0"
     },
     "peerDependencies": {
+        "@emotion/react": "^11.0.0",
         "@emotion/styled": "^11.0.0",
         "@mui/material": "^7.0.0",
+        "@mui/x-data-grid": "^8.0.0",
         "@mui/x-data-grid-pro": "^8.0.0",
         "@mui/x-date-pickers": "^8.0.0",
-        "@mui/x-date-pickers-pro": "^8.0.0"
+        "@mui/x-date-pickers-pro": "^8.0.0",
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0"
     },
     "peerDependenciesMeta": {
         "@mui/x-data-grid": {
@@ -62,6 +99,12 @@
         }
     },
     "eslintConfig": {
-        "extends": "@ringieraxelspringer/eslint-config"
+        "extends": "@ringieraxelspringer/eslint-config",
+        "ignorePatterns": [
+            "src/version.generated.ts"
+        ]
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": "eslint --fix"
     }
 }

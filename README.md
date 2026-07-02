@@ -4,7 +4,7 @@ Package includes *Ring Publishing* theme for MUI components.
 
 ## Typography units – rem (default) vs deprecated-px
 
-Starting from version **4.3.0**, the default typography uses standard **rem units** (1rem = 16px, browser default). This improves accessibility – components scale with the user's browser font size settings.
+Starting from version **4.4.0**, the default typography uses standard **rem units** (1rem = 16px, browser default). This improves accessibility – components scale with the user's browser font size settings.
 
 **If you are upgrading from an earlier version** and your project includes the legacy CSS hack:
 
@@ -321,7 +321,7 @@ const theme = getTheme('light', {
 });
 ```
 
-> **Migration from positional arguments:** The old positional signature `getTheme(mode, language, externalComponentsTheme, externalLocales, externalColors, themeOverrides, typographyMode)` is deprecated and logs a console warning. See [ADR-001](docs/adr/001-getTheme-options-api.md) for migration details and before/after examples.
+> **Migration from positional arguments:** The old positional signature `getTheme(mode, language, externalComponentsTheme, externalLocales, externalColors, themeOverrides, typographyMode)` is deprecated and logs a console warning.
 
 ## With custom components theme fragment (deprecated)
 

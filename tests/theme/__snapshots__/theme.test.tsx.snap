@@ -1,12 +1,1790 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`ThemeConfig > Example with chineese core locales and pl translations in datagrid 1`] = `
+.emotion-0 {
+  --unstable_DataGrid-radius: var(--DataGrid-t-radius-base);
+  --unstable_DataGrid-headWeight: var(--DataGrid-t-typography-font-weight-medium);
+  --DataGrid-rowBorderColor: var(--DataGrid-t-color-border-base);
+  --DataGrid-cellOffsetMultiplier: 2;
+  --DataGrid-width: 0px;
+  --DataGrid-hasScrollX: 0;
+  --DataGrid-hasScrollY: 0;
+  --DataGrid-scrollbarSize: 10px;
+  --DataGrid-rowWidth: 0px;
+  --DataGrid-columnsTotalWidth: 0px;
+  --DataGrid-leftPinnedWidth: 0px;
+  --DataGrid-rightPinnedWidth: 0px;
+  --DataGrid-headerHeight: 0px;
+  --DataGrid-headersTotalHeight: 0px;
+  --DataGrid-topContainerHeight: 0px;
+  --DataGrid-bottomContainerHeight: 0px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  box-sizing: border-box;
+  position: relative;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--DataGrid-t-color-border-base);
+  border-radius: var(--unstable_DataGrid-radius);
+  background-color: var(--DataGrid-t-color-background-base);
+  color: var(--DataGrid-t-color-foreground-base);
+  font: var(--DataGrid-t-typography-font-body);
+  outline: none;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow: hidden;
+  overflow-anchor: none;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  --unstable_DataGrid-headWeight: 600;
+  --DataGrid-rowBorderColor: rgba(203, 213, 225, 1);
+  border: none;
+}
+
+.emotion-0 .MuiDataGrid-main>*:first-child {
+  border-top-left-radius: var(--unstable_DataGrid-radius);
+  border-top-right-radius: var(--unstable_DataGrid-radius);
+}
+
+.emotion-0.MuiDataGrid-autoHeight {
+  height: auto;
+}
+
+.emotion-0.MuiDataGrid-autosizing .MuiDataGrid-columnHeaderTitleContainerContent>* {
+  overflow: visible!important;
+}
+
+@media (hover: hover) {
+  .emotion-0.MuiDataGrid-autosizing .MuiDataGrid-menuIcon {
+    width: 0!important;
+    visibility: hidden!important;
+  }
+}
+
+.emotion-0.MuiDataGrid-autosizing .MuiDataGrid-cell {
+  overflow: visible!important;
+  white-space: nowrap;
+  min-width: -webkit-max-content!important;
+  min-width: -moz-max-content!important;
+  min-width: max-content!important;
+  max-width: -webkit-max-content!important;
+  max-width: -moz-max-content!important;
+  max-width: max-content!important;
+}
+
+.emotion-0.MuiDataGrid-autosizing .MuiDataGrid-groupingCriteriaCell {
+  width: unset;
+}
+
+.emotion-0.MuiDataGrid-autosizing .MuiDataGrid-treeDataGroupingCell {
+  width: unset;
+}
+
+.emotion-0.MuiDataGrid-autosizing .MuiDataGrid-columnHeader--filter {
+  -webkit-flex: none!important;
+  -ms-flex: none!important;
+  flex: none!important;
+  width: unset!important;
+}
+
+.emotion-0.MuiDataGrid-withSidePanel {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.emotion-0 .MuiDataGrid-mainContent {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader,
+.emotion-0 .MuiDataGrid-cell {
+  -webkit-tap-highlight-color: transparent;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader:focus-within,
+.emotion-0 .MuiDataGrid-cell:focus-within {
+  outline: solid rgba(from var(--DataGrid-t-color-interactive-focus) r g b / 0.5) 1px;
+  outline-offset: -1px;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader:focus,
+.emotion-0 .MuiDataGrid-cell:focus {
+  outline: solid var(--DataGrid-t-color-interactive-focus) 1px;
+  outline-offset: -1px;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader:focus .MuiDataGrid-columnSeparator,
+.emotion-0 .MuiDataGrid-columnHeader--withLeftBorder .MuiDataGrid-columnSeparator,
+.emotion-0 .MuiDataGrid-columnHeader--withRightBorder .MuiDataGrid-columnSeparator,
+.emotion-0 .MuiDataGrid-columnHeader--siblingFocused .MuiDataGrid-columnSeparator {
+  opacity: 0;
+}
+
+@media (hover: none) {
+  .emotion-0 .MuiDataGrid-columnHeader:focus .MuiDataGrid-columnSeparator--resizable,
+  .emotion-0 .MuiDataGrid-columnHeader--withLeftBorder .MuiDataGrid-columnSeparator--resizable,
+  .emotion-0 .MuiDataGrid-columnHeader--withRightBorder .MuiDataGrid-columnSeparator--resizable,
+  .emotion-0 .MuiDataGrid-columnHeader--siblingFocused .MuiDataGrid-columnSeparator--resizable {
+    opacity: 1;
+  }
+}
+
+.emotion-0 .MuiDataGrid-columnHeader:focus .MuiDataGrid-columnSeparator--resizable:hover,
+.emotion-0 .MuiDataGrid-columnHeader--withLeftBorder .MuiDataGrid-columnSeparator--resizable:hover,
+.emotion-0 .MuiDataGrid-columnHeader--withRightBorder .MuiDataGrid-columnSeparator--resizable:hover,
+.emotion-0 .MuiDataGrid-columnHeader--siblingFocused .MuiDataGrid-columnSeparator--resizable:hover {
+  opacity: 1;
+}
+
+.emotion-0.MuiDataGrid-root--noToolbar [aria-rowindex="1"] [aria-colindex="1"] {
+  border-top-left-radius: calc(var(--unstable_DataGrid-radius) - 1px);
+}
+
+.emotion-0.MuiDataGrid-root--noToolbar [aria-rowindex="1"] .MuiDataGrid-columnHeader--last {
+  border-top-right-radius: calc(var(--unstable_DataGrid-radius) - 1px);
+}
+
+.emotion-0 .MuiDataGrid-columnHeaderCheckbox,
+.emotion-0 .MuiDataGrid-cellCheckbox {
+  padding: 0;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: var(--DataGrid-t-header-background-base);
+}
+
+.emotion-0 .MuiDataGrid-columnHeader .MuiDataGrid-sortButton {
+  background-color: var(--DataGrid-t-header-background-base);
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--filter {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 5px;
+  min-height: -webkit-min-content;
+  min-height: -moz-min-content;
+  min-height: min-content;
+  overflow: hidden;
+}
+
+.emotion-0.MuiDataGrid-root--densityCompact .MuiDataGrid-columnHeader--filter {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.emotion-0 .MuiDataGrid-virtualScroller--hasScrollX .MuiDataGrid-columnHeader--last {
+  overflow: hidden;
+}
+
+.emotion-0 .MuiDataGrid-pivotPanelField--sorted .MuiDataGrid-iconButtonContainer,
+.emotion-0 .MuiDataGrid-columnHeader--sorted .MuiDataGrid-iconButtonContainer,
+.emotion-0 .MuiDataGrid-columnHeader--filtered .MuiDataGrid-iconButtonContainer {
+  visibility: visible;
+  width: auto;
+}
+
+.emotion-0 .MuiDataGrid-pivotPanelField:not(.MuiDataGrid-pivotPanelField--sorted) .MuiDataGrid-sortButton,
+.emotion-0 .MuiDataGrid-columnHeader:not(.MuiDataGrid-columnHeader--sorted) .MuiDataGrid-sortButton {
+  opacity: 0;
+  -webkit-transition: opacity var(--DataGrid-t-transition-duration-short) var(--DataGrid-t-transition-easing-ease-in-out) 0ms;
+  transition: opacity var(--DataGrid-t-transition-duration-short) var(--DataGrid-t-transition-easing-ease-in-out) 0ms;
+}
+
+.emotion-0 .MuiDataGrid-columnHeaderTitleContainer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: calc(var(--DataGrid-t-spacing-unit) * 0.25);
+  min-width: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.emotion-0 .MuiDataGrid-columnHeaderTitleContainerContent {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--filledGroup .MuiDataGrid-columnHeaderTitleContainer {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  box-sizing: border-box;
+}
+
+.emotion-0 .MuiDataGrid-sortIcon,
+.emotion-0 .MuiDataGrid-filterIcon {
+  font-size: inherit;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--sortable {
+  cursor: pointer;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--alignCenter .MuiDataGrid-columnHeaderTitleContainer {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--alignRight .MuiDataGrid-columnHeaderDraggableContainer,
+.emotion-0 .MuiDataGrid-columnHeader--alignRight .MuiDataGrid-columnHeaderTitleContainer {
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--alignCenter .MuiDataGrid-menuIcon {
+  margin-left: auto;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--alignRight .MuiDataGrid-menuIcon {
+  margin-right: auto;
+  margin-left: -5px;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--moving {
+  background-color: var(--DataGrid-t-color-interactive-hover);
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--pinnedLeft,
+.emotion-0 .MuiDataGrid-columnHeader--pinnedRight {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 40;
+  background: var(--DataGrid-t-header-background-base);
+}
+
+.emotion-0 .MuiDataGrid-columnSeparator {
+  position: absolute;
+  overflow: hidden;
+  z-index: 30;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-width: 10px;
+  color: var(--DataGrid-t-color-border-base);
+}
+
+.emotion-0 .MuiDataGrid-columnHeaders {
+  width: var(--DataGrid-rowWidth);
+  background-color: var(--DataGrid-t-header-background-base);
+}
+
+@media (hover: hover) {
+  .emotion-0 .MuiDataGrid-columnHeader:hover .MuiDataGrid-menuIcon {
+    width: auto;
+    visibility: visible;
+  }
+
+  .emotion-0 .MuiDataGrid-columnHeader:hover .MuiDataGrid-iconButtonContainer {
+    visibility: visible;
+    width: auto;
+  }
+
+  .emotion-0 .MuiDataGrid-columnHeader:not(.MuiDataGrid-columnHeader--sorted):hover .MuiDataGrid-sortButton,
+  .emotion-0 .MuiDataGrid-pivotPanelField:not(.MuiDataGrid-pivotPanelField--sorted):hover .MuiDataGrid-sortButton,
+  .emotion-0 .MuiDataGrid-pivotPanelField:not(.MuiDataGrid-pivotPanelField--sorted) .MuiDataGrid-sortButton:focus-visible {
+    opacity: 1;
+  }
+
+  .emotion-0 .MuiDataGrid-columnHeader:not(.MuiDataGrid-columnHeader--sorted):hover .MuiDataGrid-sortButton>*,
+  .emotion-0 .MuiDataGrid-pivotPanelField:not(.MuiDataGrid-pivotPanelField--sorted):hover .MuiDataGrid-sortButton>*,
+  .emotion-0 .MuiDataGrid-pivotPanelField:not(.MuiDataGrid-pivotPanelField--sorted) .MuiDataGrid-sortButton:focus-visible>* {
+    opacity: 0.78;
+  }
+
+  .emotion-0 .MuiDataGrid-pivotPanelFieldActionContainer button:hover {
+    background-color: var(--DataGrid-t-color-background-base);
+  }
+}
+
+@media (hover: none) {
+  .emotion-0 .MuiDataGrid-columnHeader .MuiDataGrid-menuIcon {
+    width: auto;
+    visibility: visible;
+  }
+
+  .emotion-0 .MuiDataGrid-columnHeader:focus .MuiDataGrid-columnSeparator--resizable,
+  .emotion-0 .MuiDataGrid-columnHeader--siblingFocused .MuiDataGrid-columnSeparator--resizable {
+    color: var(--DataGrid-t-color-foreground-accent);
+  }
+
+  .emotion-0 .MuiDataGrid-pivotPanelField:not(.MuiDataGrid-pivotPanelField--sorted) .MuiDataGrid-sortButton {
+    opacity: 0.78;
+  }
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--withLeftBorder .MuiDataGrid-columnSeparator--sideLeft:not(.MuiDataGrid-columnSeparator--resizable),
+.emotion-0 .MuiDataGrid-columnHeader--withRightBorder .MuiDataGrid-columnSeparator--sideRight:not(.MuiDataGrid-columnSeparator--resizable) {
+  display: none;
+}
+
+.emotion-0 .MuiDataGrid-columnSeparator--sideLeft {
+  left: -5px;
+}
+
+.emotion-0 .MuiDataGrid-columnSeparator--sideRight {
+  right: -5px;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--withRightBorder .MuiDataGrid-columnSeparator--sideLeft {
+  left: -5.5px;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--withRightBorder .MuiDataGrid-columnSeparator--sideRight {
+  right: -5.5px;
+}
+
+.emotion-0 .MuiDataGrid-columnSeparator--resizable {
+  cursor: col-resize;
+  touch-action: none;
+}
+
+.emotion-0 .MuiDataGrid-columnSeparator--resizable.MuiDataGrid-columnSeparator--resizing {
+  color: var(--DataGrid-t-color-foreground-accent);
+}
+
+@media (hover: none) {
+  .emotion-0 .MuiDataGrid-columnSeparator--resizable .MuiDataGrid-iconSeparator rect {
+    width: 3px;
+    rx: 1.5px;
+    x: 10.5px;
+  }
+}
+
+@media (hover: hover) {
+  .emotion-0 .MuiDataGrid-columnSeparator--resizable:hover {
+    color: var(--DataGrid-t-color-foreground-accent);
+  }
+
+  .emotion-0 .MuiDataGrid-columnSeparator--resizable:hover .MuiDataGrid-iconSeparator rect {
+    width: 3px;
+    rx: 1.5px;
+    x: 10.5px;
+  }
+}
+
+.emotion-0 .MuiDataGrid-columnSeparator--resizable svg {
+  pointer-events: none;
+}
+
+.emotion-0 .MuiDataGrid-iconSeparator {
+  color: inherit;
+  -webkit-transition: color var(--DataGrid-t-transition-duration-short) var(--DataGrid-t-transition-easing-ease-in-out) 0ms,width var(--DataGrid-t-transition-duration-short) var(--DataGrid-t-transition-easing-ease-in-out) 0ms;
+  transition: color var(--DataGrid-t-transition-duration-short) var(--DataGrid-t-transition-easing-ease-in-out) 0ms,width var(--DataGrid-t-transition-duration-short) var(--DataGrid-t-transition-easing-ease-in-out) 0ms;
+}
+
+.emotion-0 .MuiDataGrid-menuIcon {
+  width: 0;
+  visibility: hidden;
+  font-size: 20px;
+  margin-right: -5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-0 .MuiDataGrid-menuOpen {
+  visibility: visible;
+  width: auto;
+}
+
+.emotion-0 .MuiDataGrid-headerFilterRow .MuiDataGrid-columnHeader,
+.emotion-0 .MuiDataGrid-headerFilterRow .MuiDataGrid-scrollbarFiller {
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--DataGrid-rowBorderColor);
+}
+
+.emotion-0 .MuiDataGrid-row--borderBottom .MuiDataGrid-columnHeader,
+.emotion-0 .MuiDataGrid-row--borderBottom .MuiDataGrid-filler,
+.emotion-0 .MuiDataGrid-row--borderBottom .MuiDataGrid-scrollbarFiller {
+  border-bottom: 1px solid var(--DataGrid-rowBorderColor);
+}
+
+.emotion-0 .MuiDataGrid-row--borderBottom .MuiDataGrid-cell {
+  border-bottom: 1px solid var(--rowBorderColor);
+}
+
+.emotion-0 .MuiDataGrid-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: var(--DataGrid-rowWidth);
+  break-inside: avoid;
+  --rowBorderColor: var(--DataGrid-rowBorderColor);
+  position: relative;
+}
+
+.emotion-0 .MuiDataGrid-row.MuiDataGrid-row--firstVisible {
+  --rowBorderColor: transparent;
+}
+
+.emotion-0 .MuiDataGrid-row:hover {
+  background-color: var(--DataGrid-t-color-interactive-hover);
+}
+
+@media (hover: none) {
+  .emotion-0 .MuiDataGrid-row:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-0 .MuiDataGrid-row.MuiDataGrid-rowSkeleton:hover {
+  background-color: transparent;
+}
+
+.emotion-0 .MuiDataGrid-row.Mui-selected {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-row.Mui-selected:hover {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+@media (hover: none) {
+  .emotion-0 .MuiDataGrid-row.Mui-selected:hover {
+    background-color: var(--DataGrid-t-color-interactive-selected);
+  }
+}
+
+.emotion-0 .MuiDataGrid-cell {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  height: var(--height);
+  width: var(--width);
+  line-height: calc(var(--height) - 1px);
+  box-sizing: border-box;
+  border-top: 1px solid var(--rowBorderColor);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.emotion-0 .MuiDataGrid-cell.Mui-selected {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-cell.Mui-selected:hover {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+@media (hover: none) {
+  .emotion-0 .MuiDataGrid-cell.Mui-selected:hover {
+    background-color: var(--DataGrid-t-color-interactive-selected);
+  }
+}
+
+.emotion-0 .MuiDataGrid-virtualScrollerContent--overflowed .MuiDataGrid-row--lastVisible .MuiDataGrid-cell {
+  border-top-color: transparent;
+}
+
+.emotion-0 .MuiDataGrid-pinnedRows .MuiDataGrid-row,
+.emotion-0 .MuiDataGrid-aggregationRowOverlayWrapper .MuiDataGrid-row {
+  background-color: var(--DataGrid-t-cell-background-pinned);
+}
+
+.emotion-0 .MuiDataGrid-pinnedRows .MuiDataGrid-row:hover,
+.emotion-0 .MuiDataGrid-aggregationRowOverlayWrapper .MuiDataGrid-row:hover {
+  background-color: var(--DataGrid-t-color-interactive-hover);
+}
+
+.emotion-0 .MuiDataGrid-pinnedRows--top :first-of-type .MuiDataGrid-cell,
+.emotion-0 .MuiDataGrid-pinnedRows--top :first-of-type .MuiDataGrid-scrollbarFiller {
+  border-top: none;
+}
+
+.emotion-0.MuiDataGrid-root--disableUserSelection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-0 .MuiDataGrid-row--dynamicHeight>.MuiDataGrid-cell {
+  white-space: initial;
+  line-height: inherit;
+}
+
+.emotion-0 .MuiDataGrid-cellEmpty {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0;
+  height: unset;
+}
+
+.emotion-0 .MuiDataGrid-cell.MuiDataGrid-cell--selectionMode {
+  cursor: default;
+}
+
+.emotion-0 .MuiDataGrid-cell.MuiDataGrid-cell--editing {
+  padding: 1px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-shadow: var(--DataGrid-t-shadow-base);
+  background-color: var(--DataGrid-t-color-background-overlay);
+}
+
+.emotion-0 .MuiDataGrid-cell.MuiDataGrid-cell--editing:focus-within {
+  outline: 1px solid var(--DataGrid-t-color-interactive-focus);
+  outline-offset: -1px;
+}
+
+.emotion-0 .MuiDataGrid-cell--editing .MuiInputBase-root {
+  height: 100%;
+}
+
+.emotion-0 .MuiDataGrid-row--editing {
+  box-shadow: var(--DataGrid-t-shadow-base);
+}
+
+.emotion-0 .MuiDataGrid-row--editing .MuiDataGrid-cell {
+  box-shadow: none;
+  background-color: var(--DataGrid-t-color-background-overlay);
+}
+
+.emotion-0 .MuiDataGrid-editBooleanCell {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.emotion-0 .MuiDataGrid-booleanCell[data-value="true"] {
+  color: var(--DataGrid-t-color-foreground-muted);
+}
+
+.emotion-0 .MuiDataGrid-booleanCell[data-value="false"] {
+  color: var(--DataGrid-t-color-foreground-disabled);
+}
+
+.emotion-0 .MuiDataGrid-actionsCell {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  grid-gap: calc(var(--DataGrid-t-spacing-unit) * 1);
+}
+
+.emotion-0 .MuiDataGrid-rowReorderCell {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  opacity: var(--DataGrid-t-color-interactive-disabled-opacity);
+}
+
+.emotion-0 .MuiDataGrid-rowReorderCell--draggable {
+  cursor: -webkit-grab;
+  cursor: grab;
+  opacity: 1;
+}
+
+.emotion-0 .MuiDataGrid-rowReorderCellContainer {
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.emotion-0 .MuiDataGrid-withBorderColor {
+  border-color: var(--DataGrid-t-color-border-base);
+}
+
+.emotion-0 .MuiDataGrid-cell--withLeftBorder,
+.emotion-0 .MuiDataGrid-columnHeader--withLeftBorder {
+  border-left-color: var(--DataGrid-rowBorderColor);
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+
+.emotion-0 .MuiDataGrid-cell--withRightBorder,
+.emotion-0 .MuiDataGrid-columnHeader--withRightBorder {
+  border-right-color: var(--DataGrid-rowBorderColor);
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+
+.emotion-0 .MuiDataGrid-cell--flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  line-height: inherit;
+}
+
+.emotion-0 .MuiDataGrid-cell--textLeft {
+  text-align: left;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+.emotion-0 .MuiDataGrid-cell--textRight {
+  text-align: right;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+.emotion-0 .MuiDataGrid-cell--textCenter {
+  text-align: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.emotion-0 .MuiDataGrid-cell--pinnedLeft,
+.emotion-0 .MuiDataGrid-cell--pinnedRight {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 30;
+  background: var(--DataGrid-t-cell-background-pinned);
+}
+
+.emotion-0 .MuiDataGrid-cell--pinnedLeft.Mui-selected,
+.emotion-0 .MuiDataGrid-cell--pinnedRight.Mui-selected {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-row:hover .MuiDataGrid-cell--pinnedLeft,
+.emotion-0 .MuiDataGrid-row:hover .MuiDataGrid-cell--pinnedRight {
+  background-color: var(--DataGrid-t-color-interactive-hover);
+}
+
+.emotion-0 .MuiDataGrid-row:hover .MuiDataGrid-cell--pinnedLeft.Mui-selected,
+.emotion-0 .MuiDataGrid-row:hover .MuiDataGrid-cell--pinnedRight.Mui-selected {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-row:hover .MuiDataGrid-cell--pinnedLeft.Mui-selected:hover,
+.emotion-0 .MuiDataGrid-row:hover .MuiDataGrid-cell--pinnedRight.Mui-selected:hover {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-row.Mui-selected .MuiDataGrid-cell--pinnedLeft,
+.emotion-0 .MuiDataGrid-row.Mui-selected .MuiDataGrid-cell--pinnedRight {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-row.Mui-selected .MuiDataGrid-cell--pinnedLeft.Mui-selected,
+.emotion-0 .MuiDataGrid-row.Mui-selected .MuiDataGrid-cell--pinnedRight.Mui-selected {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-row.Mui-selected .MuiDataGrid-cell--pinnedLeft.Mui-selected:hover,
+.emotion-0 .MuiDataGrid-row.Mui-selected .MuiDataGrid-cell--pinnedRight.Mui-selected:hover {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-row.Mui-selected:hover .MuiDataGrid-cell--pinnedLeft,
+.emotion-0 .MuiDataGrid-row.Mui-selected:hover .MuiDataGrid-cell--pinnedRight {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-row.Mui-selected:hover .MuiDataGrid-cell--pinnedLeft.Mui-selected,
+.emotion-0 .MuiDataGrid-row.Mui-selected:hover .MuiDataGrid-cell--pinnedRight.Mui-selected {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-row.Mui-selected:hover .MuiDataGrid-cell--pinnedLeft.Mui-selected:hover,
+.emotion-0 .MuiDataGrid-row.Mui-selected:hover .MuiDataGrid-cell--pinnedRight.Mui-selected:hover {
+  background-color: var(--DataGrid-t-color-interactive-selected);
+}
+
+.emotion-0 .MuiDataGrid-cellOffsetLeft {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: inline-block;
+}
+
+.emotion-0 .MuiDataGrid-cellSkeleton {
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  height: 100%;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-0 .MuiDataGrid-columnHeaderDraggableContainer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.emotion-0 .MuiDataGrid-rowReorderCellPlaceholder {
+  display: none;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader--dragging {
+  background: var(--DataGrid-t-color-background-overlay);
+  padding: 0 12px;
+  border-radius: var(--unstable_DataGrid-radius);
+  opacity: var(--DataGrid-t-color-interactive-disabled-opacity);
+}
+
+.emotion-0 .MuiDataGrid-row--dragging {
+  background: var(--DataGrid-t-color-background-overlay);
+  padding: 0 12px;
+  border-radius: var(--unstable_DataGrid-radius);
+  border: 1px solid var(--DataGrid-rowBorderColor);
+  color: var(--DataGrid-t-color-foreground-base);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.emotion-0 .MuiDataGrid-row--dragging .MuiDataGrid-rowReorderCellPlaceholder {
+  padding: 0 6px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-0 .MuiDataGrid-treeDataGroupingCell {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.emotion-0 .MuiDataGrid-treeDataGroupingCellToggle {
+  -webkit-flex: 0 0 28px;
+  -ms-flex: 0 0 28px;
+  flex: 0 0 28px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  margin-right: calc(var(--DataGrid-t-spacing-unit) * 2);
+}
+
+.emotion-0 .MuiDataGrid-treeDataGroupingCellLoadingContainer,
+.emotion-0 .MuiDataGrid-groupingCriteriaCellLoadingContainer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.emotion-0 .MuiDataGrid-groupingCriteriaCell {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.emotion-0 .MuiDataGrid-groupingCriteriaCellToggle {
+  -webkit-flex: 0 0 28px;
+  -ms-flex: 0 0 28px;
+  flex: 0 0 28px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  margin-right: calc(var(--DataGrid-t-spacing-unit) * 2);
+}
+
+.emotion-0 .MuiDataGrid-columnHeaders .MuiDataGrid-scrollbarFiller {
+  background-color: var(--DataGrid-t-header-background-base);
+}
+
+.emotion-0 .MuiDataGrid-scrollbarFiller {
+  min-width: calc(var(--DataGrid-hasScrollY) * var(--DataGrid-scrollbarSize));
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  background-color: var(--DataGrid-t-header-background-base);
+}
+
+.emotion-0 .MuiDataGrid-scrollbarFiller.MuiDataGrid-scrollbarFiller--pinnedRight {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 40;
+  right: 0;
+}
+
+.emotion-0 .MuiDataGrid-filler {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+.emotion-0 .MuiDataGrid-filler--borderBottom {
+  border-bottom: 1px solid var(--DataGrid-rowBorderColor);
+}
+
+.emotion-0 .MuiDataGrid-columnHeaders .MuiDataGrid-filler {
+  background-color: var(--DataGrid-t-header-background-base);
+}
+
+.emotion-0 .MuiDataGrid-main--hiddenContent .MuiDataGrid-virtualScrollerContent {
+  position: fixed;
+  visibility: hidden;
+}
+
+.emotion-0 .MuiDataGrid-main--hiddenContent .MuiDataGrid-pinnedRows {
+  display: none;
+}
+
+.emotion-0 .MuiDataGrid-row--beingDragged {
+  color: var(--DataGrid-t-color-foreground-disabled);
+}
+
+.emotion-0 .MuiDataGrid-row--beingDragged:hover {
+  background-color: transparent;
+}
+
+.emotion-0 .MuiDataGrid-columnHeaderTitle {
+  color: rgba(71, 85, 105, 1);
+}
+
+.emotion-0 .MuiDataGrid-cell:focus {
+  outline: none;
+}
+
+.emotion-0 .MuiDataGrid-cell:focus-within {
+  outline: none;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader:focus {
+  outline: none;
+}
+
+.emotion-0 .MuiDataGrid-columnHeader:focus-within {
+  outline: none;
+}
+
+.emotion-0 .MuiDataGrid-row:hover {
+  cursor: pointer;
+}
+
+.emotion-1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-2 {
+  position: absolute;
+  top: var(--DataGrid-headersTotalHeight);
+  left: 0;
+  width: calc(100% - (var(--DataGrid-hasScrollY) * var(--DataGrid-scrollbarSize)));
+}
+
+.emotion-3 {
+  position: relative;
+  height: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  overflow: scroll;
+  scrollbar-width: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  z-index: 0;
+}
+
+.emotion-3::-webkit-scrollbar {
+  display: none;
+}
+
+@media print {
+  .emotion-3 {
+    overflow: hidden;
+  }
+}
+
+.emotion-4 {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 40;
+  top: 0;
+}
+
+.emotion-5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-top-left-radius: var(--unstable_DataGrid-radius);
+  border-top-right-radius: var(--unstable_DataGrid-radius);
+}
+
+.emotion-6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-7 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: var(--unstable_DataGrid-headWeight);
+  line-height: normal;
+}
+
+.emotion-8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  visibility: hidden;
+  width: 0;
+}
+
+.emotion-9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  padding: 8px;
+  border-radius: 50%;
+  color: rgba(71, 85, 105, 1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --IconButton-hoverBg: rgba(71, 85, 105, 0.04);
+  padding: 5px;
+  font-size: 1.125rem;
+  -webkit-transition: opacity var(--DataGrid-t-transition-duration-short) var(--DataGrid-t-transition-easing-ease-in-out) 0ms;
+  transition: opacity var(--DataGrid-t-transition-duration-short) var(--DataGrid-t-transition-easing-ease-in-out) 0ms;
+}
+
+.emotion-9::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-9.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-9 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-9:hover {
+  background-color: var(--IconButton-hoverBg);
+}
+
+@media (hover: none) {
+  .emotion-9:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-9.Mui-disabled {
+  background-color: transparent;
+  color: rgba(168, 183, 204, 0.75);
+}
+
+.emotion-9.MuiIconButton-loading {
+  color: transparent;
+}
+
+.emotion-10 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
+  font-size: 1.25rem;
+}
+
+.emotion-11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  padding: 8px;
+  border-radius: 50%;
+  color: rgba(71, 85, 105, 1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --IconButton-hoverBg: rgba(71, 85, 105, 0.04);
+  padding: 5px;
+  font-size: 1.125rem;
+}
+
+.emotion-11::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-11.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-11 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-11:hover {
+  background-color: var(--IconButton-hoverBg);
+}
+
+@media (hover: none) {
+  .emotion-11:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-11.Mui-disabled {
+  background-color: transparent;
+  color: rgba(168, 183, 204, 0.75);
+}
+
+.emotion-11.MuiIconButton-loading {
+  color: transparent;
+}
+
+.emotion-12 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
+  font-size: inherit;
+}
+
+.emotion-13 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
+  font-size: 1.5rem;
+}
+
+.emotion-14 {
+  position: -webkit-sticky;
+  position: sticky;
+  top: var(--DataGrid-headersTotalHeight);
+  left: 0;
+  right: 150px;
+  width: 0;
+  height: 0;
+  z-index: 4;
+}
+
+.emotion-16 {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  gap: calc(var(--DataGrid-t-spacing-unit) * 1);
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  text-align: center;
+  text-wrap: balance;
+  background-color: var(--DataGrid-t-color-background-backdrop);
+}
+
+.emotion-18 {
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-19 {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 40;
+  bottom: calc(var(--DataGrid-hasScrollX) * var(--DataGrid-scrollbarSize));
+}
+
+.emotion-20 {
+  position: absolute;
+  display: inline-block;
+  z-index: 60;
+  --size: calc(max(var(--DataGrid-scrollbarSize), 14px));
+  width: calc(var(--DataGrid-hasScrollX) * (100% - var(--DataGrid-hasScrollY) * var(--DataGrid-scrollbarSize)));
+  height: var(--size);
+  overflow-y: hidden;
+  overflow-x: auto;
+  outline: 0;
+  bottom: 0;
+}
+
+.emotion-20:hover {
+  z-index: 70;
+}
+
+.emotion-20>div {
+  height: var(--size);
+}
+
+.emotion-21 {
+  overflow: auto;
+  color: rgba(15, 23, 42, 1);
+  font-size: 0.875rem;
+}
+
+.emotion-21:last-child {
+  padding: 0;
+}
+
+.emotion-22 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  min-height: 56px;
+  min-height: 52px;
+  padding-right: 2px;
+}
+
+@media (min-width:600px) {
+  .emotion-22 {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width:375px) {
+  @media (orientation: landscape) {
+    .emotion-22 {
+      min-height: 48px;
+    }
+  }
+}
+
+@media (min-width:600px) {
+  .emotion-22 {
+    min-height: 64px;
+  }
+}
+
+@media (min-width:375px) and (orientation: landscape) {
+  .emotion-22 {
+    min-height: 52px;
+  }
+}
+
+@media (min-width:600px) {
+  .emotion-22 {
+    min-height: 52px;
+    padding-right: 2px;
+  }
+}
+
+.emotion-22 .MuiTablePagination-actions {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.emotion-23 {
+  -webkit-flex: 1 1 100%;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+
+.emotion-24 {
+  font-size: 0.875rem;
+  font-family: Inter,sans-serif;
+  letter-spacing: 0.010625rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-25 {
+  font-size: 1rem;
+  font-family: Inter,sans-serif;
+  letter-spacing: 0.009375rem;
+  line-height: 1.4375em;
+  font-weight: 400;
+  font-style: normal;
+  color: rgba(15, 23, 42, 1);
+  box-sizing: border-box;
+  position: relative;
+  cursor: text;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: inherit;
+  font-size: inherit;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-right: 32px;
+  margin-left: 8px;
+}
+
+.emotion-25.Mui-disabled {
+  color: rgba(168, 183, 204, 1);
+  cursor: default;
+}
+
+.emotion-25 .MuiTablePagination-select {
+  padding-left: 8px;
+  padding-right: 24px;
+  text-align: right;
+  -webkit-text-align-last: right;
+  text-align-last: right;
+}
+
+.emotion-26 {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 0;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  color: currentColor;
+  padding: 4px 0 5px;
+  border: 0;
+  box-sizing: content-box;
+  background: none;
+  height: 1.4375em;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  min-width: 0;
+  width: 100%;
+  -webkit-animation-name: mui-auto-fill-cancel;
+  animation-name: mui-auto-fill-cancel;
+  -webkit-animation-duration: 10ms;
+  animation-duration: 10ms;
+}
+
+.emotion-26:focus {
+  border-radius: 0;
+}
+
+.emotion-26.Mui-disabled {
+  cursor: default;
+}
+
+.emotion-26[multiple] {
+  height: auto;
+}
+
+.emotion-26:not([multiple]) option,
+.emotion-26:not([multiple]) optgroup {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.emotion-26.emotion-26.emotion-26 {
+  padding-right: 24px;
+  min-width: 16px;
+}
+
+.emotion-26.MuiSelect-select {
+  height: auto;
+  min-height: 1.4375em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.emotion-26::-webkit-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-26::-moz-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-26::-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-26:focus {
+  outline: 0;
+}
+
+.emotion-26:invalid {
+  box-shadow: none;
+}
+
+.emotion-26::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-26::-webkit-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-26::-moz-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-26::-ms-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-26:focus::-webkit-input-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-26:focus::-moz-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-26:focus::-ms-input-placeholder {
+  opacity: 0.42;
+}
+
+.emotion-26.Mui-disabled {
+  opacity: 1;
+  -webkit-text-fill-color: rgba(168, 183, 204, 1);
+}
+
+.emotion-26:-webkit-autofill {
+  -webkit-animation-duration: 5000s;
+  animation-duration: 5000s;
+  -webkit-animation-name: mui-auto-fill;
+  animation-name: mui-auto-fill;
+}
+
+.emotion-27 {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.emotion-28 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  fill: currentColor;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 0;
+  top: calc(50% - .5em);
+  pointer-events: none;
+  color: rgba(71, 85, 105, 1);
+}
+
+.emotion-28.Mui-disabled {
+  color: rgba(168, 183, 204, 0.75);
+}
+
+.emotion-29 {
+  font-size: 0.875rem;
+  font-family: Inter,sans-serif;
+  letter-spacing: 0.010625rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.emotion-31 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  padding: 8px;
+  border-radius: 50%;
+  color: rgba(71, 85, 105, 1);
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  --IconButton-hoverBg: rgba(71, 85, 105, 0.04);
+  color: inherit;
+}
+
+.emotion-31::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-31.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-31 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-31:hover {
+  background-color: var(--IconButton-hoverBg);
+}
+
+@media (hover: none) {
+  .emotion-31:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-31.Mui-disabled {
+  background-color: transparent;
+  color: rgba(168, 183, 204, 0.75);
+}
+
+.emotion-31.MuiIconButton-loading {
+  color: transparent;
+}
+
 <div>
   <div
     style="height: 400px;"
   >
     <div
-      class="MuiDataGrid-root MuiDataGrid-root--densityStandard MuiDataGrid-withBorderColor MuiDataGridVariables-299943264 css-1xx0hk2-MuiDataGrid-root"
+      class="MuiDataGrid-root MuiDataGrid-root--densityStandard MuiDataGrid-withBorderColor MuiDataGridVariables-3538650830 emotion-0"
       style="--DataGrid-hasScrollX: 1; --DataGrid-hasScrollY: 0; --DataGrid-scrollbarSize: 0px; --DataGrid-rowWidth: 150px; --DataGrid-columnsTotalWidth: 150px; --DataGrid-leftPinnedWidth: 0px; --DataGrid-rightPinnedWidth: 0px; --DataGrid-headerHeight: 56px; --DataGrid-headersTotalHeight: 56px; --DataGrid-topContainerHeight: 56px; --DataGrid-bottomContainerHeight: 0px; --height: 52px;"
     >
       <div
@@ -17,31 +1795,31 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
           aria-colcount="1"
           aria-multiselectable="false"
           aria-rowcount="1"
-          class="MuiDataGrid-main css-uk7t8p-MuiDataGrid-main"
+          class="MuiDataGrid-main emotion-1"
           role="grid"
           tabindex="-1"
         >
           <div
-            class="css-18l11qw"
+            class="emotion-2"
             data-id="gridPanelAnchor"
             role="presentation"
           />
           <div
-            class="MuiDataGrid-virtualScroller MuiDataGrid-virtualScroller--hasScrollX css-rktzwf-MuiDataGrid-virtualScroller"
+            class="MuiDataGrid-virtualScroller MuiDataGrid-virtualScroller--hasScrollX emotion-3"
             role="presentation"
             style="overflow-x: hidden;"
           >
             <div
-              class="MuiDataGrid-topContainer MuiDataGrid-container--top css-b1wygl"
+              class="MuiDataGrid-topContainer MuiDataGrid-container--top emotion-4"
               role="presentation"
             >
               <div
-                class="MuiDataGrid-columnHeaders css-1gtv474-MuiDataGrid-columnHeaders"
+                class="MuiDataGrid-columnHeaders emotion-5"
                 role="presentation"
               >
                 <div
                   aria-rowindex="1"
-                  class="MuiDataGrid-row--borderBottom css-yseucu-MuiDataGrid-columnHeaderRow"
+                  class="MuiDataGrid-row--borderBottom emotion-6"
                   role="row"
                   style="height: 56px;"
                 >
@@ -71,14 +1849,14 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                           class="MuiDataGrid-columnHeaderTitleContainerContent"
                         >
                           <div
-                            class="MuiDataGrid-columnHeaderTitle css-1gqmilo-MuiDataGrid-columnHeaderTitle"
+                            class="MuiDataGrid-columnHeaderTitle emotion-7"
                             data-mui-internal-clone-element="true"
                           >
                             First name
                           </div>
                         </div>
                         <div
-                          class="MuiDataGrid-iconButtonContainer css-ltf0zy-MuiDataGrid-iconButtonContainer"
+                          class="MuiDataGrid-iconButtonContainer emotion-8"
                         >
                           <span
                             aria-label="Sortuj"
@@ -87,14 +1865,14 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                           >
                             <button
                               aria-label="Sortuj"
-                              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-sortButton css-168tf43-MuiButtonBase-root-MuiIconButton-root-MuiDataGrid-sortButton"
+                              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-sortButton emotion-9"
                               field="firstName"
                               tabindex="-1"
                               type="button"
                             >
                               <svg
                                 aria-hidden="true"
-                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall MuiDataGrid-sortIcon css-1hon42z-MuiSvgIcon-root"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall MuiDataGrid-sortIcon emotion-10"
                                 data-testid="ArrowUpwardIcon"
                                 focusable="false"
                                 viewBox="0 0 24 24"
@@ -114,15 +1892,15 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                           aria-expanded="false"
                           aria-haspopup="menu"
                           aria-label="Menu kolumny: First name"
-                          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-hiqy5m-MuiButtonBase-root-MuiIconButton-root"
+                          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton emotion-11"
                           data-mui-internal-clone-element="true"
-                          id=":r8:"
+                          id="_r_8_"
                           tabindex="-1"
                           type="button"
                         >
                           <svg
                             aria-hidden="true"
-                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-zysrwz-MuiSvgIcon-root"
+                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit emotion-12"
                             data-testid="TripleDotsVerticalIcon"
                             focusable="false"
                             viewBox="0 0 24 24"
@@ -140,7 +1918,7 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
                     >
                       <svg
                         aria-hidden="true"
-                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator css-1dhtbeh-MuiSvgIcon-root"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiDataGrid-iconSeparator emotion-13"
                         data-testid="SeparatorIcon"
                         focusable="false"
                         viewBox="0 0 24 24"
@@ -166,38 +1944,38 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
               </div>
             </div>
             <div
-              class="MuiDataGrid-overlayWrapper css-b134v4-MuiDataGrid-overlayWrapper"
+              class="MuiDataGrid-overlayWrapper emotion-14"
             >
               <div
-                class="MuiDataGrid-overlayWrapperInner css-1mbsuzk-MuiDataGrid-overlayWrapperInner"
+                class="MuiDataGrid-overlayWrapperInner emotion-15"
                 style="height: var(--DataGrid-overlayHeight, calc(var(--height) * 2)); width: 0px;"
               >
                 <div
-                  class="MuiDataGrid-overlay css-w16tsr-MuiDataGrid-overlay"
+                  class="MuiDataGrid-overlay emotion-16"
                 >
                   Brak danych
                 </div>
               </div>
             </div>
             <div
-              class="MuiDataGrid-virtualScrollerContent css-qghlpz-MuiDataGrid-virtualScrollerContent"
+              class="MuiDataGrid-virtualScrollerContent emotion-17"
               role="presentation"
               style="width: auto; flex-basis: var(--DataGrid-overlayHeight, calc(var(--height) * 2)); flex-shrink: 0;"
             >
               <div
-                class="MuiDataGrid-virtualScrollerRenderZone css-11dqcl8-MuiDataGrid-virtualScrollerRenderZone"
+                class="MuiDataGrid-virtualScrollerRenderZone emotion-18"
                 role="rowgroup"
                 style="transform: translate3d(0, 0px, 0);"
               />
             </div>
             <div
-              class="MuiDataGrid-bottomContainer MuiDataGrid-container--bottom css-gzxaox"
+              class="MuiDataGrid-bottomContainer MuiDataGrid-container--bottom emotion-19"
               role="presentation"
             />
           </div>
           <div
             aria-hidden="true"
-            class="MuiDataGrid-scrollbar MuiDataGrid-scrollbar--horizontal css-1j20uzp"
+            class="MuiDataGrid-scrollbar MuiDataGrid-scrollbar--horizontal emotion-20"
             tabindex="-1"
           >
             <div
@@ -208,35 +1986,35 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
         </div>
       </div>
       <style
-        href="/MuiDataGridVariables-299943264"
+        href="/MuiDataGridVariables-3538650830"
       >
-        .MuiDataGridVariables-299943264{--DataGrid-t-spacing-unit:8px;--DataGrid-t-color-border-base:rgba(224, 224, 224, 1);--DataGrid-t-color-background-base:#fff;--DataGrid-t-color-background-overlay:#fff;--DataGrid-t-color-background-backdrop:rgba(255, 255, 255, 0.38);--DataGrid-t-color-foreground-base:rgba(38, 38, 38, 1);--DataGrid-t-color-foreground-muted:rgba(123, 123, 123, 1);--DataGrid-t-color-foreground-accent:rgba(0, 134, 204, 1);--DataGrid-t-color-foreground-disabled:rgba(157, 157, 157, 1);--DataGrid-t-color-foreground-error:rgba(188, 24, 40, 1);--DataGrid-t-color-interactive-hover:#f5f5f5;--DataGrid-t-color-interactive-hover-opacity:0.04;--DataGrid-t-color-interactive-focus:rgba(from rgba(0, 167, 238, 1) r g b / 1);--DataGrid-t-color-interactive-focus-opacity:0.12;--DataGrid-t-color-interactive-disabled:rgba(from rgba(196, 196, 196, 1) r g b / 1);--DataGrid-t-color-interactive-disabled-opacity:0.38;--DataGrid-t-color-interactive-selected:#eeeeee;--DataGrid-t-color-interactive-selected-opacity:0.08;--DataGrid-t-header-background-base:#fff;--DataGrid-t-cell-background-pinned:#fff;--DataGrid-t-radius-base:4px;--DataGrid-t-typography-font-family-base:Arial, sans-serif;--DataGrid-t-typography-font-weight-light:300;--DataGrid-t-typography-font-weight-regular:400;--DataGrid-t-typography-font-weight-medium:500;--DataGrid-t-typography-font-weight-bold:700;--DataGrid-t-typography-font-body:400 0.8125rem / 1.25rem Arial, sans-serif;--DataGrid-t-typography-font-small:400 0.75rem / 1.125rem Arial, sans-serif;--DataGrid-t-typography-font-large:400 0.875rem / 1.5rem Arial, sans-serif;--DataGrid-t-transition-easing-ease-in:cubic-bezier(0.4, 0, 1, 1);--DataGrid-t-transition-easing-ease-out:cubic-bezier(0.0, 0, 0.2, 1);--DataGrid-t-transition-easing-ease-in-out:cubic-bezier(0.4, 0, 0.2, 1);--DataGrid-t-transition-duration-short:200ms;--DataGrid-t-transition-duration-base:250ms;--DataGrid-t-transition-duration-long:300ms;--DataGrid-t-shadow-base:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);--DataGrid-t-shadow-overlay:0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);--DataGrid-t-z-index-panel:1300;--DataGrid-t-z-index-menu:1300;}
+        .MuiDataGridVariables-3538650830{--DataGrid-t-spacing-unit:8px;--DataGrid-t-color-border-base:rgba(248, 249, 251, 1);--DataGrid-t-color-background-base:rgba(255, 255, 255, 1);--DataGrid-t-color-background-overlay:rgba(255, 255, 255, 1);--DataGrid-t-color-background-backdrop:rgba(255, 255, 255, 0.38);--DataGrid-t-color-foreground-base:rgba(15, 23, 42, 1);--DataGrid-t-color-foreground-muted:rgba(71, 85, 105, 1);--DataGrid-t-color-foreground-accent:rgba(0, 61, 155, 1);--DataGrid-t-color-foreground-disabled:rgba(168, 183, 204, 1);--DataGrid-t-color-foreground-error:rgba(190, 18, 60, 1);--DataGrid-t-color-interactive-hover:#f5f5f5;--DataGrid-t-color-interactive-hover-opacity:0.04;--DataGrid-t-color-interactive-focus:rgba(from rgba(20, 80, 180, 1) r g b / 1);--DataGrid-t-color-interactive-focus-opacity:0.12;--DataGrid-t-color-interactive-disabled:rgba(from rgba(168, 183, 204, 0.75) r g b / 1);--DataGrid-t-color-interactive-disabled-opacity:0.38;--DataGrid-t-color-interactive-selected:#eeeeee;--DataGrid-t-color-interactive-selected-opacity:0.08;--DataGrid-t-header-background-base:rgba(255, 255, 255, 1);--DataGrid-t-cell-background-pinned:rgba(255, 255, 255, 1);--DataGrid-t-radius-base:4px;--DataGrid-t-typography-font-family-base:Inter, sans-serif;--DataGrid-t-typography-font-weight-light:300;--DataGrid-t-typography-font-weight-regular:400;--DataGrid-t-typography-font-weight-medium:500;--DataGrid-t-typography-font-weight-bold:700;--DataGrid-t-typography-font-body:400 0.875rem / 1.25rem Inter, sans-serif;--DataGrid-t-typography-font-small:400 0.75rem / 1rem Inter, sans-serif;--DataGrid-t-typography-font-large:400 1rem / 1.5rem Inter, sans-serif;--DataGrid-t-transition-easing-ease-in:cubic-bezier(0.4, 0, 1, 1);--DataGrid-t-transition-easing-ease-out:cubic-bezier(0.0, 0, 0.2, 1);--DataGrid-t-transition-easing-ease-in-out:cubic-bezier(0.4, 0, 0.2, 1);--DataGrid-t-transition-duration-short:200ms;--DataGrid-t-transition-duration-base:250ms;--DataGrid-t-transition-duration-long:300ms;--DataGrid-t-shadow-base:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);--DataGrid-t-shadow-overlay:0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);--DataGrid-t-z-index-panel:1300;--DataGrid-t-z-index-menu:1300;}
       </style>
     </div>
     <div
-      class="MuiTablePagination-root css-9yq3te-MuiTablePagination-root"
+      class="MuiTablePagination-root emotion-21"
     >
       <div
-        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular MuiTablePagination-toolbar css-9d55fv-MuiToolbar-root-MuiTablePagination-toolbar"
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular MuiTablePagination-toolbar emotion-22"
       >
         <div
-          class="MuiTablePagination-spacer css-1wtxofq-MuiTablePagination-spacer"
+          class="MuiTablePagination-spacer emotion-23"
         />
         <p
-          class="MuiTablePagination-selectLabel css-1s85sbd-MuiTablePagination-selectLabel"
-          id=":r3:"
+          class="MuiTablePagination-selectLabel emotion-24"
+          id="_r_3_"
         >
           每页行数:
         </p>
         <div
-          class="MuiInputBase-root MuiInputBase-colorPrimary MuiTablePagination-select MuiSelect-root MuiTablePagination-input css-1lrv2we-MuiInputBase-root-MuiTablePagination-select"
+          class="MuiInputBase-root MuiInputBase-colorPrimary MuiTablePagination-select MuiSelect-root MuiTablePagination-input emotion-25"
         >
           <div
             aria-expanded="false"
             aria-haspopup="listbox"
-            aria-labelledby=":r3: :r2:"
-            class="MuiSelect-select MuiTablePagination-select MuiSelect-standard MuiInputBase-input css-1ohvdus-MuiNativeSelect-root-MuiSelect-select-MuiInputBase-input"
-            id=":r2:"
+            aria-labelledby="_r_3_ _r_2_"
+            class="MuiSelect-select MuiTablePagination-select MuiSelect-standard MuiInputBase-input emotion-26"
+            id="_r_2_"
             role="combobox"
             tabindex="0"
           >
@@ -245,13 +2023,13 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
           <input
             aria-hidden="true"
             aria-invalid="false"
-            class="MuiSelect-nativeInput css-j0riat-MuiSelect-nativeInput"
+            class="MuiSelect-nativeInput emotion-27"
             tabindex="-1"
             value="10"
           />
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiTablePagination-selectIcon MuiSelect-iconStandard css-1wdd23g-MuiSvgIcon-root-MuiNativeSelect-root-MuiSelect-icon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiTablePagination-selectIcon MuiSelect-iconStandard emotion-28"
             data-testid="ArrowDropDownIcon"
             focusable="false"
             viewBox="0 0 24 24"
@@ -262,23 +2040,23 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
           </svg>
         </div>
         <p
-          class="MuiTablePagination-displayedRows css-kwomaf-MuiTablePagination-displayedRows"
+          class="MuiTablePagination-displayedRows emotion-29"
         >
           第 11 条到第 20 条，共 2000 条
         </p>
         <div
-          class="MuiTablePaginationActions-root MuiTablePagination-actions css-sjsoon-MuiTablePaginationActions-root"
+          class="MuiTablePaginationActions-root MuiTablePagination-actions emotion-30"
         >
           <button
             aria-label="上一页"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1xfq8yk-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-31"
             tabindex="0"
             title="上一页"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dhtbeh-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-13"
               data-testid="KeyboardArrowLeftIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -290,14 +2068,14 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
           </button>
           <button
             aria-label="下一页"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1xfq8yk-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium emotion-31"
             tabindex="0"
             title="下一页"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dhtbeh-MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-13"
               data-testid="KeyboardArrowRightIcon"
               focusable="false"
               viewBox="0 0 24 24"

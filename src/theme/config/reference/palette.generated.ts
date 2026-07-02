@@ -1,6 +1,6 @@
 export const palette = {
     light: {
-        mode: 'light',
+        mode: 'light' as const,
         text: {
             primary: 'rgba(38, 38, 38, 1)',
             secondary: 'rgba(123, 123, 123, 1)',
@@ -224,7 +224,7 @@ export const palette = {
         }
     },
     dark: {
-        mode: 'dark',
+        mode: 'dark' as const,
         text: {
             primary: 'rgba(233, 233, 233, 1)',
             secondary: 'rgba(217, 217, 217, 1)',
