@@ -97,10 +97,7 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                             'display': 'flex',
                             'align-items': 'end'
                         }
-                    }),
-                    '.MuiAutocomplete-clearIndicator': {
-                        visibility: 'visible'
-                    }
+                    })
                 })
             }
         },

@@ -42,7 +42,6 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
   -ms-flex-direction: column;
   flex-direction: column;
   overflow: hidden;
-  overflow-anchor: none;
   -webkit-transform: translate(0, 0);
   -moz-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
@@ -50,6 +49,10 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
   --unstable_DataGrid-headWeight: 600;
   --DataGrid-rowBorderColor: rgba(203, 213, 225, 1);
   border: none;
+}
+
+.emotion-0 .MuiDataGrid-virtualScroller {
+  overflow-anchor: none;
 }
 
 .emotion-0 .MuiDataGrid-main>*:first-child {
@@ -1050,6 +1053,16 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
   display: none;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .emotion-3 {
+    scrollbar-width: auto;
+  }
+
+  .emotion-3::-webkit-scrollbar {
+    display: block;
+  }
+}
+
 @media print {
   .emotion-3 {
     overflow: hidden;
@@ -1389,6 +1402,12 @@ exports[`ThemeConfig > Example with chineese core locales and pl translations in
 
 .emotion-20:hover {
   z-index: 70;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .emotion-20 {
+    display: none;
+  }
 }
 
 .emotion-20>div {
