@@ -1,4 +1,4 @@
-import { TablePagination, Theme } from '@mui/material';
+import { TablePagination, Theme, useTheme } from '@mui/material';
 import { zhCN } from '@mui/material/locale';
 import { DataGrid } from '@mui/x-data-grid';
 import { plPL as xDataGridPl } from '@mui/x-data-grid/locales';
@@ -6,6 +6,25 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { getTheme, ThemeConfig } from '../../src';
+
+// Children of ThemeConfig that are not MUI components leave no theme trace in
+// the DOM, so snapshotting them proves nothing. This consumer surfaces the theme
+// values a test wants to assert on as data attributes. Query it through the
+// render's own `container` — RTL auto-cleanup is off here (no vitest globals),
+// so document-wide queries would see consumers from earlier tests.
+const ThemeConsumer = (): React.ReactElement => {
+    const theme = useTheme();
+
+    return (
+        <div
+            data-testid="theme-consumer"
+            data-mode={theme.palette.mode}
+            data-primary-main={theme.palette.primary.main}
+            data-typography-mode={theme.typographyMode}
+            data-body1-font-size={String(theme.typography.body1.fontSize)}
+        />
+    );
+};
 
 describe('getTheme', () => {
     it('Minimum working example should work', () => {
@@ -35,9 +54,12 @@ describe('ThemeConfig', () => {
     it('Minimum working example should work', () => {
         const { container } = render(<ThemeConfig mode={'light'} language={'enUS'}>
             <div>test</div>
+            <ThemeConsumer />
         </ThemeConfig>);
 
-        expect(container).toMatchSnapshot();
+        expect(container.textContent).toContain('test');
+        const consumer = container.querySelector<HTMLElement>('[data-testid="theme-consumer"]');
+        expect(consumer?.dataset.mode).toBe('light');
     });
 
     it('Example with chineese core locales and pl translations in datagrid', () => {
@@ -75,7 +97,7 @@ describe('ThemeConfig', () => {
                 }
             }
         };
-        const { container } = render(
+        const { container, queryByText } = render(
             <ThemeConfig
                 mode={'light'}
                 language={'enUS'}
@@ -104,7 +126,12 @@ describe('ThemeConfig', () => {
                 </div>
             </ThemeConfig>);
 
-        expect(container).toMatchSnapshot();
+        const noRowsPl = xDataGridPl.components.MuiDataGrid.defaultProps.localeText.noRowsLabel;
+        const rowsPerPageZh = zhCN.components?.MuiTablePagination?.defaultProps?.labelRowsPerPage;
+
+        expect(queryByText(String(noRowsPl))).not.toBeNull();
+        expect(queryByText(String(rowsPerPageZh))).not.toBeNull();
+        expect(container.querySelector('.MuiDataGrid-footerContainer')).toBeNull();
     });
 });
 
@@ -191,10 +218,11 @@ describe('themeOverrides', () => {
                 language="enUS"
                 themeOverrides={{ palette: { primary: { main: '#ff0000' } } }}
             >
-                <div>test</div>
+                <ThemeConsumer />
             </ThemeConfig>
         );
-        expect(container).toMatchSnapshot();
+        const consumer = container.querySelector<HTMLElement>('[data-testid="theme-consumer"]');
+        expect(consumer?.dataset.primaryMain).toBe('#ff0000');
     });
 
     it('should preserve backward compatibility with externalComponentsTheme', () => {
@@ -296,12 +324,18 @@ describe('typographyMode', () => {
 
     // Group 5: ThemeConfig integration
     it('ThemeConfig should pass typographyMode to getTheme', () => {
+        // Previously this passed the invalid value "legacy-px" (the union is
+        // 'deprecated-px' | 'rem'), which silently fell through to rem — and
+        // the container snapshot could not tell the difference.
         const { container } = render(
-            <ThemeConfig mode="light" language="enUS" typographyMode="legacy-px">
-                <div>test</div>
+            <ThemeConfig mode="light" language="enUS" typographyMode="deprecated-px">
+                <ThemeConsumer />
             </ThemeConfig>
         );
-        expect(container).toMatchSnapshot();
+        const consumer = container.querySelector<HTMLElement>('[data-testid="theme-consumer"]');
+        expect(consumer?.dataset.typographyMode).toBe('deprecated-px');
+        // deprecated-px config on the default (reference) version: body1 = 14px.
+        expect(consumer?.dataset.body1FontSize).toBe('14px');
     });
 });
 
