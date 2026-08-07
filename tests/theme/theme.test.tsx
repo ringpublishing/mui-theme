@@ -339,6 +339,26 @@ describe('typographyMode', () => {
     });
 });
 
+describe('shadows', () => {
+    it('next fills theme.shadows from Figma elevation styles (Ring #0F172A ladder)', () => {
+        const theme = getTheme('light', { version: 'next' });
+        expect(theme.shadows[0]).toBe('none');
+        // elevation/4 — same geometry as the Accordion card shadow (PR #48).
+        expect(theme.shadows[4]).toBe(
+            '0px 2px 4px -1px rgba(15, 23, 42, 0.05), '
+            + '0px 4px 5px 0px rgba(15, 23, 42, 0.04), '
+            + '0px 1px 10px 0px rgba(15, 23, 42, 0.03)'
+        );
+        expect(theme.shadows).toHaveLength(25);
+    });
+
+    it('reference keeps MUI default shadows', () => {
+        const theme = getTheme('light', { version: 'reference' });
+        // MUI default shadows[4] — black-based, untouched by the Ring ladder.
+        expect(theme.shadows[4]).toContain('rgba(0,0,0');
+    });
+});
+
 describe('spacing pipeline', () => {
     it('should expose getSpacing on the theme', () => {
         const theme = getTheme('light');

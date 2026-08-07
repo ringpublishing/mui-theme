@@ -5,4 +5,5 @@ export { breakpoints } from './breakpoints.generated';
 export { shape, borderRadiusScale, type BorderRadiusFactor } from './shape.generated';
 export { spacing, spacingBase, spacingScale, type SpacingFactor } from './spacing.generated';
 export { typographyRem, typographyPx } from './typography.generated';
+export { shadows } from './shadows.generated';
 export { buildRingComponents } from './components.custom';

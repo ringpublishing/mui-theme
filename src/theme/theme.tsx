@@ -177,6 +177,7 @@ export function getTheme(
                     : cfg.spacing
             ),
             shape: themeOverrides?.shape ?? cfg.shape,
+            ...('shadows' in cfg ? { shadows: [...cfg.shadows] as Theme['shadows'] } : {}),
             typography: isLegacyPx ? cfg.typographyPx : cfg.typographyRem,
             typographyMode,
             getSpacing: (...factors: SpacingFactor[]): string => {

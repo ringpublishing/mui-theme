@@ -1,6 +1,14 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [4.9.0] - 2026-08-06
+
+### Added
+- `next` theme — `theme.shadows` filled from Figma effect styles `elevation/1..24` (new generated file `shadows.generated.ts`; index 0 stays `'none'`). Components using `elevation`/`boxShadow` now render Ring shadows (`#0F172A`-based) instead of MUI defaults. `reference` keeps MUI default shadows.
+
+### Changed
+- `next` generated configs re-synced with the current Figma export (2026-08-06): `palette` — `text.disabled` fixed to `#64748b`, corrected light `secondary`/`action` values, real dark-mode colours for tags/avatars/alerts/switch/input (previously placeholder `rgba(255,255,255,0.38)`), new `components.avatar.contrastText`; `breakpoints.xs` emitted as 0 — MUI breakpoints are lower bounds, so the first range must start at 0 (previously 375, and the raw Figma token is 444: that value is the xs artboard design width, not a CSS threshold). `shape`/`spacing`/`typography` values unchanged (header-only). `reference` untouched.
+
 ## [4.8.2] - 2026-08-06
 
 ### Changed
