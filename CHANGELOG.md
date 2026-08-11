@@ -1,6 +1,11 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [4.9.2] - 2026-07-08
+
+### Changed
+- [@rsarata]: Changed `next` theme `Button` and `IconButton` styles to match new design.
+
 ## [4.9.0] - 2026-08-06
 
 ### Added

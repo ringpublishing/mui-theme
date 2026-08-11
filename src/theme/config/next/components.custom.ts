@@ -255,6 +255,61 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                 variant: 'standard'
             }
         },
+        MuiIconButton: {
+            styleOverrides: {
+                root: ({ theme }: { theme: Theme; }): object => {
+                    return {
+                        'borderRadius': theme.getBorderRadius(2),
+                        '& .MuiTouchRipple-child': {
+                            transform: 'scale(1.3)'
+                        },
+                        '&.Mui-focusVisible .MuiTouchRipple-child': {
+                            borderRadius: 0
+                        }
+                    };
+                },
+                sizeSmall: () => ({
+                    padding: '3px'
+                }),
+                sizeMedium: ({ theme }: { theme: Theme; }) => ({
+                    padding: theme.getSpacing(1)
+                }),
+                sizeLarge: ({ theme }: { theme: Theme; }) => ({
+                    padding: theme.getSpacing(1.5)
+                })
+            }
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: ({ theme }: { theme: Theme; }) => ({
+                    borderRadius: theme.getBorderRadius(2),
+                    fontWeight: 600,
+                    lineHeight: '24px',
+                    letterSpacing: '0.46px',
+                    textTransform: 'none'
+                }),
+                sizeSmall: {
+                    fontSize: '0.8125rem',
+                    lineHeight: '22px',
+                    padding: '4px 12px'
+                },
+                sizeMedium: {
+                    fontSize: '0.875rem',
+                    letterSpacing: '0.4px',
+                    padding: '6px 16px'
+                },
+                sizeLarge: {
+                    fontSize: '1rem',
+                    padding: '8px 16px'
+                },
+                contained: {
+                    'boxShadow': 'none',
+                    '&:hover': {
+                        boxShadow: 'none'
+                    }
+                }
+            }
+        },
         MuiChip: {
             defaultProps: {
                 size: 'small'
