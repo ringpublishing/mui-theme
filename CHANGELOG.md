@@ -1,6 +1,15 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [4.10.0] - 2026-08-11
+
+### Added
+- `Palette.action.disabledBackgroundLight` — optional typing for the lighter disabled surface generated for `next`; `undefined` under `reference`.
+
+### Changed
+- `next` — `Accordion` v2 restyle scoped to `variant="borderless"`: paper card on the `elevation/4` shadow, 12px/16px summary padding, row divider on the bottom edge, `action.active` chevron, 8px group rounding and a token-based disabled state. `reference` unchanged.
+- `next` — MUI X date/time pickers match the redesigned outlined inputs; `MuiPickersOutlinedInput` is a separate stack, so the same overrides are mirrored onto it (type-only augmentation import, no MUI X runtime in the core bundle).
+
 ## [4.9.2] - 2026-07-08
 
 ### Changed

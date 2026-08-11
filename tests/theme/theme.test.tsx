@@ -618,6 +618,33 @@ describe('theme version switch', () => {
         expect(theme.components?.MuiNativeSelect).toBeUndefined();
         expect(theme.components?.MuiOutlinedInput?.defaultProps?.notched).toBe(false);
     });
+
+    it('next outlined input slots should resolve a smaller padding for size small', () => {
+        const theme = getTheme('light', { version: 'next' });
+
+        // Outlined inputs have no fixed height — it comes entirely from the slot
+        // padding, so the override must produce a different value per size or the
+        // `size` prop stops working.
+        const input = theme.components?.MuiOutlinedInput?.styleOverrides?.input as (
+            props: { theme: Theme; ownerState: { size?: string; }; }
+        ) => { padding: string; };
+        expect(typeof input).toBe('function');
+        const inputMedium = input({ theme, ownerState: { size: 'medium' } });
+        const inputSmall = input({ theme, ownerState: { size: 'small' } });
+        expect(inputMedium.padding).toBe('12px 8px 12px 16px');
+        expect(inputSmall.padding).toBe('8.5px 8px 8.5px 16px');
+
+        // Pickers keep the vertical padding on `sectionsContainer` (their ownerState
+        // key for size is `inputSize`).
+        const sections = theme.components?.MuiPickersOutlinedInput?.styleOverrides?.sectionsContainer as (
+            props: { theme: Theme; ownerState: { inputSize?: string; }; }
+        ) => { padding: string; };
+        expect(typeof sections).toBe('function');
+        const sectionsMedium = sections({ theme, ownerState: { inputSize: 'medium' } });
+        const sectionsSmall = sections({ theme, ownerState: { inputSize: 'small' } });
+        expect(sectionsMedium.padding).toBe('12px 0px');
+        expect(sectionsSmall.padding).toBe('8.5px 0');
+    });
 });
 
 describe('borderRadius pipeline', () => {

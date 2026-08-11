@@ -1,11 +1,25 @@
 // Hand-crafted Ring component overrides for the `next` theme version.
 // Kept separate from generated tokens because this is runtime component behavior.
 
+// Type-only augmentation enabling the `MuiPickers*` slot keys so the picker fields
+// inherit the same outlined redesign as `MuiOutlinedInput`. MUST stay `import type {}`:
+// `@mui/x-date-pickers` is an OPTIONAL peer dependency, so a bare side-effect import
+// would emit a real `require`/`import` into the core bundle and break every consumer
+// that does not install MUI X.
+import type {} from '@mui/x-date-pickers/themeAugmentation';
+
 import type { Components, Theme } from '@mui/material';
 
 export interface ComponentsFactoryOptions {
     pxTo: (px: number) => string;
 }
+
+// The design has no `variant` axis, so the v2 card is scoped to `borderless` and MUI's
+// `outlined` / `elevation` keep their pre-v2 spacing through this selector.
+const NON_BORDERLESS_ACCORDION
+    = '.MuiAccordion-root.MuiPaper-outlined &, .MuiAccordion-root.MuiPaper-elevation &';
+
+const BORDERLESS_ACCORDION = '.MuiAccordion-root.MuiPaper-borderless &';
 
 // Returns Ring `components` overrides consumed by `createTheme`.
 export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Components<Theme> {
@@ -138,53 +152,134 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                         minHeight: theme.getSpacing(4)
                     }
                 })
-            }
+            },
+            // v2: the Accordion renders as a paper card, scoped to `borderless` so the
+            // other variants keep their own border/elevation. `reference` is unchanged.
+            variants: [
+                {
+                    props: { variant: 'borderless' },
+                    style: ({ theme }: { theme: Theme; }) => ({
+                        'backgroundColor': theme.palette.background.paper,
+                        // Card shadow: the generated ladder is indexed by elevation level.
+                        'boxShadow': theme.shadows[4],
+                        // Clips the square summary/details to the rounded edges; the shadow sits
+                        // outside the border box, so it survives.
+                        'overflow': 'hidden',
+                        // Row separator sits on the row's own bottom edge — Figma puts the
+                        // `Divider Container` at y=48 when collapsed and y=112 when expanded,
+                        // i.e. below the whole row, not between summary and details. The
+                        // `Last-of-type=True` variant hides it.
+                        '&:not(:last-of-type)': {
+                            borderBottom: `1px solid ${theme.palette.divider}`
+                        },
+                        // Rounded group edges — `borderRadius/2` (8px) on first/last row only.
+                        '&:first-of-type': {
+                            borderTopLeftRadius: theme.getBorderRadius(2),
+                            borderTopRightRadius: theme.getBorderRadius(2)
+                        },
+                        '&:last-of-type': {
+                            borderBottomLeftRadius: theme.getBorderRadius(2),
+                            borderBottomRightRadius: theme.getBorderRadius(2)
+                        },
+                        // The disabled tint belongs to the whole row, so it is painted here
+                        // and nowhere else. MUI's own root rule uses `disabledBackground`
+                        // (alpha 0.3); the design asks for `disabledBackgroundLight` (0.2).
+                        // Tinting the summary as well would stack two translucent layers and
+                        // land on neither value.
+                        '&.Mui-disabled': {
+                            backgroundColor: theme.palette.action.disabledBackgroundLight
+                        }
+                    })
+                }
+            ]
         },
         MuiAccordionSummary: {
             styleOverrides: {
+                // v2 summary: 12px/16px padding, `action.active` expand icon and a
+                // colour-token disabled state. The card
+                // surface and the row divider live on the Accordion root above.
                 root: ({ theme }: { theme: Theme; }) => {
                     const variantPadding = {
-                        '.MuiAccordion-root.MuiPaper-outlined &, .MuiAccordion-root.MuiPaper-elevation &': {
+                        [NON_BORDERLESS_ACCORDION]: {
+                            paddingTop: 0,
+                            paddingBottom: 0,
                             paddingLeft: theme.getSpacing(2),
                             paddingRight: theme.getSpacing(1)
                         }
                     };
 
                     return {
-                        'padding': 0,
+                        'padding': theme.getSpacing(1.5, 2),
                         ...variantPadding,
                         'minHeight': theme.getSpacing(4),
+                        '& .MuiAccordionSummary-expandIconWrapper': {
+                            color: theme.palette.action.active
+                        },
+                        // Disabled: use disabled tokens instead of MUI's flat opacity fade.
+                        // The surface tint is painted once, on the Accordion root — see the
+                        // note there. `text.disabled` is currently lighter than the Figma node
+                        // (palette pending a regen); using the token keeps it correct on sync
+                        // instead of hardcoding today's hex.
+                        '&.Mui-disabled': {
+                            'opacity': 1,
+                            '& .MuiTypography-root': {
+                                color: theme.palette.text.disabled
+                            },
+                            '& .MuiAccordionSummary-expandIconWrapper': {
+                                color: theme.palette.action.disabled
+                            }
+                        },
                         '&.Mui-expanded': {
-                            padding: 0,
+                            padding: theme.getSpacing(1.5, 2),
                             ...variantPadding,
                             minHeight: theme.getSpacing(4)
                         }
                     };
                 },
-                content: ({ theme }: { theme: Theme; }) => ({
-                    'margin': theme.getSpacing(1, 0),
-                    '&.Mui-expanded': {
-                        margin: theme.getSpacing(1, 0)
-                    }
-                })
+                content: ({ theme }: { theme: Theme; }) => {
+                    const variantMargin = {
+                        [NON_BORDERLESS_ACCORDION]: {
+                            margin: theme.getSpacing(1, 0)
+                        }
+                    };
+
+                    return {
+                        'margin': theme.getSpacing(0, 0),
+                        ...variantMargin,
+                        '&.Mui-expanded': {
+                            margin: theme.getSpacing(0, 0),
+                            ...variantMargin
+                        }
+                    };
+                }
             }
         },
         MuiAccordionDetails: {
             styleOverrides: {
                 root: ({ theme }: { theme: Theme; }) => {
                     const variantPadding = {
-                        '.MuiAccordion-root.MuiPaper-outlined &, .MuiAccordion-root.MuiPaper-elevation &': {
+                        [NON_BORDERLESS_ACCORDION]: {
                             paddingLeft: theme.getSpacing(2),
                             paddingRight: theme.getSpacing(2)
+                        }
+                    };
+
+                    // Kept here rather than as an `sx` on the component so a consumer can
+                    // scope it away — `sx` outranks `styleOverrides`.
+                    const borderlessPadding = {
+                        [BORDERLESS_ACCORDION]: {
+                            padding: theme.getSpacing(1, 2, 2, 2)
                         }
                     };
 
                     return {
                         'padding': theme.getSpacing(1, 0),
                         ...variantPadding,
+                        ...borderlessPadding,
                         '&.Mui-expanded': {
                             padding: theme.getSpacing(1, 0),
-                            ...variantPadding
+                            ...variantPadding,
+                            ...borderlessPadding
                         }
                     };
                 }
@@ -241,12 +336,50 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                         padding: 0
                     }
                 }),
-                input: ({ theme }: { theme: Theme; }) => ({
-                    'padding': theme.getSpacing(1.5, 1, 1.5, 2),
+                // An outlined input has no fixed height — it comes entirely from this
+                // padding, and MUI implements `size="small"` as a padding variant on this
+                // very slot. The override must therefore branch on the size itself, or it
+                // would flatten both sizes into one. Small mirrors MUI's own variant:
+                // vertical shrinks to MUI's 8.5px (off the spacing grid, hence literal),
+                // horizontal keeps the redesign rhythm.
+                input: ({ theme, ownerState }: { theme: Theme; ownerState: { size?: string; }; }) => ({
+                    'padding': ownerState.size === 'small'
+                        ? `8.5px ${theme.getSpacing(1)} 8.5px ${theme.getSpacing(2)}`
+                        : theme.getSpacing(1.5, 1, 1.5, 2),
                     '&::placeholder': {
                         color: theme.palette.text.disabled,
                         opacity: 1
                     }
+                })
+            }
+        },
+        // MUI X date/time pickers render their own outlined-input stack
+        // (`MuiPickersOutlinedInput`) separate from `MuiOutlinedInput`, so the
+        // redesign above does not reach them. Mirror it here — same palette
+        // tokens, continuous border (no notch) — so picker fields match inputs.
+        MuiPickersOutlinedInput: {
+            defaultProps: {
+                notched: false
+            },
+            styleOverrides: {
+                notchedOutline: {
+                    legend: { width: 0 }
+                },
+                // Pickers split the padding across two slots: horizontal lives on the
+                // root, vertical on `sectionsContainer` (the visible date sections).
+                // The `input` slot is a visually hidden a11y element, so styling it has
+                // no visual effect — the mirror has to target these two slots instead.
+                root: ({ theme }: { theme: Theme; }) => ({
+                    backgroundColor: theme.palette.components.input.filled.enabledFill,
+                    borderRadius: theme.getBorderRadius(2),
+                    padding: theme.getSpacing(0, 1, 0, 2)
+                }),
+                // `inputSize` is the pickers' ownerState key for the field size; the
+                // small vertical mirrors MUI's own 8.5px variant, same as MuiOutlinedInput.
+                sectionsContainer: ({ theme, ownerState }: { theme: Theme; ownerState: { inputSize?: string; }; }) => ({
+                    padding: ownerState.inputSize === 'small'
+                        ? '8.5px 0'
+                        : theme.getSpacing(1.5, 0)
                 })
             }
         },

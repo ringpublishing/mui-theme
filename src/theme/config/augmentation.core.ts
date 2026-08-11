@@ -47,6 +47,11 @@ declare module '@mui/material' {
     interface TypeAction {
         focusVisibleOpacity: number;
         outlinedBorderOpacity: number;
+        /**
+         * Lighter disabled surface (`action/disabledBackgroundLight`). Optional because it is
+         * generated for `next` only — reading it under `reference` yields `undefined`.
+         */
+        disabledBackgroundLight?: string;
     }
     interface Palette {
         components: PaletteComponentsMap;
@@ -84,6 +89,11 @@ declare module '@mui/material/styles' {
     interface TypeAction {
         focusVisibleOpacity: number;
         outlinedBorderOpacity: number;
+        /**
+         * Lighter disabled surface (`action/disabledBackgroundLight`). Optional because it is
+         * generated for `next` only — reading it under `reference` yields `undefined`.
+         */
+        disabledBackgroundLight?: string;
     }
     interface Palette {
         components: PaletteComponentsMap;
@@ -120,6 +130,11 @@ declare module '@mui/material/esm/styles' {
     interface TypeAction {
         focusVisibleOpacity: number;
         outlinedBorderOpacity: number;
+        /**
+         * Lighter disabled surface (`action/disabledBackgroundLight`). Optional because it is
+         * generated for `next` only — reading it under `reference` yields `undefined`.
+         */
+        disabledBackgroundLight?: string;
     }
     interface Palette {
         components: PaletteComponentsMap;
