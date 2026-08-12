@@ -632,7 +632,7 @@ describe('theme version switch', () => {
         const inputMedium = input({ theme, ownerState: { size: 'medium' } });
         const inputSmall = input({ theme, ownerState: { size: 'small' } });
         expect(inputMedium.padding).toBe('12px 8px 12px 16px');
-        expect(inputSmall.padding).toBe('8.5px 8px 8.5px 16px');
+        expect(inputSmall.padding).toBe('8px 8px 8px 16px');
 
         // Pickers keep the vertical padding on `sectionsContainer` (their ownerState
         // key for size is `inputSize`).
@@ -643,7 +643,7 @@ describe('theme version switch', () => {
         const sectionsMedium = sections({ theme, ownerState: { inputSize: 'medium' } });
         const sectionsSmall = sections({ theme, ownerState: { inputSize: 'small' } });
         expect(sectionsMedium.padding).toBe('12px 0px');
-        expect(sectionsSmall.padding).toBe('8.5px 0');
+        expect(sectionsSmall.padding).toBe('8px 0px');
     });
 });
 

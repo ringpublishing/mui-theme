@@ -339,12 +339,11 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                 // An outlined input has no fixed height — it comes entirely from this
                 // padding, and MUI implements `size="small"` as a padding variant on this
                 // very slot. The override must therefore branch on the size itself, or it
-                // would flatten both sizes into one. Small mirrors MUI's own variant:
-                // vertical shrinks to MUI's 8.5px (off the spacing grid, hence literal),
-                // horizontal keeps the redesign rhythm.
+                // would flatten both sizes into one. Small shrinks only the vertical axis,
+                // one spacing step down; horizontal keeps the redesign rhythm.
                 input: ({ theme, ownerState }: { theme: Theme; ownerState: { size?: string; }; }) => ({
                     'padding': ownerState.size === 'small'
-                        ? `8.5px ${theme.getSpacing(1)} 8.5px ${theme.getSpacing(2)}`
+                        ? theme.getSpacing(1, 1, 1, 2)
                         : theme.getSpacing(1.5, 1, 1.5, 2),
                     '&::placeholder': {
                         color: theme.palette.text.disabled,
@@ -375,10 +374,10 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                     padding: theme.getSpacing(0, 1, 0, 2)
                 }),
                 // `inputSize` is the pickers' ownerState key for the field size; the
-                // small vertical mirrors MUI's own 8.5px variant, same as MuiOutlinedInput.
+                // small vertical drops one spacing step, same as MuiOutlinedInput.
                 sectionsContainer: ({ theme, ownerState }: { theme: Theme; ownerState: { inputSize?: string; }; }) => ({
                     padding: ownerState.inputSize === 'small'
-                        ? '8.5px 0'
+                        ? theme.getSpacing(1, 0)
                         : theme.getSpacing(1.5, 0)
                 })
             }

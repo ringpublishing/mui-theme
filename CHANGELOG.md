@@ -1,6 +1,11 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [4.10.1] - 2026-08-11
+
+### Fixed
+- `next` theme — small outlined inputs (text fields and pickers) use the 8px vertical padding from the spacing scale instead of MUI's 8.5px.
+
 ## [4.10.0] - 2026-08-11
 
 ### Added
