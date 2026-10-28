@@ -7,12 +7,12 @@ export const palette = {
         text: {
             primary: 'rgba(15, 23, 42, 1)',
             secondary: 'rgba(71, 85, 105, 1)',
-            disabled: 'rgba(100, 116, 139, 1)'
+            disabled: 'rgba(71, 85, 105, 0.38)'
         },
         primary: {
             main: 'rgba(20, 80, 180, 1)',
             dark: 'rgba(0, 61, 155, 1)',
-            light: 'rgba(90, 148, 244, 1)',
+            light: 'rgba(48, 108, 207, 1)',
             contrastText: 'rgba(255, 255, 255, 1)'
         },
         secondary: {
@@ -27,8 +27,8 @@ export const palette = {
             selected: 'rgba(71, 85, 105, 0.08)',
             disabledBackground: 'rgba(71, 85, 105, 0.12)',
             focus: 'rgba(71, 85, 105, 0.12)',
-            disabled: 'rgba(71, 85, 105, 0.26)',
-            pressed: 'rgba(71, 85, 105, 0.12)',
+            disabled: 'rgba(71, 85, 105, 0.38)',
+            activated: 'rgba(71, 85, 105, 0.12)',
             disabledBackgroundLight: 'rgba(71, 85, 105, 0.08)'
         },
         error: {
@@ -129,8 +129,8 @@ export const palette = {
             },
             switch: {
                 knobFillEnabled: 'rgba(255, 255, 255, 1)',
-                slideCheckedFill: 'rgba(133, 179, 255, 1)',
-                knowFillDisabled: 'rgba(241, 245, 249, 1)',
+                slideCheckedFill: 'rgba(20, 80, 180, 1)',
+                knobFillDisabled: 'rgba(241, 245, 249, 1)',
                 slideUncheckedFill: 'rgba(168, 183, 204, 1)'
             },
             chip: {
@@ -138,7 +138,7 @@ export const palette = {
                 outlinedEnabledBorder: 'rgba(168, 183, 204, 1)',
                 FocusFill: 'rgba(203, 213, 225, 1)',
                 PressedFill: 'rgba(203, 213, 225, 1)',
-                outlinedSelectedBorder: 'rgba(90, 148, 244, 1)',
+                outlinedSelectedBorder: 'rgba(48, 108, 207, 1)',
                 SelectedFill: 'rgba(208, 225, 255, 1)',
                 outlinedEnabledFill: 'rgba(255, 255, 255, 1)',
                 filledEnabledFill: 'rgba(226, 232, 240, 1)',
@@ -183,37 +183,54 @@ export const palette = {
             table: {
                 border: 'rgba(203, 213, 225, 1)'
             },
+            media: {
+                backgroundFill: 'rgba(241, 245, 249, 1)'
+            },
+            featuredIcon: {
+                defaultFill: 'rgba(71, 85, 105, 0.04)',
+                primaryFill: 'rgba(20, 80, 180, 0.04)',
+                infoFill: 'rgba(25, 118, 210, 0.04)',
+                successFill: 'rgba(14, 132, 81, 0.04)',
+                warningFill: 'rgba(234, 88, 12, 0.04)',
+                errorFill: 'rgba(225, 29, 72, 0.04)'
+            },
+            fileUploader: {
+                enabledBorder: 'rgba(203, 213, 225, 1)',
+                hoverBorder: 'rgba(20, 80, 180, 1)',
+                dragOverBorder: 'rgba(20, 80, 180, 1)',
+                dragOverFill: 'rgba(20, 80, 180, 0.04)',
+                errorBorder: 'rgba(225, 29, 72, 1)',
+                errorFill: 'rgba(225, 29, 72, 0.04)'
+            },
+            overlay: {
+                background: 'rgba(255, 255, 255, 0.7)',
+                hover: 'rgba(255, 255, 255, 0.9)',
+                selected: 'rgba(255, 255, 255, 0.7)',
+                foreground: 'rgba(71, 85, 105, 1)',
+                selectedForeground: 'rgba(20, 80, 180, 1)'
+            },
             datagrid: {
                 border: 'rgba(217, 217, 217, 1)'
             },
             dataview: {
                 border: 'rgba(217, 217, 217, 1)'
-            },
-            detail: {
-                close: {
-                    background: 'rgba(255, 255, 255, 1)',
-                    hover: 'rgba(233, 233, 233, 1)'
-                }
-            },
-            mediaImage: {
-                actions: 'rgba(196, 196, 196, 1)',
-                focusable: 'rgba(0, 0, 0, 0.1)'
             }
         },
         _native: {
-            'scrollbar-bg': 'rgba(226, 232, 240, 1)'
+            scrollbarBackground: 'rgba(15, 23, 42, 0.5)'
         },
         contrast: {
             main: 'rgba(255, 255, 255, 1)',
             dark: 'rgba(255, 255, 255, 1)',
             light: 'rgba(255, 255, 255, 1)',
-            contrastText: 'rgba(0, 167, 238, 1)',
-            outlinedBorder: 'rgba(224, 245, 253, 1)',
-            contrast: 'rgba(255, 255, 255, 1)',
-            hover: 'rgba(224, 245, 253, 1)',
-            selected: 'rgba(224, 245, 253, 1)',
-            focus: 'rgba(176, 228, 249, 1)',
-            focusVisible: 'rgba(224, 245, 253, 1)'
+            contrastText: 'rgba(20, 80, 180, 1)'
+        },
+        gradient: {
+            ai: {
+                start: 'rgba(255, 95, 164, 1)',
+                mid: 'rgba(170, 0, 255, 1)',
+                end: 'rgba(48, 108, 207, 1)'
+            }
         },
         divider: 'rgba(203, 213, 225, 1)',
         tag: {
@@ -252,101 +269,101 @@ export const palette = {
     dark: {
         mode: 'dark' as const,
         text: {
-            primary: 'rgba(255, 255, 255, 1)',
+            primary: 'rgba(255, 255, 255, 0.87)',
             secondary: 'rgba(255, 255, 255, 0.7)',
             disabled: 'rgba(255, 255, 255, 0.5)'
         },
         primary: {
             main: 'rgba(175, 205, 255, 1)',
             dark: 'rgba(133, 179, 255, 1)',
-            light: 'rgba(229, 239, 255, 1)',
+            light: 'rgba(208, 225, 255, 1)',
             contrastText: 'rgba(0, 0, 0, 0.87)'
         },
         secondary: {
             main: 'rgba(203, 213, 225, 1)',
-            dark: 'rgba(241, 245, 249, 1)',
-            light: 'rgba(100, 116, 139, 1)',
+            dark: 'rgba(168, 183, 204, 1)',
+            light: 'rgba(226, 232, 240, 1)',
             contrastText: 'rgba(0, 0, 0, 0.87)'
         },
         action: {
-            active: 'rgba(255, 255, 255, 1)',
-            hover: 'rgba(255, 255, 255, 0.08)',
-            selected: 'rgba(255, 255, 255, 0.16)',
-            disabledBackground: 'rgba(255, 255, 255, 0.12)',
-            focus: 'rgba(255, 255, 255, 0.12)',
-            disabled: 'rgba(255, 255, 255, 0.3)',
-            pressed: 'rgba(255, 255, 255, 0.12)',
-            disabledBackgroundLight: 'rgba(255, 255, 255, 0.12)'
+            active: 'rgba(248, 250, 252, 1)',
+            hover: 'rgba(248, 250, 252, 0.08)',
+            selected: 'rgba(248, 250, 252, 0.16)',
+            disabledBackground: 'rgba(248, 250, 252, 0.12)',
+            focus: 'rgba(248, 250, 252, 0.12)',
+            disabled: 'rgba(248, 250, 252, 0.38)',
+            activated: 'rgba(248, 250, 252, 0.24)',
+            disabledBackgroundLight: 'rgba(248, 250, 252, 0.12)'
         },
         error: {
             main: 'rgba(244, 63, 94, 1)',
-            dark: 'rgba(190, 18, 60, 1)',
-            light: 'rgba(253, 164, 175, 1)',
-            contrastText: 'rgba(255, 255, 255, 1)'
+            dark: 'rgba(225, 29, 72, 1)',
+            light: 'rgba(251, 113, 133, 1)',
+            contrastText: 'rgba(248, 250, 252, 1)'
         },
         warning: {
-            main: 'rgba(251, 146, 60, 1)',
-            dark: 'rgba(194, 65, 12, 1)',
-            light: 'rgba(253, 186, 116, 1)',
+            main: 'rgba(253, 186, 116, 1)',
+            dark: 'rgba(251, 146, 60, 1)',
+            light: 'rgba(254, 215, 170, 1)',
             contrastText: 'rgba(0, 0, 0, 0.87)'
         },
         info: {
-            main: 'rgba(66, 165, 245, 1)',
-            dark: 'rgba(25, 118, 210, 1)',
-            light: 'rgba(100, 181, 246, 1)',
+            main: 'rgba(100, 181, 246, 1)',
+            dark: 'rgba(66, 165, 245, 1)',
+            light: 'rgba(144, 202, 249, 1)',
             contrastText: 'rgba(0, 0, 0, 0.87)'
         },
         success: {
-            main: 'rgba(28, 184, 85, 1)',
-            dark: 'rgba(8, 106, 80, 1)',
-            light: 'rgba(77, 212, 113, 1)',
+            main: 'rgba(77, 212, 113, 1)',
+            dark: 'rgba(28, 184, 85, 1)',
+            light: 'rgba(142, 237, 158, 1)',
             contrastText: 'rgba(0, 0, 0, 0.87)'
         },
         common: {
-            white: 'rgba(255, 255, 255, 1)',
-            black: 'rgba(0, 0, 0, 1)',
+            white: 'rgba(248, 250, 252, 1)',
+            black: 'rgba(15, 23, 42, 1)',
             grey: 'rgba(67, 67, 67, 1)'
         },
         background: {
-            default: 'rgba(18, 18, 18, 1)',
-            paper: 'rgba(18, 18, 18, 1)',
-            subtle: 'rgba(18, 18, 18, 1)'
+            default: 'rgba(15, 23, 42, 1)',
+            paper: 'rgba(15, 23, 42, 1)',
+            subtle: 'rgba(15, 23, 42, 1)'
         },
         components: {
             paper: {
-                'elevation-0': 'rgba(18, 18, 18, 1)',
-                'elevation-1': 'rgba(30, 30, 30, 1)',
-                'elevation-2': 'rgba(35, 35, 35, 1)',
-                'elevation-3': 'rgba(37, 37, 37, 1)',
-                'elevation-4': 'rgba(39, 39, 39, 1)',
-                'elevation-5': 'rgba(42, 42, 42, 1)',
-                'elevation-6': 'rgba(44, 44, 44, 1)',
-                'elevation-7': 'rgba(44, 44, 44, 1)',
-                'elevation-8': 'rgba(46, 46, 46, 1)',
-                'elevation-9': 'rgba(46, 46, 46, 1)',
-                'elevation-10': 'rgba(49, 49, 49, 1)',
-                'elevation-11': 'rgba(49, 49, 49, 1)',
-                'elevation-12': 'rgba(51, 51, 51, 1)',
-                'elevation-13': 'rgba(51, 51, 51, 1)',
-                'elevation-14': 'rgba(51, 51, 51, 1)',
-                'elevation-15': 'rgba(51, 51, 51, 1)',
-                'elevation-16': 'rgba(54, 54, 54, 1)',
-                'elevation-17': 'rgba(54, 54, 54, 1)',
-                'elevation-18': 'rgba(54, 54, 54, 1)',
-                'elevation-19': 'rgba(54, 54, 54, 1)',
-                'elevation-20': 'rgba(56, 56, 56, 1)',
-                'elevation-21': 'rgba(56, 56, 56, 1)',
-                'elevation-22': 'rgba(56, 56, 56, 1)',
-                'elevation-23': 'rgba(56, 56, 56, 1)',
-                'elevation-24': 'rgba(56, 56, 56, 1)',
+                'elevation-0': 'rgba(15, 23, 42, 1)',
+                'elevation-1': 'rgba(15, 23, 42, 1)',
+                'elevation-2': 'rgba(15, 23, 42, 1)',
+                'elevation-3': 'rgba(15, 23, 42, 1)',
+                'elevation-4': 'rgba(15, 23, 42, 1)',
+                'elevation-5': 'rgba(15, 23, 42, 1)',
+                'elevation-6': 'rgba(15, 23, 42, 1)',
+                'elevation-7': 'rgba(15, 23, 42, 1)',
+                'elevation-8': 'rgba(30, 41, 59, 1)',
+                'elevation-9': 'rgba(30, 41, 59, 1)',
+                'elevation-10': 'rgba(30, 41, 59, 1)',
+                'elevation-11': 'rgba(30, 41, 59, 1)',
+                'elevation-12': 'rgba(30, 41, 59, 1)',
+                'elevation-13': 'rgba(30, 41, 59, 1)',
+                'elevation-14': 'rgba(30, 41, 59, 1)',
+                'elevation-15': 'rgba(30, 41, 59, 1)',
+                'elevation-16': 'rgba(51, 65, 85, 1)',
+                'elevation-17': 'rgba(51, 65, 85, 1)',
+                'elevation-18': 'rgba(51, 65, 85, 1)',
+                'elevation-19': 'rgba(51, 65, 85, 1)',
+                'elevation-20': 'rgba(51, 65, 85, 1)',
+                'elevation-21': 'rgba(51, 65, 85, 1)',
+                'elevation-22': 'rgba(51, 65, 85, 1)',
+                'elevation-23': 'rgba(51, 65, 85, 1)',
+                'elevation-24': 'rgba(71, 85, 105, 1)',
                 'outlineBorder': 'rgba(255, 255, 255, 0.12)'
             },
             rating: {
                 enabledBorder: 'rgba(255, 255, 255, 0.23)',
-                activeFill: 'rgba(255, 180, 0, 1)'
+                activeFill: 'rgba(248, 162, 0, 1)'
             },
             avatar: {
-                stoneFill: 'rgba(71, 85, 105, 1)',
+                stoneFill: 'rgba(226, 232, 240, 1)',
                 skyFill: 'rgba(30, 150, 190, 1)',
                 lavenderFill: 'rgba(84, 56, 200, 1)',
                 blushFill: 'rgba(195, 40, 153, 1)',
@@ -356,7 +373,7 @@ export const palette = {
                 sageFill: 'rgba(125, 194, 64, 1)',
                 tealFill: 'rgba(77, 193, 156, 1)',
                 azureFill: 'rgba(36, 115, 189, 1)',
-                contrastText: 'rgba(255, 255, 255, 1)'
+                contrastText: 'rgba(15, 23, 42, 1)'
             },
             input: {
                 standard: {
@@ -375,9 +392,9 @@ export const palette = {
                 }
             },
             switch: {
-                knobFillEnabled: 'rgba(203, 213, 225, 1)',
+                knobFillEnabled: 'rgba(241, 245, 249, 1)',
                 slideCheckedFill: 'rgba(175, 205, 255, 1)',
-                knowFillDisabled: 'rgba(71, 85, 105, 1)',
+                knobFillDisabled: 'rgba(71, 85, 105, 1)',
                 slideUncheckedFill: 'rgba(71, 85, 105, 1)'
             },
             chip: {
@@ -385,11 +402,11 @@ export const palette = {
                 outlinedEnabledBorder: 'rgba(51, 65, 85, 1)',
                 FocusFill: 'rgba(255, 255, 255, 0.2)',
                 PressedFill: 'rgba(255, 255, 255, 0.2)',
-                outlinedSelectedBorder: 'rgba(51, 65, 85, 1)',
-                SelectedFill: 'rgba(51, 65, 85, 1)',
+                outlinedSelectedBorder: 'rgba(133, 179, 255, 1)',
+                SelectedFill: 'rgba(0, 61, 155, 1)',
                 outlinedEnabledFill: 'rgba(51, 65, 85, 1)',
                 filledEnabledFill: 'rgba(51, 65, 85, 1)',
-                filledEnabledHover: 'rgba(51, 65, 85, 1)'
+                filledEnabledHover: 'rgba(71, 85, 105, 1)'
             },
             tooltip: {
                 fill: 'rgba(97, 97, 97, 0.9)'
@@ -398,7 +415,7 @@ export const palette = {
                 fill: 'rgba(15, 23, 42, 0.5)'
             },
             appBar: {
-                defaultFill: 'rgba(39, 39, 39, 1)'
+                defaultFill: 'rgba(15, 23, 42, 1)'
             },
             breadcrumbs: {
                 collapseFill: 'rgba(71, 85, 105, 1)'
@@ -425,41 +442,59 @@ export const palette = {
                 connector: 'rgba(71, 85, 105, 1)'
             },
             snackbar: {
-                fill: 'rgba(44, 44, 44, 1)'
+                fill: 'rgba(51, 65, 85, 1)'
             },
             table: {
-                border: 'rgba(81, 81, 81, 1)'
+                border: 'rgba(71, 85, 105, 1)'
+            },
+            media: {
+                backgroundFill: 'rgba(30, 41, 59, 1)'
+            },
+            featuredIcon: {
+                defaultFill: 'rgba(248, 250, 252, 0.08)',
+                primaryFill: 'rgba(175, 205, 255, 0.08)',
+                infoFill: 'rgba(100, 181, 246, 0.08)',
+                successFill: 'rgba(77, 212, 113, 0.08)',
+                warningFill: 'rgba(253, 186, 116, 0.16)',
+                errorFill: 'rgba(244, 63, 94, 0.16)'
+            },
+            fileUploader: {
+                enabledBorder: 'rgba(255, 255, 255, 0.12)',
+                hoverBorder: 'rgba(175, 205, 255, 1)',
+                dragOverBorder: 'rgba(175, 205, 255, 1)',
+                dragOverFill: 'rgba(175, 205, 255, 0.08)',
+                errorBorder: 'rgba(244, 63, 94, 1)',
+                errorFill: 'rgba(244, 63, 94, 0.08)'
+            },
+            overlay: {
+                background: 'rgba(15, 23, 42, 0.7)',
+                hover: 'rgba(15, 23, 42, 0.9)',
+                selected: 'rgba(15, 23, 42, 0.7)',
+                foreground: 'rgba(248, 250, 252, 1)',
+                selectedForeground: 'rgba(175, 205, 255, 1)'
             },
             datagrid: {
                 border: 'rgba(123, 123, 123, 1)'
             },
             dataview: {
                 border: 'rgba(123, 123, 123, 1)'
-            },
-            detail: {
-                close: {
-                    background: 'rgba(0, 0, 0, 1)',
-                    hover: 'rgba(38, 38, 38, 1)'
-                }
-            },
-            mediaImage: {
-                actions: 'rgba(196, 196, 196, 1)'
             }
         },
         _native: {
-            'scrollbar-bg': 'rgba(51, 65, 85, 1)'
+            scrollbarBackground: 'rgba(248, 250, 252, 0.55)'
         },
         contrast: {
-            main: 'rgba(255, 255, 255, 1)',
-            dark: 'rgba(255, 255, 255, 1)',
-            light: 'rgba(255, 255, 255, 1)',
-            contrastText: 'rgba(0, 167, 238, 1)',
-            outlinedBorder: 'rgba(224, 245, 253, 1)',
-            contrast: 'rgba(255, 255, 255, 1)',
-            hover: 'rgba(224, 245, 253, 1)',
-            selected: 'rgba(224, 245, 253, 1)',
-            focus: 'rgba(176, 228, 249, 1)',
-            focusVisible: 'rgba(224, 245, 253, 1)'
+            main: 'rgba(15, 23, 42, 1)',
+            dark: 'rgba(15, 23, 42, 1)',
+            light: 'rgba(15, 23, 42, 1)',
+            contrastText: 'rgba(175, 205, 255, 1)'
+        },
+        gradient: {
+            ai: {
+                start: 'rgba(255, 95, 164, 1)',
+                mid: 'rgba(170, 0, 255, 1)',
+                end: 'rgba(90, 148, 244, 1)'
+            }
         },
         divider: 'rgba(255, 255, 255, 0.12)',
         tag: {

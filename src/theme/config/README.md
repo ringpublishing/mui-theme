@@ -14,13 +14,15 @@
 | What | File |
 |---|---|
 | `palette.primary.main` | Figma → regen `config/<version>/palette.generated.ts` |
-| `palette.action.*Opacity` | `actionOpacities.ts` |
+| `palette.action.*Opacity` (`next`: hover/selected/focus/activated/disabled) | Figma → regen `config/next/opacity.generated.ts` |
+| `palette.action.*Opacity` (`reference`; `focusVisibleOpacity`, `outlinedBorderOpacity`) | `actionOpacities.ts` |
 | `shape.borderRadius` | `config/<version>/shape.generated.ts` |
 | `breakpoints.values.*` | `config/<version>/breakpoints.generated.ts` |
 | `typography.h1.*` | `config/<version>/typography.generated.ts` |
 | `spacing` / `getSpacing()` | `config/<version>/spacing.generated.ts` |
-| `theme.colors.*` (Ring brand) | `colors.ts` |
+| `theme.colors.*` (Ring brand, deprecated) | `colors.ts` |
 | `MuiButton.styleOverrides` etc. | `components.custom.ts` (factory `buildRingComponents`) |
+| Base look of a Ring component (`theme.ringComponents.RingFileUploader`) | `fileUploader.ts` (factory `buildFileUploaderStyles`, registered in `theme.tsx`) |
 | New TS field on `Theme` (both versions) | `augmentation.core.ts` |
 | New TS field only in `next` | `config/next/augmentation.ts` |
 

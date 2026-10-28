@@ -9,13 +9,20 @@ import {
     ThemeProvider
 } from '@mui/material';
 // Versioned theme config generated per profile.
-// `reference` is current default; `next` is migration target.
+// `next` is the default; `reference` is the pre-redesign kit.
 import * as reference from './config/reference';
 import * as next from './config/next';
 import { colors } from './config/colors';
+import {
+    buildAiGradientSet,
+    buildAiPaletteColor,
+    gradientTextFill,
+    type GradientStops
+} from './config/gradients';
 import type { SpacingFactor as SpacingFactorNext } from './config/next/spacing.generated';
 import type { BorderRadiusFactor as BorderRadiusFactorNext } from './config/next/shape.generated';
 import type { InspectorBridgeProps } from './InspectorBridge';
+import { RingIconDefaults } from './RingIconDefaults';
 import type { RingMode } from './handleContract';
 
 // Inspector activation flag set by bookmarklet (`'1'` in localStorage).
@@ -35,7 +42,13 @@ type BorderRadiusFactor = BorderRadiusFactorNext | 0;
 
 const CONFIGS = { reference, next } as const;
 
+/**
+ * Theme variant.
+ * @internal Set by `@ringpublishing/mui-components`; not supported in applications.
+ */
 export type ThemeVersion = keyof typeof CONFIGS;
+
+const DEFAULT_THEME_VERSION: ThemeVersion = 'next';
 
 // Other versions must match this breakpoints structure.
 type Breakpoints = typeof reference.breakpoints;
@@ -44,6 +57,9 @@ import { CommonLanguages } from '../helpers/commonTypes';
 import { plPL as corePL, enUS as coreUS } from '@mui/material/locale';
 
 import { actionOpacities } from './config/actionOpacities';
+import { featuredIcon } from './config/featuredIcon';
+import { buildFileUploaderStyles } from './config/fileUploader';
+import { RING_FONT_WAIT_TIMEOUT_MS, areThemeFontsReady, getThemeFonts, waitForThemeFonts } from '../fonts';
 
 export type TypographyMode = 'deprecated-px' | 'rem';
 
@@ -74,7 +90,10 @@ export interface GetThemeOptions {
      * @deprecated 'deprecated-px' mode – will be removed in the next major version
      */
     typographyMode?: TypographyMode;
-    /** Theme version to apply (`reference` default, `next` optional). */
+    /**
+     * Theme variant, `next` when omitted.
+     * @internal Set by `@ringpublishing/mui-components`; not supported in applications.
+     */
     version?: ThemeVersion;
 }
 
@@ -109,7 +128,7 @@ export function getTheme(
     typographyMode: TypographyMode = 'rem'
 ): Theme {
     let language: CommonLanguages | string = CommonLanguages.enUS;
-    let version: ThemeVersion = 'reference';
+    let version: ThemeVersion = DEFAULT_THEME_VERSION;
 
     if (typeof languageOrOptions === 'object' && languageOrOptions !== null) {
         // New API: getTheme(mode, options)
@@ -120,7 +139,7 @@ export function getTheme(
         externalColors = opts.externalColors ?? {};
         themeOverrides = opts.themeOverrides ?? {};
         typographyMode = opts.typographyMode ?? 'rem';
-        version = opts.version ?? 'reference';
+        version = opts.version ?? DEFAULT_THEME_VERSION;
     } else if (typeof languageOrOptions === 'string') {
         // Legacy API: getTheme(mode, language, ...)
         language = languageOrOptions as CommonLanguages;
@@ -150,13 +169,27 @@ export function getTheme(
 
     const cfg = CONFIGS[version];
     const selectedPalette = cfg.palette[mode as PaletteMode];
-    const selectedActionOpacities = actionOpacities[mode as PaletteMode];
+    // `next` takes MUI's five action opacities from the design export, where the same numbers
+    // compose the `action.*` colours; `reference` has no such source and keeps MUI's defaults.
+    // The Ring-only keys are hand-written for both.
+    const selectedActionOpacities = version === 'next'
+        ? { ...actionOpacities[mode as PaletteMode], ...next.actionOpacities[mode as PaletteMode] }
+        : actionOpacities[mode as PaletteMode];
+
+    // Both variants read the stops from `next`: `reference` comes from a Figma
+    // kit that predates them, and the gradient is one brand asset rather than a
+    // per-variant value. Only the `color="ai"` component styling is `next`-only.
+    // `mode` is `PaletteMode | string`, so it is narrowed rather than indexed.
+    const aiStops: GradientStops = next.palette[mode === 'dark' ? 'dark' : 'light'].gradient.ai;
+    const gradients = { ai: buildAiGradientSet(aiStops) };
 
     const baseTheme = createTheme(
         {
             locale: language as CommonLanguages,
             palette: {
                 ...selectedPalette,
+                ai: buildAiPaletteColor(aiStops),
+                gradients,
                 action: {
                     ...selectedPalette.action,
                     ...selectedActionOpacities
@@ -180,6 +213,11 @@ export function getTheme(
             ...('shadows' in cfg ? { shadows: [...cfg.shadows] as Theme['shadows'] } : {}),
             typography: isLegacyPx ? cfg.typographyPx : cfg.typographyRem,
             typographyMode,
+            gradientText: (gradient) => gradientTextFill(gradients[gradient].fill),
+            featuredIcon: { ...featuredIcon, sizes: { ...featuredIcon.sizes } },
+            // Base styles of Ring's own components, read by their slots; `components.Ring*.styleOverrides` stays
+            // free for the application, which MUI layers on top instead of replacing these.
+            ringComponents: { RingFileUploader: buildFileUploaderStyles({ pxTo }) },
             getSpacing: (...factors: SpacingFactor[]): string => {
                 // Resolve one strict spacing factor from the active config.
                 const resolveOne = (factor: SpacingFactor): number | undefined => {
@@ -352,9 +390,24 @@ export interface ThemeConfigProps {
     externalComponentsTheme?: object;
     /** @deprecated 'deprecated-px' will be removed in the next major version. Migrate to rem-based typography. */
     typographyMode?: TypographyMode;
-    /** Theme version to apply — defaults to 'reference'. Opt into 'next' explicitly. */
+    /**
+     * Theme variant, `next` when omitted.
+     * @internal Set by `@ringpublishing/mui-components`; not supported in applications.
+     */
     version?: ThemeVersion;
+    /**
+     * Children render only after the theme's web font is loaded in every weight its typography
+     * uses (max ~2s), to avoid a fallback-font flash; a theme set in a system font renders at once,
+     * and so does a page rendered on the server, whose HTML is already on screen.
+     * Defaults to true; set to false to render immediately.
+     */
+    waitForFonts?: boolean;
 }
+
+// `useSyncExternalStore` hands back the server snapshot on the server and during hydration only.
+const subscribeNever = (): (() => void) => (): void => undefined;
+const isClientOnlyRender = (): boolean => false;
+const isServerRender = (): boolean => true;
 
 export const ThemeConfig = ({
     mode,
@@ -364,7 +417,8 @@ export const ThemeConfig = ({
     themeOverrides,
     externalComponentsTheme,
     typographyMode,
-    version
+    version,
+    waitForFonts = true
 }: ThemeConfigProps): React.ReactNode[] | React.ReactNode => {
     const baseTheme = getTheme(mode, {
         language,
@@ -396,11 +450,53 @@ export const ThemeConfig = ({
         });
     }, []);
 
+    const effectiveVersion = version ?? DEFAULT_THEME_VERSION;
+    // Only `next` typography uses a web font; `reference` uses a system font.
+    const themeFonts = waitForFonts && effectiveVersion === 'next' ? getThemeFonts(baseTheme) : undefined;
+    // `baseTheme` is a new object on every render, so the effect is keyed on the
+    // family and weights, both serialisable.
+    const themeFontsKey = themeFonts === undefined ? '' : `${themeFonts.family}|${themeFonts.weights.join(' ')}`;
+    // True on the server and while hydrating server HTML: that HTML is already on screen, and a
+    // first client render that waited would render nothing, which React cannot match against it.
+    const renderedFromServerHtml = React.useSyncExternalStore(subscribeNever, isClientOnlyRender, isServerRender);
+    // Synchronous initial check: no empty frame when the font is cached or the
+    // Font Loading API is missing (SSR, jsdom in consumer tests).
+    const [fontsReady, setFontsReady] = React.useState(() => renderedFromServerHtml || areThemeFontsReady(themeFonts));
+    // One deadline from mount: a font change while waiting restarts the load, not the timeout.
+    const [fontsWaitStartedAt] = React.useState(() => Date.now());
+
+    React.useEffect(() => {
+        if (fontsReady || themeFontsKey === '') {
+            return undefined;
+        }
+
+        const [family, weights] = themeFontsKey.split('|');
+        const remainingMs = Math.max(0, RING_FONT_WAIT_TIMEOUT_MS - (Date.now() - fontsWaitStartedAt));
+        let active = true;
+
+        void waitForThemeFonts({ family, weights: weights.split(' ').map(Number) }, remainingMs).then(() => {
+            if (active) {
+                setFontsReady(true);
+            }
+        });
+
+        return () => {
+            active = false;
+        };
+    }, [fontsReady, themeFontsKey, fontsWaitStartedAt]);
+
+    if (themeFonts !== undefined && !fontsReady) {
+        return null;
+    }
+
+    // Inside the theme on both paths: the icon rules read the palette of the theme in effect.
+    const content = <RingIconDefaults>{children}</RingIconDefaults>;
+
     if (BridgeComp !== null) {
         return (
             <BridgeComp
                 effectiveMode={mode as RingMode}
-                effectiveVersion={version ?? 'reference'}
+                effectiveVersion={effectiveVersion}
                 language={language}
                 externalLocales={externalLocales}
                 externalComponentsTheme={externalComponentsTheme}
@@ -408,7 +504,7 @@ export const ThemeConfig = ({
                 typographyMode={typographyMode}
                 baseTheme={baseTheme}
             >
-                {children}
+                {content}
             </BridgeComp>
         );
     }
@@ -416,12 +512,7 @@ export const ThemeConfig = ({
     return (
         <ThemeProvider theme={baseTheme}>
             <CssBaseline />
-            {children}
+            {content}
         </ThemeProvider>
     );
 };
-
-/** @deprecated Use theme.palette.grey instead */
-export const basicGrey100 = '#D9D9D9';
-/** @deprecated Use theme.palette.grey instead */
-export const basicGrey200 = '#7b7b7b';

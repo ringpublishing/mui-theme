@@ -15,7 +15,9 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                 '.ring-text-editor .tiptap': {
                     'padding': theme.getSpacing(2),
 
-                    '& :first-child': {
+                    // Children are ProseMirror nodes, so SSR never puts an Emotion <style> among them.
+                    // `:first-of-type` and `:not(* + *)` would change what this reset matches.
+                    '& :first-child /* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
                         marginBlockStart: 0
                     },
 
@@ -93,9 +95,9 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                 root: ({ ownerState, theme }: { ownerState: { multiple?: boolean; }; theme: Theme; }) => ({
                     ...(ownerState.multiple && {
                         '.MuiAutocomplete-endAdornment': {
-                            'height': `calc(100% - ${theme.getSpacing(1)})`,
-                            'display': 'flex',
-                            'align-items': 'end'
+                            height: `calc(100% - ${theme.getSpacing(1)})`,
+                            display: 'flex',
+                            alignItems: 'end'
                         }
                     }),
                     '.MuiAutocomplete-clearIndicator': {

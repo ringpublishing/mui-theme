@@ -34,18 +34,13 @@ export interface PaletteComponentsMap {
     };
 
     datagrid: {
+        /** @deprecated Use `palette.divider`. */
         border: string;
     };
 
     dataview: {
+        /** @deprecated Use `palette.divider`. */
         border: string;
-    };
-
-    detail: {
-        close: {
-            background: string;
-            hover: string;
-        };
     };
 
     alert: {
@@ -90,10 +85,15 @@ export interface PaletteComponentsMap {
         };
     };
 
-    // `switch` differs between variants.
+    // `switch` differs between variants — including the disabled knob, whose slot the
+    // design file renamed on 2026-08-21. `next` carries the corrected spelling and is what
+    // the theme reads; `reference` reads an older Figma library that still emits the typo,
+    // so the legacy key stays typed for that generated config alone.
     switch: {
         knobFillEnabled: string;
-        knowFillDisabled: string;
+        knobFillDisabled?: string;
+        /** @deprecated Misspelled; use `knobFillDisabled`. */
+        knowFillDisabled?: string;
         slideFill?: string;
         slideCheckedFill?: string;
         slideUncheckedFill?: string;
@@ -130,10 +130,41 @@ export interface PaletteComponentsMap {
         border: string;
     };
 
-    // `mediaImage` is reference-only.
-    mediaImage?: {
-        actions: string;
-        focusable?: string;
+    // `overlay` is scoped to `next`. Surface and glyph for anything that sits on top of
+    // imagery, where the background underneath gives no contrast.
+    overlay?: {
+        background: string;
+        hover: string;
+        selected: string;
+        foreground: string;
+        selectedForeground: string;
+    };
+
+    // `media` is next-only. Fill behind a media asset inside its frame, visible
+    // wherever the asset's ratio does not fill it.
+    media?: {
+        backgroundFill: string;
+    };
+
+    // `featuredIcon` is next-only. The circular plate behind a FeaturedIcon glyph, one fill per colour.
+    featuredIcon?: {
+        defaultFill: string;
+        primaryFill: string;
+        infoFill: string;
+        successFill: string;
+        warningFill: string;
+        errorFill: string;
+    };
+
+    // `fileUploader` is next-only. The FileUploader drop area: a border per state (dashed at rest, on hover and
+    // while a file is dragged over it; solid on error) and the drag-over and error fills.
+    fileUploader?: {
+        enabledBorder: string;
+        hoverBorder: string;
+        dragOverBorder: string;
+        dragOverFill: string;
+        errorBorder: string;
+        errorFill: string;
     };
 
     // `skeleton` is reference-only.

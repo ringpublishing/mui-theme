@@ -9,11 +9,11 @@ import { getTheme } from '../../src';
 // re-export) is expected to touch the snapshot: update with `vitest -u` and
 // let the diff document the change in the PR.
 const pickContract = (theme: Record<string, unknown>): Record<string, unknown> => {
-    const { palette, typography, shape, colors, typographyMode, locale } = theme as never;
+    const { palette, typography, shape, colors, typographyMode, locale, featuredIcon } = theme as never;
     const breakpoints = (theme as { breakpoints: { values: unknown; }; }).breakpoints.values;
 
     return JSON.parse(JSON.stringify(
-        { locale, typographyMode, shape, breakpoints, palette, typography, colors }
+        { locale, typographyMode, shape, breakpoints, palette, typography, colors, featuredIcon }
     ));
 };
 

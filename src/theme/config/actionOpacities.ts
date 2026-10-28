@@ -1,7 +1,8 @@
 import type { PaletteMode } from '@mui/material';
 
-// Numeric action opacity values used by MUI TypeAction.
-// Adjust here without touching token generation.
+// Numeric action opacity values used by MUI TypeAction, for `reference` (MUI's defaults) and the
+// two Ring-only keys of both variants. Under `next` the five MUI keys come from
+// `next/opacity.generated.ts` and override these.
 
 interface ActionOpacities {
     hoverOpacity: number;

@@ -12,6 +12,7 @@
         "outDir": "dist",
         "declaration": true,
         "declarationMap": false,
+        "removeComments": false,
         "emitDeclarationOnly": true
     },
     "include": [

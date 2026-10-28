@@ -1,4 +1,17 @@
-import { TablePagination, Theme, useTheme } from '@mui/material';
+import {
+    Autocomplete,
+    AutocompleteProps,
+    IconButton,
+    InputAdornment,
+    Paper,
+    PaperProps,
+    TablePagination,
+    TextField,
+    TextFieldProps,
+    Theme,
+    ThemeProvider,
+    useTheme
+} from '@mui/material';
 import { zhCN } from '@mui/material/locale';
 import { DataGrid } from '@mui/x-data-grid';
 import { plPL as xDataGridPl } from '@mui/x-data-grid/locales';
@@ -6,6 +19,7 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { getTheme, ThemeConfig } from '../../src';
+import { orderOf, styleFor } from './helpers/emotionRules';
 
 // Children of ThemeConfig that are not MUI components leave no theme trace in
 // the DOM, so snapshotting them proves nothing. This consumer surfaces the theme
@@ -31,7 +45,10 @@ describe('getTheme', () => {
         const themeObject = getTheme('light', { language: 'plPL' });
         expect(themeObject.locale).toBe('plPL');
         expect(themeObject.palette.mode).toBe('light');
-        expect(themeObject.components).not.toHaveProperty('MuiDataGrid');
+        // The default theme defines `MuiDataGrid` for its icon slots only; grid behaviour stays in `ringDataGridOverrides`.
+        expect(themeObject.components).toHaveProperty('MuiDataGrid.defaultProps.slots');
+        expect(themeObject.components).not.toHaveProperty('MuiDataGrid.defaultProps.hideFooter');
+        expect(themeObject.components).not.toHaveProperty('MuiDataGrid.styleOverrides');
     });
     it('Full working example should work', () => {
         const themeObject = getTheme('dark', {
@@ -102,7 +119,9 @@ describe('ThemeConfig', () => {
                 mode={'light'}
                 language={'enUS'}
                 version={'next'}
-                externalComponentsTheme={MuiDataGridPart}
+                // `next` defines `MuiDataGrid` itself, so an application entry merges with it only here;
+                // `externalComponentsTheme` would be replaced by it.
+                themeOverrides={{ components: MuiDataGridPart }}
                 externalLocales={[xDataGridPl, zhCN]}
             >
 
@@ -334,8 +353,8 @@ describe('typographyMode', () => {
         );
         const consumer = container.querySelector<HTMLElement>('[data-testid="theme-consumer"]');
         expect(consumer?.dataset.typographyMode).toBe('deprecated-px');
-        // deprecated-px config on the default (reference) version: body1 = 14px.
-        expect(consumer?.dataset.body1FontSize).toBe('14px');
+        // deprecated-px config on the default (next) version: body1 = 16px.
+        expect(consumer?.dataset.body1FontSize).toBe('16px');
     });
 });
 
@@ -562,12 +581,12 @@ describe('spacing pipeline', () => {
 });
 
 describe('theme version switch', () => {
-    it('should default to reference (Ring legacy palette + typography)', () => {
+    it('should default to next (design system palette + typography)', () => {
         const theme = getTheme('light');
-        // `reference` body1.fontSize = 14px / 16 = 0.875rem.
-        expect(theme.typography.body1.fontSize).toBe('0.875rem');
-        // Ring legacy cyan primary — distinct from `next` blue.
-        expect(theme.palette.primary.main).toBe('rgba(0, 167, 238, 1)');
+        // `next` body1.fontSize = 16px / 16 = 1rem.
+        expect(theme.typography.body1.fontSize).toBe('1rem');
+        // Design system blue primary — distinct from `reference` cyan.
+        expect(theme.palette.primary.main).toBe('rgba(20, 80, 180, 1)');
     });
 
     it('reference should render Ring legacy palette (cyan primary from master branch)', () => {
@@ -619,31 +638,296 @@ describe('theme version switch', () => {
         expect(theme.components?.MuiOutlinedInput?.defaultProps?.notched).toBe(false);
     });
 
-    it('next outlined input slots should resolve a smaller padding for size small', () => {
+    it('next input slots should resolve a height floor per size in every variant', () => {
         const theme = getTheme('light', { version: 'next' });
 
-        // Outlined inputs have no fixed height — it comes entirely from the slot
-        // padding, so the override must produce a different value per size or the
-        // `size` prop stops working.
-        const input = theme.components?.MuiOutlinedInput?.styleOverrides?.input as (
-            props: { theme: Theme; ownerState: { size?: string; }; }
-        ) => { padding: string; };
-        expect(typeof input).toBe('function');
-        const inputMedium = input({ theme, ownerState: { size: 'medium' } });
-        const inputSmall = input({ theme, ownerState: { size: 'small' } });
-        expect(inputMedium.padding).toBe('12px 8px 12px 16px');
-        expect(inputSmall.padding).toBe('8px 8px 8px 16px');
+        // A floor rather than a fixed height, so multiline textareas and wrapping
+        // Autocomplete chips still grow the field.
+        for (const component of ['MuiOutlinedInput', 'MuiFilledInput', 'MuiInput'] as const) {
+            const variantRoot = theme.components?.[component]?.styleOverrides?.root as (
+                props: { theme: Theme; ownerState: { size?: string; formControl?: unknown; }; }
+            ) => Record<string, unknown> & { minHeight?: string; height?: string; };
+            expect(typeof variantRoot).toBe('function');
+            expect(variantRoot({ theme, ownerState: { size: 'medium', formControl: true } }).minHeight).toBe('40px');
+            expect(variantRoot({ theme, ownerState: { size: 'small', formControl: true } }).minHeight).toBe('32px');
+            expect(variantRoot({ theme, ownerState: { size: 'medium', formControl: true } }).height).toBeUndefined();
+        }
 
-        // Pickers keep the vertical padding on `sectionsContainer` (their ownerState
-        // key for size is `inputSize`).
-        const sections = theme.components?.MuiPickersOutlinedInput?.styleOverrides?.sectionsContainer as (
-            props: { theme: Theme; ownerState: { inputSize?: string; }; }
-        ) => { padding: string; };
-        expect(typeof sections).toBe('function');
-        const sectionsMedium = sections({ theme, ownerState: { inputSize: 'medium' } });
-        const sectionsSmall = sections({ theme, ownerState: { inputSize: 'small' } });
-        expect(sectionsMedium.padding).toBe('12px 0px');
-        expect(sectionsSmall.padding).toBe('8px 0px');
+        // A standard input is a field only inside a form control; a bare `Input` / `Select` keeps its
+        // own content height and MUI's own input box.
+        const standardRoot = theme.components?.MuiInput?.styleOverrides?.root as (
+            props: { theme: Theme; ownerState: { size?: string; formControl?: unknown; }; }
+        ) => { minHeight?: string; };
+        const standardInput = theme.components?.MuiInput?.styleOverrides?.input as (
+            props: { theme: Theme; ownerState: { formControl?: unknown; }; }
+        ) => { height?: string; } | undefined;
+        expect(standardRoot({ theme, ownerState: { size: 'small' } }).minHeight).toBeUndefined();
+        expect(standardInput({ theme, ownerState: {} })?.height).toBeUndefined();
+        expect(standardInput({ theme, ownerState: { formControl: true } })?.height).toBe('1.5rem');
+
+        // An IconButton inside any field is sized by the field: 28px in medium, 24px in small, and
+        // MUI's own 24px SvgIcon default drops to the 20px glyph of every other field icon.
+        const FIELD_BUTTON = [
+            '& > .MuiIconButton-root',
+            '& .MuiInputAdornment-root .MuiIconButton-root',
+            '& .MuiAutocomplete-endAdornment .MuiIconButton-root'
+        ].join(', ');
+        const inputBaseRoot = theme.components?.MuiInputBase?.styleOverrides?.root as (
+            props: { theme: Theme; ownerState: { size?: string; }; }
+        ) => Record<string, { width: number; height: number; padding: number; '& .MuiSvgIcon-fontSizeMedium': { fontSize: string; }; }>;
+        expect(inputBaseRoot({ theme, ownerState: { size: 'medium' } })[FIELD_BUTTON]).toEqual({
+            'width': 28,
+            'height': 28,
+            'padding': 0,
+            '& .MuiSvgIcon-fontSizeMedium': { fontSize: '1.25rem' }
+        });
+        expect(inputBaseRoot({ theme, ownerState: { size: 'small' } })[FIELD_BUTTON].width).toBe(24);
+        const pickerBase = theme.components?.MuiPickersInputBase?.styleOverrides?.root as (
+            props: { theme: Theme; }
+        ) => Record<string, Record<string, { width: number; }>>;
+        expect(pickerBase({ theme })[FIELD_BUTTON].width).toBe(28);
+        expect(pickerBase({ theme })['&.MuiPickersInputBase-inputSizeSmall'][FIELD_BUTTON].width).toBe(24);
+
+        const root = theme.components?.MuiOutlinedInput?.styleOverrides?.root as (
+            props: { theme: Theme; ownerState: { size?: string; }; }
+        ) => Record<string, unknown>;
+        const rootMedium = root({ theme, ownerState: { size: 'medium' } });
+
+        expect(rootMedium['&&.MuiAutocomplete-inputRoot']).toBeUndefined();
+
+        // Autocomplete replaces its own padding with an inset that lands a 24px row on the
+        // floor (8 + 24 + 8, 4 + 24 + 4); wrapped chip rows are spaced by `rowGap`.
+        const autocompleteRoot = theme.components?.MuiAutocomplete?.styleOverrides?.root as (
+            props: { theme: Theme; ownerState: { multiple?: boolean; }; }
+        ) => Record<string, Record<string, unknown>>;
+
+        // One rule per size covers every field variant, including MUI's `hiddenLabel` selectors.
+        const findRule = (styles: Record<string, Record<string, unknown>>, selector: string): Record<string, unknown> => {
+            const key = Object.keys(styles).find((candidate) => candidate.split(', ').includes(selector));
+            expect(key).toBeDefined();
+
+            return styles[key as string];
+        };
+
+        for (const multiple of [false, true]) {
+            const styles = autocompleteRoot({ theme, ownerState: { multiple } });
+            const medium = findRule(styles, '& .MuiOutlinedInput-root');
+            const small = findRule(styles, '& .MuiOutlinedInput-root.MuiInputBase-sizeSmall');
+
+            // A plain `.MuiAutocomplete-endAdornment` element (no MUI styled class) is placed as
+            // MUI places its own, so it never sits in the flow and grows the field.
+            expect(styles['& .MuiAutocomplete-endAdornment']).toEqual({
+                position: 'absolute',
+                right: 0,
+                top: '50%',
+                transform: 'translate(0, -50%)'
+            });
+
+            // Room for every end adornment button at the in-field size (28 / 24) plus the
+            // adornment's offset (9, 0 in standard) and a 4px gap.
+            for (const buttons of [1, 2, 3, 4]) {
+                const has = `&:has(.MuiAutocomplete-endAdornment > :nth-of-type(${buttons}))`;
+                expect(styles[`${has} .MuiOutlinedInput-root`]).toEqual({ paddingRight: 9 + (buttons * 28) + 4 });
+                expect(styles[`${has} .MuiOutlinedInput-root.MuiInputBase-sizeSmall`])
+                    .toEqual({ paddingRight: 9 + (buttons * 24) + 4 });
+                expect(styles[`${has} .MuiInput-root`]).toEqual({ paddingRight: (buttons * 28) + 4 });
+            }
+
+            for (const root of ['.MuiFilledInput-root', '.MuiInput-root']) {
+                expect(findRule(styles, `& ${root}`)).toBe(medium);
+                expect(findRule(styles, `& ${root}.MuiInputBase-hiddenLabel.MuiInputBase-sizeSmall`)).toBe(small);
+            }
+
+            expect(medium).toMatchObject({ paddingTop: '8px', paddingBottom: '8px', rowGap: '4px' });
+            expect(medium['& .MuiAutocomplete-input']).toEqual({ paddingTop: 0, paddingBottom: 0 });
+            expect(medium['& .MuiAutocomplete-tag']).toEqual({ marginTop: 0, marginBottom: 0 });
+            expect(small).toMatchObject({ paddingTop: '4px', paddingBottom: '4px' });
+            expect(small['& .MuiAutocomplete-input']).toEqual({ paddingTop: 0, paddingBottom: 0 });
+        }
+
+        const input = theme.components?.MuiOutlinedInput?.styleOverrides?.input as (
+            props: { theme: Theme; }
+        ) => { paddingTop: number; paddingBottom: number; };
+        expect(input({ theme }).paddingTop).toBe(0);
+        expect(input({ theme }).paddingBottom).toBe(0);
+
+        // Pickers take the same floor on their own `root`; small is keyed on the size class MUI X
+        // puts on the root, because not every picker slot receives an `ownerState`.
+        expect(theme.components?.MuiPickersOutlinedInput?.styleOverrides?.sectionsContainer).toEqual({
+            padding: 0
+        });
+
+        for (const component of ['MuiPickersOutlinedInput', 'MuiPickersFilledInput', 'MuiPickersInput'] as const) {
+            const pickerRoot = theme.components?.[component]?.styleOverrides?.root as (
+                props: { theme: Theme; }
+            ) => { 'minHeight': string; '&.MuiPickersInputBase-inputSizeSmall': { minHeight: string; }; };
+            expect(typeof pickerRoot).toBe('function');
+            expect(pickerRoot({ theme }).minHeight).toBe('40px');
+            expect(pickerRoot({ theme })['&.MuiPickersInputBase-inputSizeSmall'].minHeight).toBe('32px');
+        }
+    });
+
+    it('next input text should be 14/24 in both typography modes', () => {
+        // `deprecated-px` resolves rem against a 10px root, so 1.4rem is 14px there.
+        for (const [typographyMode, fontSize, lineHeight] of [
+            ['rem', '0.875rem', '1.5rem'],
+            ['deprecated-px', '1.4rem', '2.4rem']
+        ] as const) {
+            const theme = getTheme('light', { version: 'next', typographyMode });
+            const root = theme.components?.MuiOutlinedInput?.styleOverrides?.root as (
+                props: { theme: Theme; ownerState: { size?: string; }; }
+            ) => { fontSize: string; lineHeight: string; };
+            const input = theme.components?.MuiOutlinedInput?.styleOverrides?.input as (
+                props: { theme: Theme; }
+            ) => { height: string; };
+            const pickerRoot = theme.components?.MuiPickersOutlinedInput?.styleOverrides?.root as (
+                props: { theme: Theme; }
+            ) => { fontSize: string; lineHeight: string; };
+            const sections = theme.components?.MuiPickersInputBase?.styleOverrides?.sectionsContainer as (
+                props: { ownerState?: object; }
+            ) => { lineHeight: string; };
+
+            expect(root({ theme, ownerState: {} })).toMatchObject({ fontSize, lineHeight });
+            expect(input({ theme }).height).toBe(lineHeight);
+            expect(pickerRoot({ theme })).toMatchObject({ fontSize, lineHeight });
+            expect(sections({ ownerState: {} }).lineHeight).toBe(lineHeight);
+        }
+    });
+});
+
+describe('next field adornments and lists', () => {
+    const theme = getTheme('light', { version: 'next' });
+
+    const renderField = (props: TextFieldProps): HTMLElement => {
+        const { container } = render(
+            <ThemeProvider theme={theme}>
+                <TextField {...props} />
+            </ThemeProvider>
+        );
+
+        return container.querySelector('.MuiInputBase-root') as HTMLElement;
+    };
+
+    const textOf = (root: HTMLElement): HTMLElement =>
+        root.querySelector('.MuiInputBase-input:not([aria-hidden])') as HTMLElement;
+
+    const endAdornment = <IconButton aria-label="action">x</IconButton>;
+    const startAdornment = <InputAdornment position="start">@</InputAdornment>;
+
+    // MUI insets an adornment 14px from the border of a single-line outlined field. The multiline
+    // root drops MUI's own multiline padding, so the inset has to come from the theme rule.
+    it.each(['small', 'medium'] as const)('keeps the single-line adornment inset on a %s multiline outlined field', (size) => {
+        const multiline = { multiline: true, rows: 2 };
+        const singleEnd = renderField({ size, slotProps: { input: { endAdornment } } });
+        const singleStart = renderField({ size, slotProps: { input: { startAdornment } } });
+        const multiEnd = renderField({ size, ...multiline, slotProps: { input: { endAdornment } } });
+        const multiStart = renderField({ size, ...multiline, slotProps: { input: { startAdornment } } });
+        const multiPlain = renderField({ size, ...multiline });
+        const MULTILINE = '.MuiInputBase-multiline';
+
+        expect(singleEnd.classList.contains('MuiInputBase-multiline')).toBe(false);
+        expect(styleFor(singleEnd, '', 'padding-right')).toBe('14px');
+        expect(styleFor(singleStart, '', 'padding-left')).toBe('14px');
+
+        expect(multiEnd.classList.contains('MuiInputBase-multiline')).toBe(true);
+        expect(styleFor(multiEnd, MULTILINE, 'padding-right')).toBe('14px');
+        expect(styleFor(multiEnd, MULTILINE, 'padding-left')).toBe('0');
+        expect(styleFor(multiStart, MULTILINE, 'padding-left')).toBe('14px');
+        expect(styleFor(multiStart, MULTILINE, 'padding-right')).toBe('0');
+
+        for (const root of [multiEnd, multiStart, multiPlain]) {
+            expect(styleFor(root, MULTILINE, 'padding-top')).toBe('0');
+            expect(styleFor(root, MULTILINE, 'padding-bottom')).toBe('0');
+        }
+
+        expect(styleFor(multiPlain, MULTILINE, 'padding-left')).toBe('0');
+        expect(styleFor(multiPlain, MULTILINE, 'padding-right')).toBe('0');
+
+        // Text to button stays 8px, single line and multiline alike.
+        expect(styleFor(textOf(singleEnd), '', 'padding-right')).toBe('8px');
+        expect(styleFor(textOf(multiEnd), '', 'padding-right')).toBe('8px');
+
+        // Beside a start adornment the text has no inset of its own: the adornment's 8px margin is the gap.
+        const ADORNED_START = '.MuiInputBase-inputAdornedStart';
+
+        for (const root of [singleStart, multiStart]) {
+            expect(textOf(root).classList.contains('MuiInputBase-inputAdornedStart')).toBe(true);
+            expect(styleFor(textOf(root), ADORNED_START, 'padding-left')).toBe('0');
+        }
+
+        expect(styleFor(textOf(singleEnd), '', 'padding-left')).toBe('16px');
+    });
+
+    const labelOf = (props: TextFieldProps): HTMLElement => {
+        const { container } = render(
+            <ThemeProvider theme={theme}>
+                <TextField label="Label" {...props} />
+            </ThemeProvider>
+        );
+
+        return container.querySelector('.MuiInputLabel-root') as HTMLElement;
+    };
+
+    // The rest is centred on the input line, 20px below the caption line and its gap: at 20px in
+    // a medium field, 16px in a small one, 24px in a textarea; the 12px caption is drawn at 14px.
+    it('rests a standard label on the input line until it shrinks to the caption above the field', () => {
+        const SMALL = '.MuiInputLabel-sizeSmall';
+        const MULTILINE = ':has(+ .MuiInputBase-multiline)';
+        const SHRINK = '.MuiInputLabel-shrink';
+        const label = labelOf({ variant: 'standard' });
+
+        expect(styleFor(label, '', 'transform')).toBe('translate(0, 30.667px) scale(1.1667)');
+        expect(styleFor(label, '', 'max-width')).toBe('85.714%');
+        expect(styleFor(label, SMALL, 'transform')).toBe('translate(0, 26.667px) scale(1.1667)');
+        expect(styleFor(label, MULTILINE, 'transform')).toBe('translate(0, 34.667px) scale(1.1667)');
+        expect(styleFor(label, SHRINK, 'transform')).toBe('none');
+        expect(styleFor(label, SHRINK, 'max-width')).toBe('100%');
+        expect(styleFor(label, '', 'transition')).toContain('transform');
+
+        // Equal specificity, so the shrunk caption wins on source order over every rest.
+        expect(orderOf(label, SHRINK)).toBeGreaterThan(orderOf(label, SMALL));
+        expect(orderOf(label, SHRINK)).toBeGreaterThan(orderOf(label, MULTILINE));
+    });
+
+    it.each(['outlined', 'filled'] as const)('keeps the %s label above the field', (variant) => {
+        const label = labelOf({ variant });
+
+        expect(styleFor(label, '', 'transform')).toBe('none');
+        expect(styleFor(label, '.MuiInputLabel-sizeSmall', 'transform')).toBeUndefined();
+    });
+
+    const CustomPaper = (props: PaperProps): React.ReactElement => <Paper {...props} />;
+
+    const paperClasses = (props: Pick<AutocompleteProps<string, false, false, false>, 'slots' | 'slotProps'>): string[] => {
+        const { baseElement, unmount } = render(
+            <ThemeProvider theme={theme}>
+                <Autocomplete
+                    open={true}
+                    options={['Alpha']}
+                    renderInput={(params): React.ReactElement => <TextField {...params} />}
+                    {...props}
+                />
+            </ThemeProvider>
+        );
+        const papers = baseElement.querySelectorAll('.MuiAutocomplete-paper');
+
+        expect(papers).toHaveLength(1);
+        const classes = Array.from(papers[0].classList);
+        unmount();
+
+        return classes;
+    };
+
+    it('opens the Autocomplete list at elevation 8, also through a custom paper slot', () => {
+        expect(paperClasses({})).toContain('MuiPaper-elevation8');
+        expect(paperClasses({ slotProps: { listbox: {} } })).toContain('MuiPaper-elevation8');
+        expect(paperClasses({ slots: { paper: CustomPaper } })).toContain('MuiPaper-elevation8');
+    });
+
+    it('lets a consumer elevation on the Autocomplete paper win', () => {
+        expect(paperClasses({ slotProps: { paper: { elevation: 2 } } })).toContain('MuiPaper-elevation2');
+        expect(paperClasses({ slots: { paper: CustomPaper }, slotProps: { paper: { elevation: 0 } } }))
+            .toContain('MuiPaper-elevation0');
     });
 });
 

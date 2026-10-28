@@ -1,3 +1,4 @@
+/** @deprecated The raw colour scales are not part of the design system; read the tokens in `theme.palette` instead. */
 export const colors = {
     amber: {
         50: '#fff8e1',
@@ -381,4 +382,5 @@ export const colors = {
     }
 };
 
+/** @deprecated Shape of `theme.colors`, deprecated with it. */
 export type Colors = typeof colors;

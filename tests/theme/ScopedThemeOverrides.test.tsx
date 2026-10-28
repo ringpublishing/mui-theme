@@ -46,6 +46,19 @@ describe('ScopedThemeOverrides', () => {
         expect(inputRoot?.className).toContain('MuiOutlinedInput-root');
     });
 
+    it('aligns outlined helper text with the outlined label padding', () => {
+        const { container } = render(
+            <ThemeConfig mode="light" version="next">
+                <TextField label="Label" helperText="Helper" variant="outlined" />
+            </ThemeConfig>
+        );
+
+        const helperText = container.querySelector('.MuiFormHelperText-root');
+
+        expect(helperText).not.toBeNull();
+        expect(getComputedStyle(helperText as Element).marginLeft).toBe('8px');
+    });
+
     it('inherits parent palette without rebuilding the theme from scratch', () => {
         let scopedTheme: ReturnType<typeof useTheme> | undefined;
         const expectedPrimary = getTheme('dark').palette.primary.main;

@@ -75,6 +75,7 @@ describe('ThemeConfig — lazy InspectorBridge activation', () => {
         const handle = (window as unknown as { __RING_UI__?: RingHandle; }).__RING_UI__;
         expect(handle).toBeDefined();
         expect(handle!.getState().mode).toBe('light');
+        expect(handle?.getState().variant).toBe('next');
     });
 
     it('treats flag value other than "1" as inactive (e.g. "0")', async () => {

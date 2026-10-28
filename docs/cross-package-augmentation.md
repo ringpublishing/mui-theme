@@ -35,7 +35,6 @@ Goal: add a field to a type that consumers use **via property access**:
 
 ```ts
 theme.palette.contrast.main
-theme.colors.red[600]
 theme.getSpacing(2)
 ```
 
@@ -106,7 +105,6 @@ Consumers inherit it automatically. **No duplication.**
 Examples:
 - `theme.palette.contrast` (PaletteColor)
 - `theme.palette.components.X` (custom component palettes)
-- `theme.colors.red[600]` (full Ring color scale)
 - `theme.getSpacing(2)` (strict Ring spacing API)
 - `theme.typography.headline1` (Ring-specific typography variants as CSS objects — root module augmentation `TypographyVariants`)
 

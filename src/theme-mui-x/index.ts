@@ -37,7 +37,8 @@ export function getMuiXLocales(language: CommonLanguages | string = CommonLangua
 }
 
 // Ring defaults and styleOverrides for MuiDataGrid.
-// Pass through `ThemeConfig` `externalComponentsTheme`.
+// Pass through `ThemeConfig` `themeOverrides.components`: it is merged into the theme, so the icons
+// the `next` version gives the grid stay. `externalComponentsTheme` replaces the theme's own entry.
 export const ringDataGridOverrides = {
     MuiDataGrid: {
         defaultProps: {
@@ -49,13 +50,17 @@ export const ringDataGridOverrides = {
                     color: theme.palette.text.secondary
                 },
                 '--unstable_DataGrid-headWeight': 600,
-                '--DataGrid-rowBorderColor': theme.palette.components.datagrid?.border,
+                // Every line the grid colours with this variable takes the divider, like the lines around the grid.
+                '--DataGrid-rowBorderColor': theme.palette.divider,
                 'border': 'none',
                 '& .MuiDataGrid-cell:focus': { outline: 'none' },
                 '& .MuiDataGrid-cell:focus-within': { outline: 'none' },
                 '& .MuiDataGrid-columnHeader:focus': { outline: 'none' },
                 '& .MuiDataGrid-columnHeader:focus-within': { outline: 'none' },
-                '& .MuiDataGrid-row:hover': { cursor: 'pointer' }
+                '& .MuiDataGrid-row:hover': { cursor: 'pointer' },
+                // MUI X clips the last header only while the grid scrolls horizontally. When the columns fit
+                // exactly, its hidden menu button and right separator would otherwise widen the scroller.
+                '& .MuiDataGrid-columnHeader--last': { overflow: 'hidden' }
             })
         }
     }

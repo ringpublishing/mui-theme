@@ -34,20 +34,52 @@ Use the `typographyMode="deprecated-px"` prop to keep the previous px-based typo
 
 > ⚠️ `typographyMode="deprecated-px"` is **deprecated** and will be removed in the next major version. It is intended as a temporary bridge to allow gradual migration.
 
-## Version 4.x.x supports:
+## Version 5.x.x supports:
 
 * "@emotion/styled": "^11.0.0"
 * "@mui/material": "^7.0.0"
-* "@mui/x-data-grid": "^8.0.0"
-* "@mui/x-data-grid-pro": "^8.0.0"
-* "@mui/x-date-pickers": "^8.0.0"
-* "@mui/x-date-pickers-pro": "^8.0.0"
+* "@mui/x-data-grid": "^8.17.0"
+* "@mui/x-data-grid-pro": "^8.17.0"
+* "@mui/x-date-pickers": "^8.17.0"
+* "@mui/x-date-pickers-pro": "^8.17.0"
+* "lucide-react": "^1.42.0"
 
 ## Installation
 
 ```shell
 npm install @ringpublishing/mui-theme
 ```
+
+## Fonts
+
+The theme sets text in Inter but does not load it. Load the weights its typography uses once, in the application entry
+file; without them text falls back to the system font:
+
+```shell
+npm install @fontsource/inter
+```
+
+```ts
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+```
+
+A Google Fonts `<link>` for Inter works as well. `@fontsource-variable/inter` does not: it registers the font as
+`Inter Variable`, a name the theme does not use.
+
+`ThemeConfig` renders its children once these weights are loaded, at most 2 seconds after it mounts, so the page does
+not flash the fallback font; `waitForFonts={false}` renders them at once. An application with its own `ThemeProvider`
+can wait the same way with `getThemeFonts(theme)` and `waitForThemeFonts(fonts)`.
+
+## Icons
+
+The theme draws the default icons of MUI and MUI X components with `lucide-react`. `ThemeConfig` mounts
+`RingIconDefaults`, which gives every plain lucide icon under it the design system's 20px size and 1.5px stroke, MUI
+palette names in `color` and the `SvgIcon` sizes in `fontSize`; explicit props on an icon still win. An application with
+its own `ThemeProvider` mounts it inside, see [Using `getTheme` directly](#using-gettheme-directly).
 
 ## Minimal usage example
 
@@ -125,7 +157,7 @@ function App() {
                     MuiButton: {
                         defaultProps: { variant: 'outlined' },
                         styleOverrides: {
-                            root: { borderRadius: 8 }
+                            sizeMedium: { padding: '6px 20px' }
                         }
                     }
                 }
@@ -148,18 +180,27 @@ When overriding components, `styleOverrides` merge depends on the value type:
 | function | object | Replacement — your object wins |
 | object | function | Replacement — your function wins |
 
+These slots are functions in the default theme, so an object passed for one of them replaces the theme's style rather
+than adding to it: `MuiButton.root`, `MuiIconButton.root`, `MuiToggleButton.root`, `MuiChip.root`, `MuiSwitch.root`,
+`MuiAppBar.colorPrimary`, `MuiTooltip.tooltip` and `.arrow`, `MuiAccordion.root`, `MuiAccordionSummary.root`, `.content`
+and `.expandIconWrapper`, `MuiAccordionDetails.root`, `MuiAutocomplete.root`, `MuiInputBase.root`, `MuiInput.root` and
+`.input`, `MuiFilledInput.root` and `.input`, `MuiOutlinedInput.root` and `.input`, `MuiFormHelperText.root`,
+`MuiPickersInputBase.root` and `.sectionsContainer`, `MuiPickersInput.root`, `MuiPickersFilledInput.root`,
+`MuiPickersOutlinedInput.root` and `MuiPickersCalendarHeader.switchViewButton`. To change one of them, pass a function
+that repeats the styles you keep, or style the element where you render it with `sx`.
+
 **Object-valued** overrides safely merge CSS properties:
 
 ```tsx
-// Library default: fontSize: '10px', fontWeight: '400', lineHeight: '14px'
+// Library default: fontSize: '0.875rem', letterSpacing: '0.4px', padding: '6px 16px'
 // Your override:
 themeOverrides={{
     components: {
-        MuiTooltip: {
+        MuiButton: {
             styleOverrides: {
-                tooltip: {
-                    fontSize: '14px',  // overrides default 10px
-                    color: 'red'       // added — fontWeight and lineHeight preserved
+                sizeMedium: {
+                    padding: '6px 20px',  // overrides default 6px 16px
+                    minWidth: 120         // added — fontSize and letterSpacing preserved
                 }
             }
         }
@@ -191,19 +232,17 @@ themeOverrides={{
 
 Below is a full input/output example showing how `createTheme(base, overrides)` merges component definitions.
 
-**Library defaults (base):**
+**Library defaults (base, excerpt):**
 ```ts
 components: {
-    MuiTooltip: {
+    MuiButton: {
         styleOverrides: {
-            tooltip: { fontSize: '10px', fontWeight: '400', lineHeight: '14px' }
+            root: ({ theme }) => ({ borderRadius: theme.getBorderRadius(2), fontWeight: 600, textTransform: 'none', … }),
+            sizeMedium: { fontSize: '0.875rem', letterSpacing: '0.4px', padding: '6px 16px', … }
         }
     },
     MuiTextField: {
-        defaultProps: { variant: 'standard' }
-    },
-    MuiChip: {
-        defaultProps: { size: 'small' }
+        defaultProps: { variant: 'outlined' }
     }
 }
 ```
@@ -212,16 +251,17 @@ components: {
 ```ts
 themeOverrides={{
     components: {
-        MuiTooltip: {
+        MuiButton: {
             styleOverrides: {
-                tooltip: { fontSize: '14px', color: 'red' }
+                root: { minWidth: 120 },
+                sizeMedium: { padding: '6px 20px' }
             }
         },
         MuiTextField: {
-            defaultProps: { variant: 'outlined', size: 'small' }
+            defaultProps: { size: 'small' }
         },
-        MuiButton: {
-            defaultProps: { variant: 'contained' }
+        MuiFab: {
+            defaultProps: { color: 'primary' }
         }
     }
 }}
@@ -230,34 +270,33 @@ themeOverrides={{
 **Result after merge:**
 ```ts
 components: {
-    // Deep merged — fontSize overridden, color added, fontWeight and lineHeight preserved
-    MuiTooltip: {
+    MuiButton: {
         styleOverrides: {
-            tooltip: { fontSize: '14px', fontWeight: '400', lineHeight: '14px', color: 'red' }
+            // Replaced — the library function is gone, so the button loses its radius, weight and
+            // non-uppercase text; only minWidth is left
+            root: { minWidth: 120 },
+            // Deep merged — padding overridden, fontSize and letterSpacing preserved
+            sizeMedium: { fontSize: '0.875rem', letterSpacing: '0.4px', padding: '6px 20px', … }
         }
     },
-    // Deep merged — variant overridden to 'outlined', size added
+    // Deep merged — size added, variant preserved
     MuiTextField: {
         defaultProps: { variant: 'outlined', size: 'small' }
     },
-    // Untouched — no override provided
-    MuiChip: {
-        defaultProps: { size: 'small' }
-    },
     // Added — new component not in base
-    MuiButton: {
-        defaultProps: { variant: 'contained' }
+    MuiFab: {
+        defaultProps: { color: 'primary' }
     }
 }
 ```
 
 ## Using `getTheme` directly
 
-If you need the theme object without `ThemeConfig` (e.g. for a custom `ThemeProvider`, SSR, or tests), use `getTheme` with an options object:
+If you need the theme object without `ThemeConfig` (e.g. for a custom `ThemeProvider`, SSR, or tests), use `getTheme` with an options object. `ThemeConfig` also renders `CssBaseline` and `RingIconDefaults`; mount both inside your `ThemeProvider`, or plain lucide icons, the default icons of `Alert` and the date pickers among them, render at lucide's 24px with a 2px stroke:
 
 ```tsx
-import { ThemeProvider } from '@mui/material';
-import { getTheme } from '@ringpublishing/mui-theme';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { RingIconDefaults, getTheme } from '@ringpublishing/mui-theme';
 
 function App() {
     const theme = getTheme('light', {
@@ -269,7 +308,10 @@ function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <MyApp />
+            <CssBaseline />
+            <RingIconDefaults>
+                <MyApp />
+            </RingIconDefaults>
         </ThemeProvider>
     );
 }

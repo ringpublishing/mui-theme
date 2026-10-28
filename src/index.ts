@@ -4,6 +4,7 @@ import './theme/themeAugmentation';
 // Keep this file runtime-only; `.d.ts` has no JS emit.
 
 export * from './theme';
+export * from './fonts';
 export * from './helpers/commonTypes';
 
 export type { Theme } from '@mui/material';
