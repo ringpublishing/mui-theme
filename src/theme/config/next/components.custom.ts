@@ -160,6 +160,16 @@ function fieldLabel(theme: Theme, variant: 'outlined' | 'filled' | 'standard'): 
     };
 }
 
+// MUI hides the placeholder until the label shrinks. An outlined or filled label sits above the
+// field (`fieldLabel`), so the placeholder shows from the start; standard keeps MUI's rule.
+function placeholderBesideLabel(): object {
+    return {
+        'label[data-shrink=false] + .MuiInputBase-formControl &::placeholder': {
+            opacity: '1 !important'
+        }
+    };
+}
+
 // The 14px input text (`fieldBox`) over the 12px caption of the label.
 const STANDARD_LABEL_REST_SCALE = 14 / 12;
 
@@ -821,6 +831,7 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                 }),
                 input: ({ theme }: { theme: Theme; }) => ({
                     ...fieldInput(theme, pxTo),
+                    ...placeholderBesideLabel(),
                     'paddingRight': theme.getSpacing(1),
                     'paddingLeft': theme.getSpacing(2),
                     // Beside a start adornment MUI drops the left padding and the adornment's own 8px
@@ -845,7 +856,10 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                         paddingBottom: 0
                     }
                 }),
-                input: ({ theme }: { theme: Theme; }) => fieldInput(theme, pxTo)
+                input: ({ theme }: { theme: Theme; }) => ({
+                    ...fieldInput(theme, pxTo),
+                    ...placeholderBesideLabel()
+                })
             }
         },
         // MUI pushes a start adornment in a filled field 16px down, level with the text under

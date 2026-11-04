@@ -19,7 +19,7 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { getTheme, ThemeConfig } from '../../src';
-import { orderOf, styleFor } from './helpers/emotionRules';
+import { orderOf, rulesFor, styleFor } from './helpers/emotionRules';
 
 // Children of ThemeConfig that are not MUI components leave no theme trace in
 // the DOM, so snapshotting them proves nothing. This consumer surfaces the theme
@@ -894,6 +894,37 @@ describe('next field adornments and lists', () => {
 
         expect(styleFor(label, '', 'transform')).toBe('none');
         expect(styleFor(label, '.MuiInputLabel-sizeSmall', 'transform')).toBeUndefined();
+    });
+
+    // Placeholder opacities under an unshrunk label, in emitted order: the last one applies.
+    const unshrunkPlaceholderOpacities = (props: TextFieldProps): string[] => {
+        const { container } = render(
+            <ThemeProvider theme={theme}>
+                <TextField label="Label" placeholder="Placeholder" {...props} />
+            </ThemeProvider>
+        );
+        const { rules } = rulesFor(container.querySelector('.MuiInputBase-input') as HTMLElement);
+
+        return rules
+            .filter((r) => r.selector.includes('label[data-shrink=false]') && !r.selector.includes(':focus'))
+            .flatMap((r) => r.body.split(';'))
+            .map((d) => d.trim())
+            .filter((d) => d.startsWith('opacity:'))
+            .map((d) => d.slice('opacity:'.length).trim());
+    };
+
+    it.each(['outlined', 'filled'] as const)('shows the placeholder beside the %s label before the field is focused', (variant) => {
+        const opacities = unshrunkPlaceholderOpacities({ variant });
+
+        expect(opacities).toContain('0!important');
+        expect(opacities.at(-1)).toBe('1!important');
+    });
+
+    it('hides the placeholder under a resting standard label until it shrinks', () => {
+        const opacities = unshrunkPlaceholderOpacities({ variant: 'standard' });
+
+        expect(opacities).toContain('0!important');
+        expect(opacities).not.toContain('1!important');
     });
 
     const CustomPaper = (props: PaperProps): React.ReactElement => <Paper {...props} />;

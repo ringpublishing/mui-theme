@@ -1,6 +1,11 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [5.0.2] - 2026-11-03
+
+### Fixed
+- Outlined and filled fields show the placeholder next to the label before they are focused.
+
 ## [5.0.1] - 2026-10-27
 
 ### Fixed
