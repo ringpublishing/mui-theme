@@ -1,6 +1,11 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [5.0.3] - 2026-11-04
+
+### Changed
+- The package is released from the repository of `@ringpublishing/mui-components`; its contents are unchanged.
+
 ## [5.0.2] - 2026-11-03
 
 ### Fixed

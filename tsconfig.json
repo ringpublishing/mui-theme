@@ -3,6 +3,8 @@
     "compilerOptions": {
         "jsx": "react",
         "noEmit": true,
-        "skipLibCheck": true
-    }
+        "skipLibCheck": true,
+        "rootDir": "src"
+    },
+    "include": ["src"]
 }

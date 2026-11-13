@@ -5,7 +5,7 @@
 In the Ring project there are **two locations** where we declare MUI module augmentations:
 
 1. **theme.lib** (`@ringpublishing/mui-theme`) — the canonical source of truth
-2. **ring-ui-components** (`@ringpublishing/ui-components`) — a local mirror for selected declarations
+2. **ring-ui-components** (`@ringpublishing/mui-components`) — a local mirror for selected declarations
 
 A developer needs to know **which location is sufficient in a given case**, because TypeScript behaves **differently** depending on **what is being augmented**.
 
@@ -116,7 +116,7 @@ Declare it in **two places**:
    - theme.lib tests
    - `components.custom.ts` (e.g. `MuiPaper.variants[].props: { variant: 'borderless' }`)
 
-2. **ring-ui-components** (`src/theme/muiAugmentation.ts`) — the local mirror needed for TypeScript propagation to ring-ui-components consumers.
+2. **ring-ui-components** (`src/theme/muiAugmentation.ts` of `@ringpublishing/mui-components`) — the local mirror needed for TypeScript propagation to ring-ui-components consumers.
 
 Apps that use theme.lib **directly** (without ring-ui-components) must add **their own** local declaration in a `.d.ts` file or a source file.
 

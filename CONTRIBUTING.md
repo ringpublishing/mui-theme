@@ -1,33 +1,15 @@
 # CONTRIBUTING
 
-This project is internally developed by Ring Publishing.
+This package is developed internally by Ring Publishing, together with `@ringpublishing/mui-components`.
 
-## Versioning
-
-Version should follow [Semantic versioning](https://semver.org/) rules.
+A change comes with a new version in `CHANGELOG.md`, chosen by [Semantic Versioning](https://semver.org/), and
+passes the tests (`npm test`) and the linter (`npm run lint`).
 
 ## Dependencies
 
-This project supports MUI v7. and following MUI X packages versions:
+This package supports MUI v7 and the following MUI X package versions:
 
 * "@mui/x-data-grid": "^8.17.0"
 * "@mui/x-data-grid-pro": "^8.17.0"
 * "@mui/x-date-pickers": "^8.17.0"
 * "@mui/x-date-pickers-pro": "^8.17.0"
-
-## Documentation
-
-Documentation is available in README.
-
-## Contribution
-
-To contribute create Pull request.
-
-Pull Request should have:
-
-* version upgrade according to Semantic Versioning
-* description of changes in CHANGELOG.md
-* (optional - if needed) description of changes in README.md
-* tests and linter should pass
-  * to run tests: `npm run test`
-  * to run linter: `npm run lint`

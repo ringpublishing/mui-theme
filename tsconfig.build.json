@@ -6,6 +6,9 @@
             "dom",
             "esnext"
         ],
-        "skipLibCheck": true
-    }
+        "skipLibCheck": true,
+        "rootDir": "src",
+        "outDir": "dist"
+    },
+    "include": ["src"]
 }
