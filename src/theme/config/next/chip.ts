@@ -18,6 +18,10 @@ const SEMANTIC_COLORS = ['error', 'warning', 'info', 'success'] as const;
 const ROOT_INSET = 4;
 const LABEL_INSET = 6;
 
+/** The chip label text style of the design, in px. */
+const LABEL_LINE_HEIGHT = 18;
+const LABEL_LETTER_SPACING = 0.16;
+
 /** Boxes of the `icon` and `deleteIcon` slots: the design's small glyph, the DS medium icon. */
 const ICON_SIZE = { small: 16, medium: 20 } as const;
 
@@ -144,10 +148,18 @@ export const chipSizeSmall: CSSObject = {
     [GLYPHS]: { fontSize: ICON_SIZE.small }
 };
 
-export const chipLabel: CSSObject = {
-    paddingLeft: LABEL_INSET,
-    paddingRight: LABEL_INSET
-};
+/**
+ * The label text of every size and variant: 13px (MUI's chip font size) over the design's 18px line. The
+ * inherited `1.5` gives 19.5px, which puts the baseline on a half pixel and draws the text a pixel high.
+ */
+export function chipLabel(pxTo: (px: number) => string): CSSObject {
+    return {
+        paddingLeft: LABEL_INSET,
+        paddingRight: LABEL_INSET,
+        lineHeight: pxTo(LABEL_LINE_HEIGHT),
+        letterSpacing: pxTo(LABEL_LETTER_SPACING)
+    };
+}
 
 const outlinedDefault = (theme: Theme): CSSObject => {
     const { palette } = theme;

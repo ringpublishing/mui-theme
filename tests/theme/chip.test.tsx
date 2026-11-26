@@ -123,6 +123,19 @@ describe('Chip in next', () => {
         expect(styleFor(label, '', 'padding-right')).toBe('6px');
     });
 
+    // The inherited `1.5` puts 13px text on a 19.5px line: the baseline falls on a half pixel and the text is drawn
+    // a pixel high. The label carries the design's 18px line itself, in either typography mode.
+    it.each([
+        ['rem', '1.125rem', '0.01rem'],
+        ['deprecated-px', '1.8rem', '0.016rem']
+    ] as const)('sets the label on an 18px line with 0.16px tracking in %s mode', (typographyMode, lineHeight, tracking) => {
+        const el = renderChip(getTheme('light', { version: 'next', typographyMode }));
+        const label = el.querySelector('.MuiChip-label') as HTMLElement;
+
+        expect(styleFor(label, '', 'line-height')).toBe(lineHeight);
+        expect(styleFor(label, '', 'letter-spacing')).toBe(tracking);
+    });
+
     it('draws disabled from the tokens instead of fading the whole chip', () => {
         const el = renderChip(next, { variant: 'outlined', disabled: true });
 

@@ -247,6 +247,25 @@ function autocompleteEndAdornmentReserve(): Record<string, { paddingRight: numbe
     );
 }
 
+// The `filter` variant of `Autocomplete` draws its trigger as an outlined field and keeps its buttons in the row,
+// so the reserve above does not apply to it. It keeps the insets MUI gives an Autocomplete field instead: 9px
+// from the end and 5px before the text (MUI's `padding: 9` and `7.5px 4px 7.5px 5px`), with no vertical padding.
+// `:has()` lifts the rule to the reserve's specificity and, emitted after it, it wins on source order.
+const AUTOCOMPLETE_FILTER_TRIGGER = '.ring-autocomplete-filter-trigger';
+
+function autocompleteFilterTrigger(): Record<string, object> {
+    return {
+        [`&:has(${AUTOCOMPLETE_FILTER_TRIGGER}) .MuiOutlinedInput-root${AUTOCOMPLETE_FILTER_TRIGGER}`]: {
+            paddingTop: 0,
+            paddingBottom: 0,
+            paddingRight: 9
+        },
+        [`& ${AUTOCOMPLETE_FILTER_TRIGGER} > .MuiTypography-root`]: {
+            marginLeft: 5
+        }
+    };
+}
+
 // The redesigned switch keeps the thumb fully inside a tall pill track, unlike the stock MUI
 // switch where the thumb overlaps a low track. Outer boxes match the stock component
 // (medium 58x38, small 40x24), so the switch keeps its footprint in existing layouts.
@@ -560,7 +579,8 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
                             }
                         },
                         [small.join(', ')]: inset(theme.getSpacing(0.5)),
-                        ...autocompleteEndAdornmentReserve()
+                        ...autocompleteEndAdornmentReserve(),
+                        ...autocompleteFilterTrigger()
                     };
                 }
             }
@@ -1114,7 +1134,7 @@ export function buildRingComponents({ pxTo }: ComponentsFactoryOptions): Compone
             styleOverrides: {
                 root: ({ theme }: { theme: Theme; }) => chipRoot(theme),
                 sizeSmall: chipSizeSmall,
-                label: chipLabel
+                label: chipLabel(pxTo)
             },
             variants: [
                 ...chipVariants(),

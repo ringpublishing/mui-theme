@@ -1,6 +1,12 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [5.1.1] - 2026-11-26
+
+### Fixed
+- `Chip` — the label has an 18px line height and 0.16px letter spacing instead of the inherited 19.5px and 0.15px, so its text is centred vertically in every chip and tag instead of sitting a pixel high; chip heights are unchanged.
+- `Autocomplete` — the trigger of the `filter` variant keeps the insets of an Autocomplete field (9px from the end, 5px before the title) with no vertical padding, instead of the right padding a field reserves for its buttons.
+
 ## [5.1.0] - 2026-11-22
 
 ### Added
