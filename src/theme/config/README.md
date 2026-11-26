@@ -23,6 +23,7 @@
 | `theme.colors.*` (Ring brand, deprecated) | `colors.ts` |
 | `MuiButton.styleOverrides` etc. | `components.custom.ts` (factory `buildRingComponents`) |
 | Base look of a Ring component (`theme.ringComponents.RingFileUploader`) | `fileUploader.ts` (factory `buildFileUploaderStyles`, registered in `theme.tsx`) |
+| Base look of a Ring component drawn in `next` only (`theme.ringComponents.RingSideRail`) | `config/next/sideRail.ts` (factory `buildSideRailStyles`, exported from `config/next/index.ts`, registered in `theme.tsx`) |
 | New TS field on `Theme` (both versions) | `augmentation.core.ts` |
 | New TS field only in `next` | `config/next/augmentation.ts` |
 

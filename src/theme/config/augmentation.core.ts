@@ -13,11 +13,20 @@ import type { BorderRadiusFactor as BorderRadiusFactorNext } from './next/shape.
 import type { PaletteComponentsMap, PaletteComponentsMapOptions } from './palette.components.types';
 import type { FeaturedIconMetrics } from './featuredIcon';
 import type { RingFileUploaderClassKey, RingFileUploaderOwnerState, RingFileUploaderStyles } from './fileUploader';
+import type {
+    RingNavigationMenuClassKey,
+    RingNavigationMenuOwnerState,
+    RingNavigationMenuStyles
+} from './navigationMenu';
+import type { RingSideRailClassKey, RingSideRailOwnerState, RingSideRailStyles } from './next/sideRail';
 import type { ChipTagColor, ChipTagPalette } from './palette.tag.types';
 
 /** Base styles of Ring's own components, slot by slot; their `styled` slots read them. */
 interface RingComponentStyles {
     RingFileUploader: RingFileUploaderStyles;
+    RingNavigationMenu: RingNavigationMenuStyles;
+    /** `next` only. */
+    RingSideRail?: RingSideRailStyles;
 }
 
 // Strict spacing factors from `next`, plus `0` shorthand.
@@ -101,7 +110,7 @@ declare module '@mui/material' {
         gradientText: (gradient: 'ai') => object;
         /** Sizing rule of the featured icon (glyph on a circular plate). */
         featuredIcon: FeaturedIconMetrics;
-        /** Base styles of Ring's own components (`RingFileUploader`), read by their slots. */
+        /** Base styles of Ring's own components (`RingFileUploader`, `RingNavigationMenu`, `RingSideRail`), read by their slots. */
         ringComponents: RingComponentStyles;
     }
     interface ThemeOptions {
@@ -158,7 +167,7 @@ declare module '@mui/material/styles' {
         gradientText: (gradient: 'ai') => object;
         /** Sizing rule of the featured icon (glyph on a circular plate). */
         featuredIcon: FeaturedIconMetrics;
-        /** Base styles of Ring's own components (`RingFileUploader`), read by their slots. */
+        /** Base styles of Ring's own components (`RingFileUploader`, `RingNavigationMenu`, `RingSideRail`), read by their slots. */
         ringComponents: RingComponentStyles;
     }
     interface ThemeOptions {
@@ -176,13 +185,23 @@ declare module '@mui/material/styles' {
     // `theme.ringComponents`; what an application sets in `components.Ring….styleOverrides[slot]` goes on top.
     interface ComponentNameToClassKey {
         RingFileUploader: RingFileUploaderClassKey;
+        RingNavigationMenu: RingNavigationMenuClassKey;
+        RingSideRail: RingSideRailClassKey;
     }
     interface ComponentsPropsList {
         RingFileUploader: RingFileUploaderOwnerState;
+        RingNavigationMenu: RingNavigationMenuOwnerState;
+        RingSideRail: RingSideRailOwnerState;
     }
     interface Components<Theme = unknown> {
         RingFileUploader?: {
             styleOverrides?: ComponentsOverrides<Theme>['RingFileUploader'];
+        };
+        RingNavigationMenu?: {
+            styleOverrides?: ComponentsOverrides<Theme>['RingNavigationMenu'];
+        };
+        RingSideRail?: {
+            styleOverrides?: ComponentsOverrides<Theme>['RingSideRail'];
         };
     }
 }
@@ -229,7 +248,7 @@ declare module '@mui/material/esm/styles' {
         gradientText: (gradient: 'ai') => object;
         /** Sizing rule of the featured icon (glyph on a circular plate). */
         featuredIcon: FeaturedIconMetrics;
-        /** Base styles of Ring's own components (`RingFileUploader`), read by their slots. */
+        /** Base styles of Ring's own components (`RingFileUploader`, `RingNavigationMenu`, `RingSideRail`), read by their slots. */
         ringComponents: RingComponentStyles;
     }
     interface ThemeOptions {
@@ -247,13 +266,23 @@ declare module '@mui/material/esm/styles' {
     // `theme.ringComponents`; what an application sets in `components.Ring….styleOverrides[slot]` goes on top.
     interface ComponentNameToClassKey {
         RingFileUploader: RingFileUploaderClassKey;
+        RingNavigationMenu: RingNavigationMenuClassKey;
+        RingSideRail: RingSideRailClassKey;
     }
     interface ComponentsPropsList {
         RingFileUploader: RingFileUploaderOwnerState;
+        RingNavigationMenu: RingNavigationMenuOwnerState;
+        RingSideRail: RingSideRailOwnerState;
     }
     interface Components<Theme = unknown> {
         RingFileUploader?: {
             styleOverrides?: ComponentsOverrides<Theme>['RingFileUploader'];
+        };
+        RingNavigationMenu?: {
+            styleOverrides?: ComponentsOverrides<Theme>['RingNavigationMenu'];
+        };
+        RingSideRail?: {
+            styleOverrides?: ComponentsOverrides<Theme>['RingSideRail'];
         };
     }
 }

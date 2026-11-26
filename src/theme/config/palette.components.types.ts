@@ -1,3 +1,5 @@
+import type { StringColorTone } from './next/stringColor.generated';
+
 // Superset schema for `theme.palette.components` across all variants.
 // Required fields are shared by all variants; optional fields are variant-specific.
 
@@ -52,19 +54,16 @@ export interface PaletteComponentsMap {
 
     // Variant drift fields
 
-    // `avatar` differs between variants.
+    // `avatar` differs between variants. One `<tone>Fill` per tone the token export lists in
+    // `stringColor.generated.ts`, so a tone added in the design file is typed here too.
     avatar: {
         fill?: string;
-        stoneFill?: string;
-        skyFill?: string;
-        lavenderFill?: string;
-        blushFill?: string;
-        coralFill?: string;
-        peachFill?: string;
-        lemonFill?: string;
-        sageFill?: string;
-        tealFill?: string;
+        /** @deprecated Not one of the avatar tones; the palette keeps its colour for existing reads. */
         azureFill?: string;
+        /** Text on the avatar fills. */
+        contrastText?: string;
+    } & {
+        [Tone in StringColorTone as `${Tone}Fill`]?: string;
     };
 
     // `input` differs between variants.

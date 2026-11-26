@@ -1,6 +1,19 @@
 # CHANGELOG
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [5.1.0] - 2026-11-22
+
+### Added
+- `getStringColor(input, theme)` gives a string, such as a user ID or a name, a tone that is the same for it everywhere, and returns `{ tone, fill, fillText, background, text }`: the avatar fill and its text colour, and the tag background and text, from the theme's palette. `fillText` is `avatar.contrastText` where it reaches 4.5:1 on the fill, otherwise the more contrasting of `common.white` and `common.black`. A tone that is not a tag colour gets `action.selected` and `text.primary` as `background` and `text`. `getStringColorTone(input)` returns only the tone; `stringColorTones` lists the 20 avatar tones it picks from, and an empty string gets `stringColorNeutralTone` (`stone`).
+- `palette.components.avatar.contrastText` is typed.
+- `palette.components.avatar` has 21 tone fills from the design export, typed per `StringColorTone`: `stoneFill`, `rubyFill`, `brickFill`, `coralFill`, `peachFill`, `sandFill`, `lemonFill`, `oliveFill`, `fernFill`, `sageFill`, `mintFill`, `tealFill`, `skyFill`, `oceanFill`, `indigoFill`, `lavenderFill`, `violetFill`, `plumFill`, `orchidFill`, `blushFill` and `berryFill`.
+- `theme.ringComponents.RingNavigationMenu`: the look of the `NavigationMenu` of `@ringpublishing/mui-components`; an application changes it in `components.RingNavigationMenu.styleOverrides`.
+- `theme.ringComponents.RingSideRail` — the look of `SideRail` from `@ringpublishing/mui-components` (types `RingSideRail*`).
+
+### Changed
+- The avatar fills take the design export's new values, on which `avatar.contrastText` reaches 4.5:1 in both modes. `azureFill` is deprecated and keeps its colour.
+- Supports Node.js 26; built with TypeScript 6.
+
 ## [5.0.3] - 2026-11-04
 
 ### Changed

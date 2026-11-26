@@ -11,3 +11,5 @@ export { typographyRem, typographyPx } from './typography.generated';
 export { shadows } from './shadows.generated';
 export { actionOpacities } from './opacity.generated';
 export { buildRingComponents } from './components.custom';
+// Base styles of Ring components drawn only in `next`; `theme.tsx` registers them in `theme.ringComponents`.
+export { buildSideRailStyles } from './sideRail';

@@ -59,6 +59,7 @@ import { plPL as corePL, enUS as coreUS } from '@mui/material/locale';
 import { actionOpacities } from './config/actionOpacities';
 import { featuredIcon } from './config/featuredIcon';
 import { buildFileUploaderStyles } from './config/fileUploader';
+import { buildNavigationMenuStyles } from './config/navigationMenu';
 import { RING_FONT_WAIT_TIMEOUT_MS, areThemeFontsReady, getThemeFonts, waitForThemeFonts } from '../fonts';
 
 export type TypographyMode = 'deprecated-px' | 'rem';
@@ -216,8 +217,13 @@ export function getTheme(
             gradientText: (gradient) => gradientTextFill(gradients[gradient].fill),
             featuredIcon: { ...featuredIcon, sizes: { ...featuredIcon.sizes } },
             // Base styles of Ring's own components, read by their slots; `components.Ring*.styleOverrides` stays
-            // free for the application, which MUI layers on top instead of replacing these.
-            ringComponents: { RingFileUploader: buildFileUploaderStyles({ pxTo }) },
+            // free for the application, which MUI layers on top instead of replacing these. The side rail is drawn
+            // in `next` only.
+            ringComponents: {
+                RingFileUploader: buildFileUploaderStyles({ pxTo }),
+                RingNavigationMenu: buildNavigationMenuStyles(),
+                ...('buildSideRailStyles' in cfg ? { RingSideRail: cfg.buildSideRailStyles() } : {})
+            },
             getSpacing: (...factors: SpacingFactor[]): string => {
                 // Resolve one strict spacing factor from the active config.
                 const resolveOne = (factor: SpacingFactor): number | undefined => {

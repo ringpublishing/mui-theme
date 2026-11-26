@@ -33,6 +33,13 @@ export {
     PACKAGE_VERSION_RELEASED as THEME_VERSION_RELEASED
 } from '../version.generated';
 export type { Theme } from '@mui/material';
+export { getStringColor, type StringColor } from './stringColor';
+export {
+    getStringColorTone,
+    stringColorNeutralTone,
+    stringColorTones,
+    type StringColorTone
+} from './config/next/stringColor.generated';
 export type { FeaturedIconMetrics } from './config/featuredIcon';
 export type {
     RingFileUploaderClassKey,
@@ -42,6 +49,19 @@ export type {
     RingFileUploaderSlotStyle,
     RingFileUploaderStyles
 } from './config/fileUploader';
+export type {
+    RingNavigationMenuClassKey,
+    RingNavigationMenuOwnerState,
+    RingNavigationMenuSlotStyle,
+    RingNavigationMenuStyles
+} from './config/navigationMenu';
+export type {
+    RingSideRailClassKey,
+    RingSideRailDrawerVariant,
+    RingSideRailOwnerState,
+    RingSideRailSlotStyle,
+    RingSideRailStyles
+} from './config/next/sideRail';
 
 // Helper enum re-export.
 export { CommonLanguages } from '../helpers/commonTypes';

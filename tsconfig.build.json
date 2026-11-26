@@ -1,11 +1,8 @@
 {
-    "extends": "@ringieraxelspringer/tsconfig",
+    "extends": "@ringieraxelspringer/tsconfig/cjs",
     "compilerOptions": {
         "jsx": "react",
-        "lib": [
-            "dom",
-            "esnext"
-        ],
+        "lib": ["dom", "esnext"],
         "skipLibCheck": true,
         "rootDir": "src",
         "outDir": "dist"

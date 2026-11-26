@@ -1,5 +1,5 @@
 {
-    "extends": "@ringieraxelspringer/tsconfig",
+    "extends": "@ringieraxelspringer/tsconfig/cjs",
     "compilerOptions": {
         "jsx": "react",
         "noEmit": true,
